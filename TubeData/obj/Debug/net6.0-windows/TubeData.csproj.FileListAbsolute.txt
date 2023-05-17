@@ -1,0 +1,17 @@
+C:\Users\callump\Repos\TubeData\TubeData\obj\Debug\net6.0-windows\TubeData.csproj.AssemblyReference.cache
+C:\Users\callump\Repos\TubeData\TubeData\obj\Debug\net6.0-windows\TubeData.Form1.resources
+C:\Users\callump\Repos\TubeData\TubeData\obj\Debug\net6.0-windows\TubeData.csproj.GenerateResource.cache
+C:\Users\callump\Repos\TubeData\TubeData\obj\Debug\net6.0-windows\TubeData.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\callump\Repos\TubeData\TubeData\obj\Debug\net6.0-windows\TubeData.AssemblyInfoInputs.cache
+C:\Users\callump\Repos\TubeData\TubeData\obj\Debug\net6.0-windows\TubeData.AssemblyInfo.cs
+C:\Users\callump\Repos\TubeData\TubeData\obj\Debug\net6.0-windows\TubeData.csproj.CoreCompileInputs.cache
+C:\Users\callump\Repos\TubeData\TubeData\bin\Debug\net6.0-windows\TubeData.exe
+C:\Users\callump\Repos\TubeData\TubeData\bin\Debug\net6.0-windows\TubeData.deps.json
+C:\Users\callump\Repos\TubeData\TubeData\bin\Debug\net6.0-windows\TubeData.runtimeconfig.json
+C:\Users\callump\Repos\TubeData\TubeData\bin\Debug\net6.0-windows\TubeData.dll
+C:\Users\callump\Repos\TubeData\TubeData\bin\Debug\net6.0-windows\TubeData.pdb
+C:\Users\callump\Repos\TubeData\TubeData\obj\Debug\net6.0-windows\TubeData.dll
+C:\Users\callump\Repos\TubeData\TubeData\obj\Debug\net6.0-windows\refint\TubeData.dll
+C:\Users\callump\Repos\TubeData\TubeData\obj\Debug\net6.0-windows\TubeData.pdb
+C:\Users\callump\Repos\TubeData\TubeData\obj\Debug\net6.0-windows\TubeData.genruntimeconfig.cache
+C:\Users\callump\Repos\TubeData\TubeData\obj\Debug\net6.0-windows\ref\TubeData.dll
