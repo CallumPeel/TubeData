@@ -44,7 +44,31 @@
             progressBar1 = new ProgressBar();
             folderBrowserDialog1 = new FolderBrowserDialog();
             toolTip1 = new ToolTip(components);
+            tblPnlMain = new TableLayoutPanel();
+            tblPanelDataEntry = new TableLayoutPanel();
+            labelClient = new Label();
+            labelDate = new Label();
+            labelMaterial = new Label();
+            labelCutLength = new Label();
+            labelDrawingNo = new Label();
+            labelPartNo = new Label();
+            labelTubeSize = new Label();
+            labelToolingSize = new Label();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            textBox3 = new TextBox();
+            textBox4 = new TextBox();
+            textBox5 = new TextBox();
+            textBox6 = new TextBox();
+            textBox7 = new TextBox();
+            textBox8 = new TextBox();
+            tblPnlButtons = new TableLayoutPanel();
+            buttonSave = new Button();
+            buttonClear = new Button();
             toolStrip1.SuspendLayout();
+            tblPnlMain.SuspendLayout();
+            tblPanelDataEntry.SuspendLayout();
+            tblPnlButtons.SuspendLayout();
             SuspendLayout();
             // 
             // toolStrip1
@@ -54,7 +78,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { newToolStripButton, openToolStripButton, saveToolStripButton, printToolStripButton, toolStripSeparator, helpToolStripButton });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1243, 27);
+            toolStrip1.Size = new Size(1436, 27);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -128,7 +152,7 @@
             treeView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             treeView1.Location = new Point(12, 131);
             treeView1.Name = "treeView1";
-            treeView1.Size = new Size(234, 497);
+            treeView1.Size = new Size(234, 507);
             treeView1.StateImageList = imageList1;
             treeView1.TabIndex = 1;
             // 
@@ -143,7 +167,7 @@
             // progressBar1
             // 
             progressBar1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            progressBar1.Location = new Point(12, 634);
+            progressBar1.Location = new Point(12, 644);
             progressBar1.Name = "progressBar1";
             progressBar1.Size = new Size(234, 12);
             progressBar1.TabIndex = 4;
@@ -153,11 +177,252 @@
             // 
             folderBrowserDialog1.HelpRequest += folderBrowserDialog1_HelpRequest;
             // 
+            // tblPnlMain
+            // 
+            tblPnlMain.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tblPnlMain.ColumnCount = 1;
+            tblPnlMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tblPnlMain.Controls.Add(tblPanelDataEntry, 0, 0);
+            tblPnlMain.Location = new Point(286, 97);
+            tblPnlMain.Name = "tblPnlMain";
+            tblPnlMain.RowCount = 4;
+            tblPnlMain.RowStyles.Add(new RowStyle());
+            tblPnlMain.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
+            tblPnlMain.RowStyles.Add(new RowStyle());
+            tblPnlMain.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tblPnlMain.Size = new Size(1106, 541);
+            tblPnlMain.TabIndex = 5;
+            // 
+            // tblPanelDataEntry
+            // 
+            tblPanelDataEntry.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tblPanelDataEntry.ColumnCount = 4;
+            tblPanelDataEntry.ColumnStyles.Add(new ColumnStyle());
+            tblPanelDataEntry.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tblPanelDataEntry.ColumnStyles.Add(new ColumnStyle());
+            tblPanelDataEntry.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tblPanelDataEntry.Controls.Add(labelClient, 0, 0);
+            tblPanelDataEntry.Controls.Add(labelDate, 0, 1);
+            tblPanelDataEntry.Controls.Add(labelMaterial, 0, 2);
+            tblPanelDataEntry.Controls.Add(labelCutLength, 0, 3);
+            tblPanelDataEntry.Controls.Add(labelDrawingNo, 2, 0);
+            tblPanelDataEntry.Controls.Add(labelPartNo, 2, 1);
+            tblPanelDataEntry.Controls.Add(labelTubeSize, 2, 2);
+            tblPanelDataEntry.Controls.Add(labelToolingSize, 2, 3);
+            tblPanelDataEntry.Controls.Add(textBox1, 1, 0);
+            tblPanelDataEntry.Controls.Add(textBox2, 1, 1);
+            tblPanelDataEntry.Controls.Add(textBox3, 1, 2);
+            tblPanelDataEntry.Controls.Add(textBox4, 1, 3);
+            tblPanelDataEntry.Controls.Add(textBox5, 3, 0);
+            tblPanelDataEntry.Controls.Add(textBox6, 3, 1);
+            tblPanelDataEntry.Controls.Add(textBox7, 3, 2);
+            tblPanelDataEntry.Controls.Add(textBox8, 3, 3);
+            tblPanelDataEntry.Controls.Add(tblPnlButtons, 3, 4);
+            tblPanelDataEntry.Location = new Point(3, 3);
+            tblPanelDataEntry.Name = "tblPanelDataEntry";
+            tblPanelDataEntry.RowCount = 5;
+            tblPanelDataEntry.RowStyles.Add(new RowStyle());
+            tblPanelDataEntry.RowStyles.Add(new RowStyle());
+            tblPanelDataEntry.RowStyles.Add(new RowStyle());
+            tblPanelDataEntry.RowStyles.Add(new RowStyle());
+            tblPanelDataEntry.RowStyles.Add(new RowStyle());
+            tblPanelDataEntry.Size = new Size(1100, 173);
+            tblPanelDataEntry.TabIndex = 0;
+            // 
+            // labelClient
+            // 
+            labelClient.Anchor = AnchorStyles.Left;
+            labelClient.AutoSize = true;
+            labelClient.Location = new Point(3, 6);
+            labelClient.Name = "labelClient";
+            labelClient.Size = new Size(50, 20);
+            labelClient.TabIndex = 0;
+            labelClient.Text = "Client:";
+            // 
+            // labelDate
+            // 
+            labelDate.Anchor = AnchorStyles.Left;
+            labelDate.AutoSize = true;
+            labelDate.Location = new Point(3, 39);
+            labelDate.Name = "labelDate";
+            labelDate.Size = new Size(44, 20);
+            labelDate.TabIndex = 0;
+            labelDate.Text = "Date:";
+            // 
+            // labelMaterial
+            // 
+            labelMaterial.Anchor = AnchorStyles.Left;
+            labelMaterial.AutoSize = true;
+            labelMaterial.Location = new Point(3, 72);
+            labelMaterial.Name = "labelMaterial";
+            labelMaterial.Size = new Size(67, 20);
+            labelMaterial.TabIndex = 0;
+            labelMaterial.Text = "Material:";
+            // 
+            // labelCutLength
+            // 
+            labelCutLength.Anchor = AnchorStyles.Left;
+            labelCutLength.AutoSize = true;
+            labelCutLength.Location = new Point(3, 105);
+            labelCutLength.Name = "labelCutLength";
+            labelCutLength.Size = new Size(83, 20);
+            labelCutLength.TabIndex = 0;
+            labelCutLength.Text = "Cut Length:";
+            // 
+            // labelDrawingNo
+            // 
+            labelDrawingNo.Anchor = AnchorStyles.Left;
+            labelDrawingNo.AutoSize = true;
+            labelDrawingNo.Location = new Point(548, 6);
+            labelDrawingNo.Name = "labelDrawingNo";
+            labelDrawingNo.Size = new Size(92, 20);
+            labelDrawingNo.TabIndex = 0;
+            labelDrawingNo.Text = "Drawing No:";
+            // 
+            // labelPartNo
+            // 
+            labelPartNo.Anchor = AnchorStyles.Left;
+            labelPartNo.AutoSize = true;
+            labelPartNo.Location = new Point(548, 39);
+            labelPartNo.Name = "labelPartNo";
+            labelPartNo.Size = new Size(61, 20);
+            labelPartNo.TabIndex = 0;
+            labelPartNo.Text = "Part No:";
+            // 
+            // labelTubeSize
+            // 
+            labelTubeSize.Anchor = AnchorStyles.Left;
+            labelTubeSize.AutoSize = true;
+            labelTubeSize.Location = new Point(548, 72);
+            labelTubeSize.Name = "labelTubeSize";
+            labelTubeSize.Size = new Size(76, 20);
+            labelTubeSize.TabIndex = 0;
+            labelTubeSize.Text = "Tube Size:";
+            // 
+            // labelToolingSize
+            // 
+            labelToolingSize.Anchor = AnchorStyles.Left;
+            labelToolingSize.AutoSize = true;
+            labelToolingSize.Location = new Point(548, 105);
+            labelToolingSize.Name = "labelToolingSize";
+            labelToolingSize.Size = new Size(93, 20);
+            labelToolingSize.TabIndex = 0;
+            labelToolingSize.Text = "Tooling Size:";
+            // 
+            // textBox1
+            // 
+            textBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox1.Location = new Point(92, 3);
+            textBox1.Margin = new Padding(3, 3, 20, 3);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(433, 27);
+            textBox1.TabIndex = 1;
+            // 
+            // textBox2
+            // 
+            textBox2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox2.Location = new Point(92, 36);
+            textBox2.Margin = new Padding(3, 3, 20, 3);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(433, 27);
+            textBox2.TabIndex = 1;
+            // 
+            // textBox3
+            // 
+            textBox3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox3.Location = new Point(92, 69);
+            textBox3.Margin = new Padding(3, 3, 20, 3);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(433, 27);
+            textBox3.TabIndex = 1;
+            // 
+            // textBox4
+            // 
+            textBox4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox4.Location = new Point(92, 102);
+            textBox4.Margin = new Padding(3, 3, 20, 3);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(433, 27);
+            textBox4.TabIndex = 1;
+            // 
+            // textBox5
+            // 
+            textBox5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox5.Location = new Point(647, 3);
+            textBox5.Margin = new Padding(3, 3, 20, 3);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(433, 27);
+            textBox5.TabIndex = 1;
+            // 
+            // textBox6
+            // 
+            textBox6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox6.Location = new Point(647, 36);
+            textBox6.Margin = new Padding(3, 3, 20, 3);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(433, 27);
+            textBox6.TabIndex = 1;
+            // 
+            // textBox7
+            // 
+            textBox7.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox7.Location = new Point(647, 69);
+            textBox7.Margin = new Padding(3, 3, 20, 3);
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(433, 27);
+            textBox7.TabIndex = 1;
+            // 
+            // textBox8
+            // 
+            textBox8.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox8.Location = new Point(647, 102);
+            textBox8.Margin = new Padding(3, 3, 20, 3);
+            textBox8.Name = "textBox8";
+            textBox8.Size = new Size(433, 27);
+            textBox8.TabIndex = 1;
+            // 
+            // tblPnlButtons
+            // 
+            tblPnlButtons.Anchor = AnchorStyles.Right;
+            tblPnlButtons.ColumnCount = 2;
+            tblPnlButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tblPnlButtons.ColumnStyles.Add(new ColumnStyle());
+            tblPnlButtons.Controls.Add(buttonSave, 0, 0);
+            tblPnlButtons.Controls.Add(buttonClear, 1, 0);
+            tblPnlButtons.Location = new Point(647, 135);
+            tblPnlButtons.Name = "tblPnlButtons";
+            tblPnlButtons.RowCount = 1;
+            tblPnlButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tblPnlButtons.Size = new Size(450, 35);
+            tblPnlButtons.TabIndex = 2;
+            // 
+            // buttonSave
+            // 
+            buttonSave.Anchor = AnchorStyles.Right;
+            buttonSave.Location = new Point(185, 3);
+            buttonSave.Name = "buttonSave";
+            buttonSave.Size = new Size(119, 29);
+            buttonSave.TabIndex = 0;
+            buttonSave.Text = "Save";
+            buttonSave.UseVisualStyleBackColor = true;
+            // 
+            // buttonClear
+            // 
+            buttonClear.Anchor = AnchorStyles.Right;
+            buttonClear.Location = new Point(310, 3);
+            buttonClear.Margin = new Padding(3, 3, 20, 3);
+            buttonClear.Name = "buttonClear";
+            buttonClear.Size = new Size(120, 29);
+            buttonClear.TabIndex = 1;
+            buttonClear.Text = "Clear";
+            buttonClear.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1243, 658);
+            ClientSize = new Size(1436, 668);
+            Controls.Add(tblPnlMain);
             Controls.Add(progressBar1);
             Controls.Add(treeView1);
             Controls.Add(FolderDirectoryBtn);
@@ -167,6 +432,10 @@
             Text = "Form1";
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
+            tblPnlMain.ResumeLayout(false);
+            tblPanelDataEntry.ResumeLayout(false);
+            tblPanelDataEntry.PerformLayout();
+            tblPnlButtons.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -187,5 +456,26 @@
         private FolderBrowserDialog folderBrowserDialog1;
         private ImageList imageList1;
         private ToolTip toolTip1;
+        private TableLayoutPanel tblPnlMain;
+        private TableLayoutPanel tblPanelDataEntry;
+        private Label labelClient;
+        private Label labelDate;
+        private Label labelMaterial;
+        private Label labelCutLength;
+        private Label labelDrawingNo;
+        private Label labelPartNo;
+        private Label labelTubeSize;
+        private Label labelToolingSize;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private TextBox textBox3;
+        private TextBox textBox4;
+        private TextBox textBox5;
+        private TextBox textBox6;
+        private TextBox textBox7;
+        private TextBox textBox8;
+        private TableLayoutPanel tblPnlButtons;
+        private Button buttonSave;
+        private Button buttonClear;
     }
 }
