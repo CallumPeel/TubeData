@@ -65,17 +65,19 @@
             tblPnlButtons = new TableLayoutPanel();
             buttonSave = new Button();
             buttonClear = new Button();
-            tableLayoutPanel1 = new TableLayoutPanel();
+            tblPanelLRAValues = new TableLayoutPanel();
             labelLength = new Label();
             labelRotationDegree = new Label();
             labelReadOut = new Label();
             labelSpringbackAngle = new Label();
             labelRequiredAngle = new Label();
+            button1 = new Button();
+            button2 = new Button();
             toolStrip1.SuspendLayout();
             tblPnlMain.SuspendLayout();
             tblPanelDataEntry.SuspendLayout();
             tblPnlButtons.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
+            tblPanelLRAValues.SuspendLayout();
             SuspendLayout();
             // 
             // toolStrip1
@@ -190,14 +192,16 @@
             tblPnlMain.ColumnCount = 1;
             tblPnlMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tblPnlMain.Controls.Add(tblPanelDataEntry, 0, 0);
-            tblPnlMain.Controls.Add(tableLayoutPanel1, 0, 1);
+            tblPnlMain.Controls.Add(tblPanelLRAValues, 0, 1);
+            tblPnlMain.Controls.Add(button1, 0, 3);
+            tblPnlMain.Controls.Add(button2, 0, 2);
             tblPnlMain.Location = new Point(286, 97);
             tblPnlMain.Name = "tblPnlMain";
             tblPnlMain.RowCount = 4;
             tblPnlMain.RowStyles.Add(new RowStyle());
-            tblPnlMain.RowStyles.Add(new RowStyle());
-            tblPnlMain.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblPnlMain.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tblPnlMain.RowStyles.Add(new RowStyle(SizeType.Percent, 77.77778F));
+            tblPnlMain.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1111107F));
+            tblPnlMain.RowStyles.Add(new RowStyle(SizeType.Percent, 11.1111107F));
             tblPnlMain.Size = new Size(1106, 541);
             tblPnlMain.TabIndex = 5;
             // 
@@ -413,6 +417,7 @@
             buttonSave.TabIndex = 0;
             buttonSave.Text = "Save";
             buttonSave.UseVisualStyleBackColor = true;
+            buttonSave.Click += buttonSave_Click;
             // 
             // buttonClear
             // 
@@ -424,38 +429,42 @@
             buttonClear.TabIndex = 1;
             buttonClear.Text = "Clear";
             buttonClear.UseVisualStyleBackColor = true;
+            buttonClear.Click += buttonClear_Click;
             // 
-            // tableLayoutPanel1
+            // tblPanelLRAValues
             // 
-            tableLayoutPanel1.ColumnCount = 5;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.Controls.Add(labelLength, 2, 0);
-            tableLayoutPanel1.Controls.Add(labelRotationDegree, 3, 0);
-            tableLayoutPanel1.Controls.Add(labelReadOut, 4, 0);
-            tableLayoutPanel1.Controls.Add(labelSpringbackAngle, 1, 0);
-            tableLayoutPanel1.Controls.Add(labelRequiredAngle, 0, 0);
-            tableLayoutPanel1.Location = new Point(3, 182);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 5;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.Size = new Size(1100, 286);
-            tableLayoutPanel1.TabIndex = 1;
+            tblPanelLRAValues.AutoScroll = true;
+            tblPanelLRAValues.AutoSize = true;
+            tblPanelLRAValues.ColumnCount = 6;
+            tblPanelLRAValues.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
+            tblPanelLRAValues.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19F));
+            tblPanelLRAValues.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19F));
+            tblPanelLRAValues.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19F));
+            tblPanelLRAValues.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19F));
+            tblPanelLRAValues.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19F));
+            tblPanelLRAValues.Controls.Add(labelLength, 3, 0);
+            tblPanelLRAValues.Controls.Add(labelRotationDegree, 4, 0);
+            tblPanelLRAValues.Controls.Add(labelReadOut, 5, 0);
+            tblPanelLRAValues.Controls.Add(labelSpringbackAngle, 2, 0);
+            tblPanelLRAValues.Controls.Add(labelRequiredAngle, 1, 0);
+            tblPanelLRAValues.Dock = DockStyle.Top;
+            tblPanelLRAValues.Location = new Point(3, 182);
+            tblPanelLRAValues.Name = "tblPanelLRAValues";
+            tblPanelLRAValues.RowCount = 1;
+            tblPanelLRAValues.RowStyles.Add(new RowStyle());
+            tblPanelLRAValues.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tblPanelLRAValues.Size = new Size(1100, 20);
+            tblPanelLRAValues.TabIndex = 1;
+            tblPanelLRAValues.Paint += tblPanelLRAValues_Paint;
             // 
             // labelLength
             // 
             labelLength.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             labelLength.AutoSize = true;
-            labelLength.Location = new Point(443, 18);
+            labelLength.Location = new Point(476, 0);
+            labelLength.Margin = new Padding(3, 0, 30, 0);
             labelLength.Name = "labelLength";
-            labelLength.Size = new Size(214, 20);
+            labelLength.Size = new Size(176, 20);
             labelLength.TabIndex = 0;
             labelLength.Text = "Length (mm)";
             labelLength.TextAlign = ContentAlignment.MiddleCenter;
@@ -464,9 +473,10 @@
             // 
             labelRotationDegree.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             labelRotationDegree.AutoSize = true;
-            labelRotationDegree.Location = new Point(663, 18);
+            labelRotationDegree.Location = new Point(685, 0);
+            labelRotationDegree.Margin = new Padding(3, 0, 30, 0);
             labelRotationDegree.Name = "labelRotationDegree";
-            labelRotationDegree.Size = new Size(214, 20);
+            labelRotationDegree.Size = new Size(176, 20);
             labelRotationDegree.TabIndex = 0;
             labelRotationDegree.Text = "Rotation Degree";
             labelRotationDegree.TextAlign = ContentAlignment.MiddleCenter;
@@ -475,9 +485,10 @@
             // 
             labelReadOut.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             labelReadOut.AutoSize = true;
-            labelReadOut.Location = new Point(883, 18);
+            labelReadOut.Location = new Point(894, 0);
+            labelReadOut.Margin = new Padding(3, 0, 30, 0);
             labelReadOut.Name = "labelReadOut";
-            labelReadOut.Size = new Size(214, 20);
+            labelReadOut.Size = new Size(176, 20);
             labelReadOut.TabIndex = 0;
             labelReadOut.Text = "Read Out";
             labelReadOut.TextAlign = ContentAlignment.MiddleCenter;
@@ -486,9 +497,10 @@
             // 
             labelSpringbackAngle.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             labelSpringbackAngle.AutoSize = true;
-            labelSpringbackAngle.Location = new Point(223, 18);
+            labelSpringbackAngle.Location = new Point(267, 0);
+            labelSpringbackAngle.Margin = new Padding(3, 0, 30, 0);
             labelSpringbackAngle.Name = "labelSpringbackAngle";
-            labelSpringbackAngle.Size = new Size(214, 20);
+            labelSpringbackAngle.Size = new Size(176, 20);
             labelSpringbackAngle.TabIndex = 0;
             labelSpringbackAngle.Text = "Springback Angle";
             labelSpringbackAngle.TextAlign = ContentAlignment.MiddleCenter;
@@ -497,12 +509,31 @@
             // 
             labelRequiredAngle.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             labelRequiredAngle.AutoSize = true;
-            labelRequiredAngle.Location = new Point(3, 18);
+            labelRequiredAngle.Location = new Point(58, 0);
+            labelRequiredAngle.Margin = new Padding(3, 0, 30, 0);
             labelRequiredAngle.Name = "labelRequiredAngle";
-            labelRequiredAngle.Size = new Size(214, 20);
+            labelRequiredAngle.Size = new Size(176, 20);
             labelRequiredAngle.TabIndex = 0;
             labelRequiredAngle.Text = "Required Angle";
             labelRequiredAngle.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(3, 503);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 2;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(3, 463);
+            button2.Name = "button2";
+            button2.Size = new Size(94, 29);
+            button2.TabIndex = 3;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -520,11 +551,12 @@
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             tblPnlMain.ResumeLayout(false);
+            tblPnlMain.PerformLayout();
             tblPanelDataEntry.ResumeLayout(false);
             tblPanelDataEntry.PerformLayout();
             tblPnlButtons.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
+            tblPanelLRAValues.ResumeLayout(false);
+            tblPanelLRAValues.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -566,11 +598,13 @@
         private TableLayoutPanel tblPnlButtons;
         private Button buttonSave;
         private Button buttonClear;
-        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tblPanelLRAValues;
         private Label labelLength;
         private Label labelRotationDegree;
         private Label labelReadOut;
         private Label labelSpringbackAngle;
         private Label labelRequiredAngle;
+        private Button button1;
+        private Button button2;
     }
 }

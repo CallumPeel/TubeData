@@ -1,13 +1,22 @@
 using System.Windows.Forms;
 using System.IO;
+using static System.Net.Mime.MediaTypeNames;
+using System.Net;
+using System.Reflection.Emit;
 
 namespace TubeData
 {
     public partial class Form1 : Form
     {
+
+
+
         public Form1()
         {
             InitializeComponent();
+            tblPanelLRAValues.RowCount--;
+            for (int i = 0; i < 5; i++) addRow();
+            addButtonRow();
         }
 
         private void FolderDirectoryBtn_Click(object sender, EventArgs e)
@@ -92,7 +101,7 @@ namespace TubeData
                     Brushes.Black,
                     new PointF(progressBar1.Width / 2 - 10, progressBar1.Height / 2 - 7)
                 );
-                Application.DoEvents();
+                System.Windows.Forms.Application.DoEvents();
             }
         }
         private void treeView1_MouseMove(object sender, MouseEventArgs e)
@@ -136,6 +145,124 @@ namespace TubeData
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        public void addButtonRow()
+        {
+            tblPanelLRAValues.RowCount++; // Increment row count
+
+            // Create label for the row number
+            System.Windows.Forms.Button newRowButton = new System.Windows.Forms.Button();
+            newRowButton.Text = "Add Bend";
+            newRowButton.AutoSize = true;
+
+            TextBox textBox5 = new TextBox();
+            textBox5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox5.Margin = new Padding(3, 3, 30, 3);
+
+            // Set RowStyles
+            tblPanelLRAValues.RowStyles.Clear(); // Clear any existing row styles
+
+            // Set the first row to automatically resize based on its content
+            //tblPanelLRAValues.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+
+            // Set the second row to use a fixed height
+            tblPanelLRAValues.RowStyles.Add(new RowStyle(SizeType.Absolute, 50)); // Adjust the height as needed
+
+
+            // Add controls to the new row
+            int rowIndex = tblPanelLRAValues.RowCount; // Increment row count in the TableLayoutPanel
+            tblPanelLRAValues.Controls.Add(newRowButton, 0, rowIndex); // Add label to column 0
+        }
+
+        public void addRow()
+        {
+            tblPanelLRAValues.RowCount++; // Increment row count
+
+            // Create label for the row number
+            System.Windows.Forms.Label rowLabel = new System.Windows.Forms.Label();
+            rowLabel.Text = tblPanelLRAValues.RowCount.ToString();
+            rowLabel.AutoSize = true;
+
+
+            // Create text boxes for data entry
+            TextBox textBox1 = new TextBox();
+            textBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox1.Margin = new Padding(3, 3, 30, 3);
+
+            TextBox textBox2 = new TextBox();
+            textBox2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox2.Margin = new Padding(3, 3, 30, 3);
+
+            TextBox textBox3 = new TextBox();
+            textBox3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox3.Margin = new Padding(3, 3, 30, 3);
+
+            TextBox textBox4 = new TextBox();
+            textBox4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox4.Margin = new Padding(3, 3, 30, 3);
+
+            TextBox textBox5 = new TextBox();
+            textBox5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox5.Margin = new Padding(3, 3, 30, 3);
+
+            // Set RowStyles
+            tblPanelLRAValues.RowStyles.Clear(); // Clear any existing row styles
+
+            // Set the first row to automatically resize based on its content
+            //tblPanelLRAValues.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+
+            // Set the second row to use a fixed height
+            tblPanelLRAValues.RowStyles.Add(new RowStyle(SizeType.Absolute, 50)); // Adjust the height as needed
+
+
+            // Add controls to the new row
+            int rowIndex = tblPanelLRAValues.RowCount; // Increment row count in the TableLayoutPanel
+            tblPanelLRAValues.Controls.Add(rowLabel, 0, rowIndex); // Add label to column 0
+            tblPanelLRAValues.Controls.Add(textBox1, 1, rowIndex); // Add text box to column 1
+            tblPanelLRAValues.Controls.Add(textBox2, 2, rowIndex); // Add text box to column 2
+            tblPanelLRAValues.Controls.Add(textBox3, 3, rowIndex); // Add text box to column 3
+            tblPanelLRAValues.Controls.Add(textBox4, 4, rowIndex); // Add text box to column 4
+            tblPanelLRAValues.Controls.Add(textBox5, 5, rowIndex); // Add text box to column 5
+        }
+
+        private void deleteAddRowButtonRow()
+        {
+            var cou = tblPanelLRAValues.Controls.Count;
+            tblPanelLRAValues.Controls.RemoveAt(tblPanelLRAValues.Controls.Count-1);
+            tblPanelLRAValues.RowCount--;
+        }
+
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            deleteAddRowButtonRow();
+            addRow();
+            addButtonRow();
+        }
+
+        private void tblPanelLRAValues_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            List<string> textBoxValues = new List<string>();
+
+            // Iterate over the controls in the TableLayoutPanel
+            foreach (Control control in tblPanelLRAValues.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Add the value of the text box to the list
+                    textBoxValues.Add(textBox.Text);
+                }
+            }
+
+            // Do something with the retrieved values
+            // For example, display them in a MessageBox
+            MessageBox.Show(string.Join(Environment.NewLine, textBoxValues));
         }
     }
 }
