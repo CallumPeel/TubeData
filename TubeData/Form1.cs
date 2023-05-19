@@ -12,6 +12,7 @@ namespace TubeData
         public Form1()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
             tblPanelLRAValues.RowCount--;
             for (int i = 0; i < 5; i++) addRow();
             newControlButtonsRow();
@@ -118,27 +119,37 @@ namespace TubeData
 
         public void newControlButtonsRow()
         {
-            tblPanelLRAValues.RowCount++;
+            var btnMaxSize = new Size(40, 35);
+            var btnPadding = new Padding(10);
 
-            // Button to add a new LRA row
-            System.Windows.Forms.Button addRowBtn = new System.Windows.Forms.Button();
-            addRowBtn.Text = "+";
-            addRowBtn.AutoSize = true;
+            System.Windows.Forms.Button addRowBtn = new System.Windows.Forms.Button
+            {
+                AutoSize = true,
+                Text = "+",
+                Dock = DockStyle.Left,
+                MaximumSize = btnMaxSize,
+                MinimumSize = btnMaxSize,
+                Margin = new Padding(10),
+            };
             EventHandler newRowEvent = (object sender, EventArgs e) => newRow();
             addRowBtn.Click += newRowEvent;
 
-            //Button to delete the previous LRA row
-            System.Windows.Forms.Button removeRowBtn = new System.Windows.Forms.Button();
-            removeRowBtn.Text = "-";
-            removeRowBtn.AutoSize = true;
+
+            System.Windows.Forms.Button removeRowBtn = new System.Windows.Forms.Button
+            {
+                AutoSize = true,
+                Text = "-",
+                Dock = DockStyle.Left,
+                MaximumSize = btnMaxSize,
+                MinimumSize = btnMaxSize,
+                Margin = new Padding(10),
+            };
             EventHandler removeLineEvent = (object sender, EventArgs e) => removeRow();
             removeRowBtn.Click += removeLineEvent;
 
-            // Set RowStyles
-            tblPanelLRAValues.RowStyles.Clear();
-            tblPanelLRAValues.RowStyles.Add(new RowStyle(SizeType.Absolute, 50)); // Adjust the height as needed
-            tblPanelLRAValues.Controls.Add(addRowBtn, 0, tblPanelLRAValues.RowCount); // Add label to column 0
-            tblPanelLRAValues.Controls.Add(removeRowBtn, 1, tblPanelLRAValues.RowCount); // Add label to column 0
+            tblPanelLRAValues.RowCount++;
+            tblPanelLRAValues.Controls.Add(addRowBtn, 0, tblPanelLRAValues.RowCount);
+            tblPanelLRAValues.Controls.Add(removeRowBtn, 0, tblPanelLRAValues.RowCount);
         }
 
         public void addRow()
@@ -149,6 +160,8 @@ namespace TubeData
             System.Windows.Forms.Label rowLabel = new System.Windows.Forms.Label();
             rowLabel.Text = tblPanelLRAValues.RowCount.ToString();
             rowLabel.AutoSize = true;
+            rowLabel.Dock = DockStyle.Fill;
+            rowLabel.TextAlign = ContentAlignment.MiddleCenter;
 
 
             // Create text boxes for data entry
@@ -235,6 +248,11 @@ namespace TubeData
             // Do something with the retrieved values
             // For example, display them in a MessageBox
             MessageBox.Show(string.Join(Environment.NewLine, textBoxValues));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
