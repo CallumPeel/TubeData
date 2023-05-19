@@ -236,9 +236,11 @@ namespace TubeData
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
+            tblPanelLRAValues.Visible = false;
             deleteAddRowButtonRow();
             addRow();
             addButtonRow();
+            tblPanelLRAValues.Visible = true;
         }
 
         private void tblPanelLRAValues_Paint(object sender, PaintEventArgs e)
