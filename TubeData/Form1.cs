@@ -16,6 +16,8 @@ namespace TubeData
             tblPanelLRAValues.RowCount--;
             for (int i = 0; i < 5; i++) addRow();
             newControlButtonsRow();
+            //DirectoryInfo directoryInfo = new DirectoryInfo(@"C:\Users\");
+            LoadDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures));
         }
 
         private void FolderDirectoryBtn_Click(object sender, EventArgs e)
@@ -226,12 +228,7 @@ namespace TubeData
             tblPanelLRAValues.Visible = true;
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void buttonSave_Click_1(object sender, EventArgs e)
         {
             List<string> textBoxValues = new List<string>();
 
@@ -250,7 +247,7 @@ namespace TubeData
             MessageBox.Show(string.Join(Environment.NewLine, textBoxValues));
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
         }
