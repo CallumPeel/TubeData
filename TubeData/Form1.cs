@@ -9,14 +9,12 @@ namespace TubeData
     public partial class Form1 : Form
     {
 
-
-
         public Form1()
         {
             InitializeComponent();
             tblPanelLRAValues.RowCount--;
             for (int i = 0; i < 5; i++) addRow();
-            addButtonRow();
+            newControlButtonsRow();
         }
 
         private void FolderDirectoryBtn_Click(object sender, EventArgs e)
@@ -26,11 +24,6 @@ namespace TubeData
             if (drResult == System.Windows.Forms.DialogResult.OK)
                 txtDirectoryPath.Text = folderBrowserDialog1.SelectedPath;
             LoadDirectory(sender, e);
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void LoadDirectory(object sender, EventArgs e)
@@ -79,7 +72,6 @@ namespace TubeData
         private void LoadFiles(string dir, TreeNode td)
         {
             string[] Files = Directory.GetFiles(dir, "*.*");
-            // Loop through them to see files
             foreach (string file in Files)
             {
                 FileInfo fi = new FileInfo(file);
@@ -89,6 +81,7 @@ namespace TubeData
                 UpdateProgress();
             }
         }
+
         private void UpdateProgress()
         {
             if (progressBar1.Value < progressBar1.Maximum)
@@ -104,6 +97,7 @@ namespace TubeData
                 System.Windows.Forms.Application.DoEvents();
             }
         }
+
         private void treeView1_MouseMove(object sender, MouseEventArgs e)
         {
             // Get the node at the current mouse pointer location.
@@ -122,57 +116,29 @@ namespace TubeData
             }
         }
 
-        private void progressBar1_Click(object sender, EventArgs e)
+        public void newControlButtonsRow()
         {
+            tblPanelLRAValues.RowCount++;
 
-        }
+            // Button to add a new LRA row
+            System.Windows.Forms.Button addRowBtn = new System.Windows.Forms.Button();
+            addRowBtn.Text = "+";
+            addRowBtn.AutoSize = true;
+            EventHandler newRowEvent = (object sender, EventArgs e) => newRow();
+            addRowBtn.Click += newRowEvent;
 
-        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        public void addButtonRow()
-        {
-            tblPanelLRAValues.RowCount++; // Increment row count
-
-            // Create label for the row number
-            System.Windows.Forms.Button newRowButton = new System.Windows.Forms.Button();
-            newRowButton.Text = "Add Bend";
-            newRowButton.AutoSize = true;
-
-            TextBox textBox5 = new TextBox();
-            textBox5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox5.Margin = new Padding(3, 3, 30, 3);
+            //Button to delete the previous LRA row
+            System.Windows.Forms.Button removeRowBtn = new System.Windows.Forms.Button();
+            removeRowBtn.Text = "-";
+            removeRowBtn.AutoSize = true;
+            EventHandler removeLineEvent = (object sender, EventArgs e) => removeRow();
+            removeRowBtn.Click += removeLineEvent;
 
             // Set RowStyles
-            tblPanelLRAValues.RowStyles.Clear(); // Clear any existing row styles
-
-            // Set the first row to automatically resize based on its content
-            //tblPanelLRAValues.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-
-            // Set the second row to use a fixed height
+            tblPanelLRAValues.RowStyles.Clear();
             tblPanelLRAValues.RowStyles.Add(new RowStyle(SizeType.Absolute, 50)); // Adjust the height as needed
-
-
-            // Add controls to the new row
-            int rowIndex = tblPanelLRAValues.RowCount; // Increment row count in the TableLayoutPanel
-            tblPanelLRAValues.Controls.Add(newRowButton, 0, rowIndex); // Add label to column 0
+            tblPanelLRAValues.Controls.Add(addRowBtn, 0, tblPanelLRAValues.RowCount); // Add label to column 0
+            tblPanelLRAValues.Controls.Add(removeRowBtn, 1, tblPanelLRAValues.RowCount); // Add label to column 0
         }
 
         public void addRow()
@@ -209,12 +175,8 @@ namespace TubeData
             // Set RowStyles
             tblPanelLRAValues.RowStyles.Clear(); // Clear any existing row styles
 
-            // Set the first row to automatically resize based on its content
-            //tblPanelLRAValues.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-
             // Set the second row to use a fixed height
             tblPanelLRAValues.RowStyles.Add(new RowStyle(SizeType.Absolute, 50)); // Adjust the height as needed
-
 
             // Add controls to the new row
             int rowIndex = tblPanelLRAValues.RowCount; // Increment row count in the TableLayoutPanel
@@ -226,24 +188,32 @@ namespace TubeData
             tblPanelLRAValues.Controls.Add(textBox5, 5, rowIndex); // Add text box to column 5
         }
 
-        private void deleteAddRowButtonRow()
+        private void deleControlButtonRow()
         {
-            var cou = tblPanelLRAValues.Controls.Count;
-            tblPanelLRAValues.Controls.RemoveAt(tblPanelLRAValues.Controls.Count-1);
+            tblPanelLRAValues.Controls.RemoveAt(tblPanelLRAValues.Controls.Count - 1);
+            tblPanelLRAValues.Controls.RemoveAt(tblPanelLRAValues.Controls.Count - 1);
             tblPanelLRAValues.RowCount--;
         }
 
+        private void removeRow()
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                tblPanelLRAValues.Controls.RemoveAt(tblPanelLRAValues.Controls.Count - 3);
+            }
+            tblPanelLRAValues.RowCount--;
+        }
 
-        private void buttonClear_Click(object sender, EventArgs e)
+        private void newRow()
         {
             tblPanelLRAValues.Visible = false;
-            deleteAddRowButtonRow();
+            deleControlButtonRow();
             addRow();
-            addButtonRow();
+            newControlButtonsRow();
             tblPanelLRAValues.Visible = true;
         }
 
-        private void tblPanelLRAValues_Paint(object sender, PaintEventArgs e)
+        private void buttonClear_Click(object sender, EventArgs e)
         {
 
         }

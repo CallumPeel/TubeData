@@ -144,7 +144,6 @@
             txtDirectoryPath.Name = "txtDirectoryPath";
             txtDirectoryPath.Size = new Size(184, 27);
             txtDirectoryPath.TabIndex = 1;
-            txtDirectoryPath.TextChanged += textBox1_TextChanged;
             // 
             // FolderDirectoryBtn
             // 
@@ -180,11 +179,6 @@
             progressBar1.Name = "progressBar1";
             progressBar1.Size = new Size(234, 12);
             progressBar1.TabIndex = 4;
-            progressBar1.Click += progressBar1_Click;
-            // 
-            // folderBrowserDialog1
-            // 
-            folderBrowserDialog1.HelpRequest += folderBrowserDialog1_HelpRequest;
             // 
             // tblPnlMain
             // 
@@ -455,7 +449,6 @@
             tblPanelLRAValues.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tblPanelLRAValues.Size = new Size(1100, 20);
             tblPanelLRAValues.TabIndex = 1;
-            tblPanelLRAValues.Paint += tblPanelLRAValues_Paint;
             // 
             // labelLength
             // 
