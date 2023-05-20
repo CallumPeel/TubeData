@@ -16,7 +16,6 @@ namespace TubeData
             tblPanelLRAValues.RowCount--;
             for (int i = 0; i < 5; i++) addRow();
             newControlButtonsRow();
-            //DirectoryInfo directoryInfo = new DirectoryInfo(@"C:\Users\");
             LoadDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures));
         }
 
@@ -248,6 +247,11 @@ namespace TubeData
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void tblPnlMain_Paint(object sender, PaintEventArgs e)
         {
 
         }
