@@ -54,16 +54,16 @@
             labelPartNo = new Label();
             labelTubeSize = new Label();
             labelToolingSize = new Label();
-            textBox1 = new TextBox();
             tblPnlButtons = new TableLayoutPanel();
             buttonClear = new Button();
-            textBox6 = new TextBox();
-            textBox5 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox7 = new TextBox();
-            textBox4 = new TextBox();
-            textBox8 = new TextBox();
+            textBox_1 = new TextBox();
+            textBox_3 = new TextBox();
+            textBox_5 = new TextBox();
+            textBox_7 = new TextBox();
+            textBox_2 = new TextBox();
+            textBox_4 = new TextBox();
+            textBox_6 = new TextBox();
+            textBox_8 = new TextBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             buttonCancel = new Button();
             buttonSave = new Button();
@@ -229,15 +229,15 @@
             tblPanelDataEntry.Controls.Add(labelPartNo, 2, 1);
             tblPanelDataEntry.Controls.Add(labelTubeSize, 2, 2);
             tblPanelDataEntry.Controls.Add(labelToolingSize, 2, 3);
-            tblPanelDataEntry.Controls.Add(textBox1, 1, 0);
             tblPanelDataEntry.Controls.Add(tblPnlButtons, 3, 4);
-            tblPanelDataEntry.Controls.Add(textBox6, 1, 3);
-            tblPanelDataEntry.Controls.Add(textBox5, 1, 2);
-            tblPanelDataEntry.Controls.Add(textBox3, 3, 1);
-            tblPanelDataEntry.Controls.Add(textBox2, 3, 2);
-            tblPanelDataEntry.Controls.Add(textBox7, 3, 3);
-            tblPanelDataEntry.Controls.Add(textBox4, 3, 0);
-            tblPanelDataEntry.Controls.Add(textBox8, 1, 1);
+            tblPanelDataEntry.Controls.Add(textBox_1, 1, 0);
+            tblPanelDataEntry.Controls.Add(textBox_2, 1, 1);
+            tblPanelDataEntry.Controls.Add(textBox_3, 1, 2);
+            tblPanelDataEntry.Controls.Add(textBox_4, 1, 3);
+            tblPanelDataEntry.Controls.Add(textBox_5, 3, 0);
+            tblPanelDataEntry.Controls.Add(textBox_6, 3, 1);
+            tblPanelDataEntry.Controls.Add(textBox_7, 3, 2);
+            tblPanelDataEntry.Controls.Add(textBox_8, 3, 3);
             tblPanelDataEntry.Location = new Point(3, 3);
             tblPanelDataEntry.Name = "tblPanelDataEntry";
             tblPanelDataEntry.RowCount = 5;
@@ -329,16 +329,6 @@
             labelToolingSize.TabIndex = 0;
             labelToolingSize.Text = "Tooling Size:";
             // 
-            // textBox1
-            // 
-            textBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox1.Location = new Point(92, 3);
-            textBox1.Margin = new Padding(3, 3, 20, 3);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(361, 27);
-            textBox1.TabIndex = 0;
-            textBox1.Tag = "client";
-            // 
             // tblPnlButtons
             // 
             tblPnlButtons.Anchor = AnchorStyles.Right;
@@ -365,75 +355,85 @@
             buttonClear.UseVisualStyleBackColor = true;
             buttonClear.Click += buttonClear_Click;
             // 
-            // textBox6
+            // textBox_1
             // 
-            textBox6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox6.Location = new Point(92, 102);
-            textBox6.Margin = new Padding(3, 3, 20, 3);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(361, 27);
-            textBox6.TabIndex = 6;
-            textBox6.Tag = "cutLength";
+            textBox_1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox_1.Location = new Point(92, 3);
+            textBox_1.Margin = new Padding(3, 3, 20, 3);
+            textBox_1.Name = "textBox_1";
+            textBox_1.Size = new Size(361, 27);
+            textBox_1.TabIndex = 0;
+            textBox_1.Tag = "client";
             // 
-            // textBox5
+            // textBox_3
             // 
-            textBox5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox5.Location = new Point(92, 69);
-            textBox5.Margin = new Padding(3, 3, 20, 3);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(361, 27);
-            textBox5.TabIndex = 4;
-            textBox5.Tag = "material";
+            textBox_3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox_3.Location = new Point(92, 36);
+            textBox_3.Margin = new Padding(3, 3, 20, 3);
+            textBox_3.Name = "textBox_3";
+            textBox_3.Size = new Size(361, 27);
+            textBox_3.TabIndex = 2;
+            textBox_3.Tag = "date";
             // 
-            // textBox3
+            // textBox_5
             // 
-            textBox3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox3.Location = new Point(575, 36);
-            textBox3.Margin = new Padding(3, 3, 20, 3);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(362, 27);
-            textBox3.TabIndex = 3;
-            textBox3.Tag = "partNo";
+            textBox_5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox_5.Location = new Point(92, 69);
+            textBox_5.Margin = new Padding(3, 3, 20, 3);
+            textBox_5.Name = "textBox_5";
+            textBox_5.Size = new Size(361, 27);
+            textBox_5.TabIndex = 4;
+            textBox_5.Tag = "material";
             // 
-            // textBox2
+            // textBox_7
             // 
-            textBox2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox2.Location = new Point(575, 69);
-            textBox2.Margin = new Padding(3, 3, 20, 3);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(362, 27);
-            textBox2.TabIndex = 5;
-            textBox2.Tag = "tubeSize";
+            textBox_7.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox_7.Location = new Point(92, 102);
+            textBox_7.Margin = new Padding(3, 3, 20, 3);
+            textBox_7.Name = "textBox_7";
+            textBox_7.Size = new Size(361, 27);
+            textBox_7.TabIndex = 6;
+            textBox_7.Tag = "cutLength";
             // 
-            // textBox7
+            // textBox_2
             // 
-            textBox7.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox7.Location = new Point(575, 102);
-            textBox7.Margin = new Padding(3, 3, 20, 3);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(362, 27);
-            textBox7.TabIndex = 7;
-            textBox7.Tag = "toolingSize";
+            textBox_2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox_2.Location = new Point(575, 3);
+            textBox_2.Margin = new Padding(3, 3, 20, 3);
+            textBox_2.Name = "textBox_2";
+            textBox_2.Size = new Size(362, 27);
+            textBox_2.TabIndex = 1;
+            textBox_2.Tag = "drawingNo";
             // 
-            // textBox4
+            // textBox_4
             // 
-            textBox4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox4.Location = new Point(575, 3);
-            textBox4.Margin = new Padding(3, 3, 20, 3);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(362, 27);
-            textBox4.TabIndex = 1;
-            textBox4.Tag = "drawingNo";
+            textBox_4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox_4.Location = new Point(575, 36);
+            textBox_4.Margin = new Padding(3, 3, 20, 3);
+            textBox_4.Name = "textBox_4";
+            textBox_4.Size = new Size(362, 27);
+            textBox_4.TabIndex = 3;
+            textBox_4.Tag = "partNo";
             // 
-            // textBox8
+            // textBox_6
             // 
-            textBox8.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox8.Location = new Point(92, 36);
-            textBox8.Margin = new Padding(3, 3, 20, 3);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(361, 27);
-            textBox8.TabIndex = 2;
-            textBox8.Tag = "date";
+            textBox_6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox_6.Location = new Point(575, 69);
+            textBox_6.Margin = new Padding(3, 3, 20, 3);
+            textBox_6.Name = "textBox_6";
+            textBox_6.Size = new Size(362, 27);
+            textBox_6.TabIndex = 5;
+            textBox_6.Tag = "tubeSize";
+            // 
+            // textBox_8
+            // 
+            textBox_8.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox_8.Location = new Point(575, 102);
+            textBox_8.Margin = new Padding(3, 3, 20, 3);
+            textBox_8.Name = "textBox_8";
+            textBox_8.Size = new Size(362, 27);
+            textBox_8.TabIndex = 7;
+            textBox_8.Tag = "toolingSize";
             // 
             // tableLayoutPanel2
             // 
@@ -510,6 +510,7 @@
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(842, 10);
             richTextBox1.TabIndex = 1;
+            richTextBox1.Tag = "comments";
             richTextBox1.Text = "";
             // 
             // richTextBox2
@@ -520,6 +521,7 @@
             richTextBox2.Name = "richTextBox2";
             richTextBox2.Size = new Size(842, 10);
             richTextBox2.TabIndex = 0;
+            richTextBox2.Tag = "specialWorkInstruction";
             richTextBox2.Text = "";
             // 
             // labelComments
@@ -740,14 +742,14 @@
         private Label labelPartNo;
         private Label labelTubeSize;
         private Label labelToolingSize;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private TextBox textBox7;
-        private TextBox textBox8;
+        private TextBox textBox_1;
+        private TextBox textBox_6;
+        private TextBox textBox_4;
+        private TextBox textBox_2;
+        private TextBox textBox_5;
+        private TextBox textBox_7;
+        private TextBox textBox_8;
+        private TextBox textBox_3;
         private TableLayoutPanel tblPnlButtons;
         private Button buttonClear;
         private TableLayoutPanel tblPanelLRAValues;

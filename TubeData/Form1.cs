@@ -193,6 +193,18 @@ namespace TubeData
             List<string> textBoxValues = new List<string>();
 
             // Iterate over the controls in the TableLayoutPanel
+            foreach (Control control in tblPanelDataEntry.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Add the value of the text box to the list
+                    textBoxValues.Add(textBox.Text);
+                }
+            }
+
+
+
+            // Iterate over the controls in the TableLayoutPanel
             foreach (Control control in tblPanelLRAValues.Controls)
             {
                 if (control is TextBox textBox)
