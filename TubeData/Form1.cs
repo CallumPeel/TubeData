@@ -202,12 +202,19 @@ namespace TubeData
                 }
             }
 
-
-
             // Iterate over the controls in the TableLayoutPanel
             foreach (Control control in tblPanelLRAValues.Controls)
             {
                 if (control is TextBox textBox)
+                {
+                    // Add the value of the text box to the list
+                    textBoxValues.Add(textBox.Text);
+                }
+            }
+
+            foreach (Control control in tableLayoutPanel1.Controls)
+            {
+                if (control is RichTextBox textBox)
                 {
                     // Add the value of the text box to the list
                     textBoxValues.Add(textBox.Text);
