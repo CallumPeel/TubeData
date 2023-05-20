@@ -55,15 +55,15 @@
             labelTubeSize = new Label();
             labelToolingSize = new Label();
             textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            textBox8 = new TextBox();
             tblPnlButtons = new TableLayoutPanel();
             buttonClear = new Button();
+            textBox6 = new TextBox();
+            textBox5 = new TextBox();
+            textBox3 = new TextBox();
+            textBox2 = new TextBox();
+            textBox7 = new TextBox();
+            textBox4 = new TextBox();
+            textBox8 = new TextBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             buttonCancel = new Button();
             buttonSave = new Button();
@@ -172,9 +172,9 @@
             treeView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             treeView1.Location = new Point(12, 131);
             treeView1.Name = "treeView1";
-            treeView1.Size = new Size(234, 345);
+            treeView1.Size = new Size(234, 462);
             treeView1.StateImageList = imageList1;
-            treeView1.TabIndex = 1;
+            treeView1.TabIndex = 3;
             // 
             // imageList1
             // 
@@ -187,7 +187,7 @@
             // progressBar1
             // 
             progressBar1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            progressBar1.Location = new Point(12, 482);
+            progressBar1.Location = new Point(12, 599);
             progressBar1.Name = "progressBar1";
             progressBar1.Size = new Size(234, 12);
             progressBar1.TabIndex = 4;
@@ -210,7 +210,7 @@
             tblPnlMain.RowStyles.Add(new RowStyle());
             tblPnlMain.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tblPnlMain.RowStyles.Add(new RowStyle());
-            tblPnlMain.Size = new Size(963, 397);
+            tblPnlMain.Size = new Size(963, 514);
             tblPnlMain.TabIndex = 5;
             // 
             // tblPanelDataEntry
@@ -230,14 +230,14 @@
             tblPanelDataEntry.Controls.Add(labelTubeSize, 2, 2);
             tblPanelDataEntry.Controls.Add(labelToolingSize, 2, 3);
             tblPanelDataEntry.Controls.Add(textBox1, 1, 0);
-            tblPanelDataEntry.Controls.Add(textBox2, 1, 1);
-            tblPanelDataEntry.Controls.Add(textBox3, 1, 2);
-            tblPanelDataEntry.Controls.Add(textBox4, 1, 3);
-            tblPanelDataEntry.Controls.Add(textBox5, 3, 0);
-            tblPanelDataEntry.Controls.Add(textBox6, 3, 1);
-            tblPanelDataEntry.Controls.Add(textBox7, 3, 2);
-            tblPanelDataEntry.Controls.Add(textBox8, 3, 3);
             tblPanelDataEntry.Controls.Add(tblPnlButtons, 3, 4);
+            tblPanelDataEntry.Controls.Add(textBox6, 1, 3);
+            tblPanelDataEntry.Controls.Add(textBox5, 1, 2);
+            tblPanelDataEntry.Controls.Add(textBox3, 3, 1);
+            tblPanelDataEntry.Controls.Add(textBox2, 3, 2);
+            tblPanelDataEntry.Controls.Add(textBox7, 3, 3);
+            tblPanelDataEntry.Controls.Add(textBox4, 3, 0);
+            tblPanelDataEntry.Controls.Add(textBox8, 1, 1);
             tblPanelDataEntry.Location = new Point(3, 3);
             tblPanelDataEntry.Name = "tblPanelDataEntry";
             tblPanelDataEntry.RowCount = 5;
@@ -247,7 +247,7 @@
             tblPanelDataEntry.RowStyles.Add(new RowStyle());
             tblPanelDataEntry.RowStyles.Add(new RowStyle());
             tblPanelDataEntry.Size = new Size(957, 173);
-            tblPanelDataEntry.TabIndex = 0;
+            tblPanelDataEntry.TabIndex = 4;
             // 
             // labelClient
             // 
@@ -336,70 +336,8 @@
             textBox1.Margin = new Padding(3, 3, 20, 3);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(361, 27);
-            textBox1.TabIndex = 1;
-            // 
-            // textBox2
-            // 
-            textBox2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox2.Location = new Point(92, 36);
-            textBox2.Margin = new Padding(3, 3, 20, 3);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(361, 27);
-            textBox2.TabIndex = 1;
-            // 
-            // textBox3
-            // 
-            textBox3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox3.Location = new Point(92, 69);
-            textBox3.Margin = new Padding(3, 3, 20, 3);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(361, 27);
-            textBox3.TabIndex = 1;
-            // 
-            // textBox4
-            // 
-            textBox4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox4.Location = new Point(92, 102);
-            textBox4.Margin = new Padding(3, 3, 20, 3);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(361, 27);
-            textBox4.TabIndex = 1;
-            // 
-            // textBox5
-            // 
-            textBox5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox5.Location = new Point(575, 3);
-            textBox5.Margin = new Padding(3, 3, 20, 3);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(362, 27);
-            textBox5.TabIndex = 1;
-            // 
-            // textBox6
-            // 
-            textBox6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox6.Location = new Point(575, 36);
-            textBox6.Margin = new Padding(3, 3, 20, 3);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(362, 27);
-            textBox6.TabIndex = 1;
-            // 
-            // textBox7
-            // 
-            textBox7.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox7.Location = new Point(575, 69);
-            textBox7.Margin = new Padding(3, 3, 20, 3);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(362, 27);
-            textBox7.TabIndex = 1;
-            // 
-            // textBox8
-            // 
-            textBox8.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox8.Location = new Point(575, 102);
-            textBox8.Margin = new Padding(3, 3, 20, 3);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(362, 27);
-            textBox8.TabIndex = 1;
+            textBox1.TabIndex = 0;
+            textBox1.Tag = "x";
             // 
             // tblPnlButtons
             // 
@@ -413,7 +351,7 @@
             tblPnlButtons.RowCount = 1;
             tblPnlButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tblPnlButtons.Size = new Size(379, 35);
-            tblPnlButtons.TabIndex = 2;
+            tblPnlButtons.TabIndex = 8;
             // 
             // buttonClear
             // 
@@ -422,29 +360,103 @@
             buttonClear.Margin = new Padding(3, 3, 20, 3);
             buttonClear.Name = "buttonClear";
             buttonClear.Size = new Size(120, 29);
-            buttonClear.TabIndex = 1;
+            buttonClear.TabIndex = 8;
             buttonClear.Text = "Clear";
             buttonClear.UseVisualStyleBackColor = true;
+            buttonClear.Click += buttonClear_Click;
+            // 
+            // textBox6
+            // 
+            textBox6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox6.Location = new Point(92, 102);
+            textBox6.Margin = new Padding(3, 3, 20, 3);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(361, 27);
+            textBox6.TabIndex = 6;
+            // 
+            // textBox5
+            // 
+            textBox5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox5.Location = new Point(92, 69);
+            textBox5.Margin = new Padding(3, 3, 20, 3);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(361, 27);
+            textBox5.TabIndex = 4;
+            // 
+            // textBox3
+            // 
+            textBox3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox3.Location = new Point(575, 36);
+            textBox3.Margin = new Padding(3, 3, 20, 3);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(362, 27);
+            textBox3.TabIndex = 3;
+            // 
+            // textBox2
+            // 
+            textBox2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox2.Location = new Point(575, 69);
+            textBox2.Margin = new Padding(3, 3, 20, 3);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(362, 27);
+            textBox2.TabIndex = 5;
+            // 
+            // textBox7
+            // 
+            textBox7.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox7.Location = new Point(575, 102);
+            textBox7.Margin = new Padding(3, 3, 20, 3);
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(362, 27);
+            textBox7.TabIndex = 7;
+            // 
+            // textBox4
+            // 
+            textBox4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox4.Location = new Point(575, 3);
+            textBox4.Margin = new Padding(3, 3, 20, 3);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(362, 27);
+            textBox4.TabIndex = 1;
+            // 
+            // textBox8
+            // 
+            textBox8.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox8.Location = new Point(92, 36);
+            textBox8.Margin = new Padding(3, 3, 20, 3);
+            textBox8.Name = "textBox8";
+            textBox8.Size = new Size(361, 27);
+            textBox8.TabIndex = 2;
             // 
             // tableLayoutPanel2
             // 
-            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnCount = 12;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Controls.Add(buttonCancel, 1, 0);
             tableLayoutPanel2.Controls.Add(buttonSave, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(3, 354);
+            tableLayoutPanel2.Location = new Point(3, 470);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(957, 40);
-            tableLayoutPanel2.TabIndex = 4;
+            tableLayoutPanel2.Size = new Size(957, 41);
+            tableLayoutPanel2.TabIndex = 8;
             // 
             // buttonCancel
             // 
             buttonCancel.Anchor = AnchorStyles.Right;
-            buttonCancel.Location = new Point(860, 7);
+            buttonCancel.Location = new Point(660, 7);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(94, 26);
             buttonCancel.TabIndex = 0;
@@ -454,7 +466,7 @@
             // buttonSave
             // 
             buttonSave.Anchor = AnchorStyles.Right;
-            buttonSave.Location = new Point(760, 7);
+            buttonSave.Location = new Point(560, 7);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(94, 26);
             buttonSave.TabIndex = 1;
@@ -472,7 +484,7 @@
             tableLayoutPanel1.Controls.Add(labelComments, 0, 1);
             tableLayoutPanel1.Controls.Add(labelSpecialWorkInstruction, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(3, 335);
+            tableLayoutPanel1.Location = new Point(3, 422);
             tableLayoutPanel1.Margin = new Padding(3, 15, 3, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
@@ -480,17 +492,17 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(957, 13);
-            tableLayoutPanel1.TabIndex = 3;
+            tableLayoutPanel1.Size = new Size(957, 42);
+            tableLayoutPanel1.TabIndex = 7;
             // 
             // richTextBox1
             // 
             richTextBox1.Dock = DockStyle.Fill;
-            richTextBox1.Location = new Point(180, 14);
+            richTextBox1.Location = new Point(180, 29);
             richTextBox1.Margin = new Padding(3, 8, 3, 3);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(842, 1);
-            richTextBox1.TabIndex = 0;
+            richTextBox1.Size = new Size(842, 10);
+            richTextBox1.TabIndex = 1;
             richTextBox1.Text = "";
             // 
             // richTextBox2
@@ -499,7 +511,7 @@
             richTextBox2.Location = new Point(180, 3);
             richTextBox2.Margin = new Padding(3, 3, 3, 8);
             richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(842, 1);
+            richTextBox2.Size = new Size(842, 10);
             richTextBox2.TabIndex = 0;
             richTextBox2.Text = "";
             // 
@@ -507,9 +519,9 @@
             // 
             labelComments.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             labelComments.AutoSize = true;
-            labelComments.Location = new Point(47, 6);
+            labelComments.Location = new Point(47, 21);
             labelComments.Name = "labelComments";
-            labelComments.Size = new Size(83, 7);
+            labelComments.Size = new Size(83, 21);
             labelComments.TabIndex = 1;
             labelComments.Text = "Comments:";
             labelComments.TextAlign = ContentAlignment.MiddleCenter;
@@ -520,7 +532,7 @@
             labelSpecialWorkInstruction.AutoSize = true;
             labelSpecialWorkInstruction.Location = new Point(3, 0);
             labelSpecialWorkInstruction.Name = "labelSpecialWorkInstruction";
-            labelSpecialWorkInstruction.Size = new Size(171, 6);
+            labelSpecialWorkInstruction.Size = new Size(171, 21);
             labelSpecialWorkInstruction.TabIndex = 1;
             labelSpecialWorkInstruction.Text = "Special Work Instruction:";
             labelSpecialWorkInstruction.TextAlign = ContentAlignment.MiddleCenter;
@@ -534,13 +546,13 @@
             tableLayoutPanel3.Controls.Add(buttonAddRow, 0, 0);
             tableLayoutPanel3.Controls.Add(buttonRemoveRow, 1, 0);
             tableLayoutPanel3.Dock = DockStyle.Left;
-            tableLayoutPanel3.Location = new Point(3, 285);
+            tableLayoutPanel3.Location = new Point(3, 372);
             tableLayoutPanel3.Margin = new Padding(3, 13, 3, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.Size = new Size(420, 32);
-            tableLayoutPanel3.TabIndex = 5;
+            tableLayoutPanel3.TabIndex = 6;
             // 
             // buttonAddRow
             // 
@@ -591,8 +603,8 @@
             tblPanelLRAValues.RowCount = 1;
             tblPanelLRAValues.RowStyles.Add(new RowStyle());
             tblPanelLRAValues.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tblPanelLRAValues.Size = new Size(898, 60);
-            tblPanelLRAValues.TabIndex = 1;
+            tblPanelLRAValues.Size = new Size(898, 147);
+            tblPanelLRAValues.TabIndex = 5;
             // 
             // labelLength
             // 
@@ -667,7 +679,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1293, 506);
+            ClientSize = new Size(1293, 623);
             Controls.Add(labelFileDirectory);
             Controls.Add(tblPnlMain);
             Controls.Add(progressBar1);

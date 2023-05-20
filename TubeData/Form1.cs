@@ -202,8 +202,6 @@ namespace TubeData
                 }
             }
 
-            // Do something with the retrieved values
-            // For example, display them in a MessageBox
             MessageBox.Show(string.Join(Environment.NewLine, textBoxValues));
         }
 
@@ -215,6 +213,32 @@ namespace TubeData
         private void buttonRemoveRow_Click(object sender, EventArgs e)
         {
             removeRow();
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            //List<string> textBoxValues = new List<string>();
+
+            //// Iterate over the controls in the TableLayoutPanel
+            //foreach (Control control in tblPanelDataEntry.Controls)
+            //{
+            //    if (control is TextBox textBox)
+            //    {
+            //        // Add the value of the text box to the list
+            //        textBoxValues.Add(textBox.Text);
+            //    }
+            //}
+
+            //MessageBox.Show(string.Join(Environment.NewLine, textBoxValues));
+
+            // Iterate over the controls in the TableLayoutPanel
+            foreach (Control control in tblPanelDataEntry.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    control.Text = "";
+                }
+            }
         }
     }
 }
