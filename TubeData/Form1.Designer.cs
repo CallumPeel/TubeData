@@ -99,7 +99,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { newToolStripButton, openToolStripButton, saveToolStripButton, printToolStripButton, toolStripSeparator, helpToolStripButton });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1436, 27);
+            toolStrip1.Size = new Size(1293, 27);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -172,7 +172,7 @@
             treeView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             treeView1.Location = new Point(12, 131);
             treeView1.Name = "treeView1";
-            treeView1.Size = new Size(234, 507);
+            treeView1.Size = new Size(234, 345);
             treeView1.StateImageList = imageList1;
             treeView1.TabIndex = 1;
             // 
@@ -187,7 +187,7 @@
             // progressBar1
             // 
             progressBar1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            progressBar1.Location = new Point(12, 644);
+            progressBar1.Location = new Point(12, 482);
             progressBar1.Name = "progressBar1";
             progressBar1.Size = new Size(234, 12);
             progressBar1.TabIndex = 4;
@@ -210,7 +210,7 @@
             tblPnlMain.RowStyles.Add(new RowStyle());
             tblPnlMain.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tblPnlMain.RowStyles.Add(new RowStyle());
-            tblPnlMain.Size = new Size(1106, 559);
+            tblPnlMain.Size = new Size(963, 397);
             tblPnlMain.TabIndex = 5;
             // 
             // tblPanelDataEntry
@@ -246,7 +246,7 @@
             tblPanelDataEntry.RowStyles.Add(new RowStyle());
             tblPanelDataEntry.RowStyles.Add(new RowStyle());
             tblPanelDataEntry.RowStyles.Add(new RowStyle());
-            tblPanelDataEntry.Size = new Size(1100, 173);
+            tblPanelDataEntry.Size = new Size(957, 173);
             tblPanelDataEntry.TabIndex = 0;
             // 
             // labelClient
@@ -293,7 +293,7 @@
             // 
             labelDrawingNo.Anchor = AnchorStyles.Left;
             labelDrawingNo.AutoSize = true;
-            labelDrawingNo.Location = new Point(548, 6);
+            labelDrawingNo.Location = new Point(476, 6);
             labelDrawingNo.Name = "labelDrawingNo";
             labelDrawingNo.Size = new Size(92, 20);
             labelDrawingNo.TabIndex = 0;
@@ -303,7 +303,7 @@
             // 
             labelPartNo.Anchor = AnchorStyles.Left;
             labelPartNo.AutoSize = true;
-            labelPartNo.Location = new Point(548, 39);
+            labelPartNo.Location = new Point(476, 39);
             labelPartNo.Name = "labelPartNo";
             labelPartNo.Size = new Size(61, 20);
             labelPartNo.TabIndex = 0;
@@ -313,7 +313,7 @@
             // 
             labelTubeSize.Anchor = AnchorStyles.Left;
             labelTubeSize.AutoSize = true;
-            labelTubeSize.Location = new Point(548, 72);
+            labelTubeSize.Location = new Point(476, 72);
             labelTubeSize.Name = "labelTubeSize";
             labelTubeSize.Size = new Size(76, 20);
             labelTubeSize.TabIndex = 0;
@@ -323,7 +323,7 @@
             // 
             labelToolingSize.Anchor = AnchorStyles.Left;
             labelToolingSize.AutoSize = true;
-            labelToolingSize.Location = new Point(548, 105);
+            labelToolingSize.Location = new Point(476, 105);
             labelToolingSize.Name = "labelToolingSize";
             labelToolingSize.Size = new Size(93, 20);
             labelToolingSize.TabIndex = 0;
@@ -335,7 +335,7 @@
             textBox1.Location = new Point(92, 3);
             textBox1.Margin = new Padding(3, 3, 20, 3);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(433, 27);
+            textBox1.Size = new Size(361, 27);
             textBox1.TabIndex = 1;
             // 
             // textBox2
@@ -344,7 +344,7 @@
             textBox2.Location = new Point(92, 36);
             textBox2.Margin = new Padding(3, 3, 20, 3);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(433, 27);
+            textBox2.Size = new Size(361, 27);
             textBox2.TabIndex = 1;
             // 
             // textBox3
@@ -353,7 +353,7 @@
             textBox3.Location = new Point(92, 69);
             textBox3.Margin = new Padding(3, 3, 20, 3);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(433, 27);
+            textBox3.Size = new Size(361, 27);
             textBox3.TabIndex = 1;
             // 
             // textBox4
@@ -362,43 +362,43 @@
             textBox4.Location = new Point(92, 102);
             textBox4.Margin = new Padding(3, 3, 20, 3);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(433, 27);
+            textBox4.Size = new Size(361, 27);
             textBox4.TabIndex = 1;
             // 
             // textBox5
             // 
             textBox5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox5.Location = new Point(647, 3);
+            textBox5.Location = new Point(575, 3);
             textBox5.Margin = new Padding(3, 3, 20, 3);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(433, 27);
+            textBox5.Size = new Size(362, 27);
             textBox5.TabIndex = 1;
             // 
             // textBox6
             // 
             textBox6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox6.Location = new Point(647, 36);
+            textBox6.Location = new Point(575, 36);
             textBox6.Margin = new Padding(3, 3, 20, 3);
             textBox6.Name = "textBox6";
-            textBox6.Size = new Size(433, 27);
+            textBox6.Size = new Size(362, 27);
             textBox6.TabIndex = 1;
             // 
             // textBox7
             // 
             textBox7.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox7.Location = new Point(647, 69);
+            textBox7.Location = new Point(575, 69);
             textBox7.Margin = new Padding(3, 3, 20, 3);
             textBox7.Name = "textBox7";
-            textBox7.Size = new Size(433, 27);
+            textBox7.Size = new Size(362, 27);
             textBox7.TabIndex = 1;
             // 
             // textBox8
             // 
             textBox8.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox8.Location = new Point(647, 102);
+            textBox8.Location = new Point(575, 102);
             textBox8.Margin = new Padding(3, 3, 20, 3);
             textBox8.Name = "textBox8";
-            textBox8.Size = new Size(433, 27);
+            textBox8.Size = new Size(362, 27);
             textBox8.TabIndex = 1;
             // 
             // tblPnlButtons
@@ -408,17 +408,17 @@
             tblPnlButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tblPnlButtons.ColumnStyles.Add(new ColumnStyle());
             tblPnlButtons.Controls.Add(buttonClear, 1, 0);
-            tblPnlButtons.Location = new Point(647, 135);
+            tblPnlButtons.Location = new Point(575, 135);
             tblPnlButtons.Name = "tblPnlButtons";
             tblPnlButtons.RowCount = 1;
             tblPnlButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblPnlButtons.Size = new Size(450, 35);
+            tblPnlButtons.Size = new Size(379, 35);
             tblPnlButtons.TabIndex = 2;
             // 
             // buttonClear
             // 
             buttonClear.Anchor = AnchorStyles.Right;
-            buttonClear.Location = new Point(310, 3);
+            buttonClear.Location = new Point(239, 3);
             buttonClear.Margin = new Padding(3, 3, 20, 3);
             buttonClear.Name = "buttonClear";
             buttonClear.Size = new Size(120, 29);
@@ -434,17 +434,17 @@
             tableLayoutPanel2.Controls.Add(buttonCancel, 1, 0);
             tableLayoutPanel2.Controls.Add(buttonSave, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(3, 518);
+            tableLayoutPanel2.Location = new Point(3, 354);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(1100, 38);
+            tableLayoutPanel2.Size = new Size(957, 40);
             tableLayoutPanel2.TabIndex = 4;
             // 
             // buttonCancel
             // 
             buttonCancel.Anchor = AnchorStyles.Right;
-            buttonCancel.Location = new Point(1003, 6);
+            buttonCancel.Location = new Point(860, 7);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(94, 26);
             buttonCancel.TabIndex = 0;
@@ -454,7 +454,7 @@
             // buttonSave
             // 
             buttonSave.Anchor = AnchorStyles.Right;
-            buttonSave.Location = new Point(903, 6);
+            buttonSave.Location = new Point(760, 7);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(94, 26);
             buttonSave.TabIndex = 1;
@@ -472,7 +472,7 @@
             tableLayoutPanel1.Controls.Add(labelComments, 0, 1);
             tableLayoutPanel1.Controls.Add(labelSpecialWorkInstruction, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(3, 458);
+            tableLayoutPanel1.Location = new Point(3, 335);
             tableLayoutPanel1.Margin = new Padding(3, 15, 3, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
@@ -480,16 +480,16 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(1100, 54);
+            tableLayoutPanel1.Size = new Size(957, 13);
             tableLayoutPanel1.TabIndex = 3;
             // 
             // richTextBox1
             // 
             richTextBox1.Dock = DockStyle.Fill;
-            richTextBox1.Location = new Point(180, 35);
+            richTextBox1.Location = new Point(180, 14);
             richTextBox1.Margin = new Padding(3, 8, 3, 3);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(917, 16);
+            richTextBox1.Size = new Size(842, 1);
             richTextBox1.TabIndex = 0;
             richTextBox1.Text = "";
             // 
@@ -499,7 +499,7 @@
             richTextBox2.Location = new Point(180, 3);
             richTextBox2.Margin = new Padding(3, 3, 3, 8);
             richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(917, 16);
+            richTextBox2.Size = new Size(842, 1);
             richTextBox2.TabIndex = 0;
             richTextBox2.Text = "";
             // 
@@ -507,9 +507,9 @@
             // 
             labelComments.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             labelComments.AutoSize = true;
-            labelComments.Location = new Point(47, 27);
+            labelComments.Location = new Point(47, 6);
             labelComments.Name = "labelComments";
-            labelComments.Size = new Size(83, 27);
+            labelComments.Size = new Size(83, 7);
             labelComments.TabIndex = 1;
             labelComments.Text = "Comments:";
             labelComments.TextAlign = ContentAlignment.MiddleCenter;
@@ -520,7 +520,7 @@
             labelSpecialWorkInstruction.AutoSize = true;
             labelSpecialWorkInstruction.Location = new Point(3, 0);
             labelSpecialWorkInstruction.Name = "labelSpecialWorkInstruction";
-            labelSpecialWorkInstruction.Size = new Size(171, 27);
+            labelSpecialWorkInstruction.Size = new Size(171, 6);
             labelSpecialWorkInstruction.TabIndex = 1;
             labelSpecialWorkInstruction.Text = "Special Work Instruction:";
             labelSpecialWorkInstruction.TextAlign = ContentAlignment.MiddleCenter;
@@ -534,7 +534,7 @@
             tableLayoutPanel3.Controls.Add(buttonAddRow, 0, 0);
             tableLayoutPanel3.Controls.Add(buttonRemoveRow, 1, 0);
             tableLayoutPanel3.Dock = DockStyle.Left;
-            tableLayoutPanel3.Location = new Point(3, 408);
+            tableLayoutPanel3.Location = new Point(3, 285);
             tableLayoutPanel3.Margin = new Padding(3, 13, 3, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
@@ -591,17 +591,17 @@
             tblPanelLRAValues.RowCount = 1;
             tblPanelLRAValues.RowStyles.Add(new RowStyle());
             tblPanelLRAValues.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tblPanelLRAValues.Size = new Size(1041, 183);
+            tblPanelLRAValues.Size = new Size(898, 60);
             tblPanelLRAValues.TabIndex = 1;
             // 
             // labelLength
             // 
             labelLength.AutoSize = true;
             labelLength.Dock = DockStyle.Top;
-            labelLength.Location = new Point(444, 0);
+            labelLength.Location = new Point(383, 0);
             labelLength.Margin = new Padding(3, 0, 30, 0);
             labelLength.Name = "labelLength";
-            labelLength.Size = new Size(162, 20);
+            labelLength.Size = new Size(135, 20);
             labelLength.TabIndex = 0;
             labelLength.Text = "Length (mm)";
             labelLength.TextAlign = ContentAlignment.MiddleCenter;
@@ -610,10 +610,10 @@
             // 
             labelRotationDegree.AutoSize = true;
             labelRotationDegree.Dock = DockStyle.Top;
-            labelRotationDegree.Location = new Point(639, 0);
+            labelRotationDegree.Location = new Point(551, 0);
             labelRotationDegree.Margin = new Padding(3, 0, 30, 0);
             labelRotationDegree.Name = "labelRotationDegree";
-            labelRotationDegree.Size = new Size(162, 20);
+            labelRotationDegree.Size = new Size(135, 20);
             labelRotationDegree.TabIndex = 0;
             labelRotationDegree.Text = "Rotation Degree";
             labelRotationDegree.TextAlign = ContentAlignment.MiddleCenter;
@@ -622,10 +622,10 @@
             // 
             labelReadOut.AutoSize = true;
             labelReadOut.Dock = DockStyle.Top;
-            labelReadOut.Location = new Point(834, 0);
+            labelReadOut.Location = new Point(719, 0);
             labelReadOut.Margin = new Padding(3, 0, 30, 0);
             labelReadOut.Name = "labelReadOut";
-            labelReadOut.Size = new Size(167, 20);
+            labelReadOut.Size = new Size(139, 20);
             labelReadOut.TabIndex = 0;
             labelReadOut.Text = "Read Out";
             labelReadOut.TextAlign = ContentAlignment.MiddleCenter;
@@ -634,10 +634,10 @@
             // 
             labelSpringbackAngle.AutoSize = true;
             labelSpringbackAngle.Dock = DockStyle.Top;
-            labelSpringbackAngle.Location = new Point(249, 0);
+            labelSpringbackAngle.Location = new Point(215, 0);
             labelSpringbackAngle.Margin = new Padding(3, 0, 30, 0);
             labelSpringbackAngle.Name = "labelSpringbackAngle";
-            labelSpringbackAngle.Size = new Size(162, 20);
+            labelSpringbackAngle.Size = new Size(135, 20);
             labelSpringbackAngle.TabIndex = 0;
             labelSpringbackAngle.Text = "Springback Angle";
             labelSpringbackAngle.TextAlign = ContentAlignment.MiddleCenter;
@@ -646,10 +646,10 @@
             // 
             labelRequiredAngle.AutoSize = true;
             labelRequiredAngle.Dock = DockStyle.Top;
-            labelRequiredAngle.Location = new Point(54, 0);
+            labelRequiredAngle.Location = new Point(47, 0);
             labelRequiredAngle.Margin = new Padding(3, 0, 30, 0);
             labelRequiredAngle.Name = "labelRequiredAngle";
-            labelRequiredAngle.Size = new Size(162, 20);
+            labelRequiredAngle.Size = new Size(135, 20);
             labelRequiredAngle.TabIndex = 0;
             labelRequiredAngle.Text = "Required Angle";
             labelRequiredAngle.TextAlign = ContentAlignment.MiddleCenter;
@@ -667,7 +667,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1436, 668);
+            ClientSize = new Size(1293, 506);
             Controls.Add(labelFileDirectory);
             Controls.Add(tblPnlMain);
             Controls.Add(progressBar1);
