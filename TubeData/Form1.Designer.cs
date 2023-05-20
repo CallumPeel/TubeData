@@ -337,7 +337,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(361, 27);
             textBox1.TabIndex = 0;
-            textBox1.Tag = "x";
+            textBox1.Tag = "client";
             // 
             // tblPnlButtons
             // 
@@ -373,6 +373,7 @@
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(361, 27);
             textBox6.TabIndex = 6;
+            textBox6.Tag = "cutLength";
             // 
             // textBox5
             // 
@@ -382,6 +383,7 @@
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(361, 27);
             textBox5.TabIndex = 4;
+            textBox5.Tag = "material";
             // 
             // textBox3
             // 
@@ -391,6 +393,7 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(362, 27);
             textBox3.TabIndex = 3;
+            textBox3.Tag = "partNo";
             // 
             // textBox2
             // 
@@ -400,6 +403,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(362, 27);
             textBox2.TabIndex = 5;
+            textBox2.Tag = "tubeSize";
             // 
             // textBox7
             // 
@@ -409,6 +413,7 @@
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(362, 27);
             textBox7.TabIndex = 7;
+            textBox7.Tag = "toolingSize";
             // 
             // textBox4
             // 
@@ -418,6 +423,7 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(362, 27);
             textBox4.TabIndex = 1;
+            textBox4.Tag = "drawingNo";
             // 
             // textBox8
             // 
@@ -427,6 +433,7 @@
             textBox8.Name = "textBox8";
             textBox8.Size = new Size(361, 27);
             textBox8.TabIndex = 2;
+            textBox8.Tag = "date";
             // 
             // tableLayoutPanel2
             // 
