@@ -57,19 +57,19 @@
             tblPnlButtons = new TableLayoutPanel();
             buttonClear = new Button();
             textBox_1 = new TextBox();
-            textBox_3 = new TextBox();
-            textBox_5 = new TextBox();
-            textBox_7 = new TextBox();
             textBox_2 = new TextBox();
+            textBox_3 = new TextBox();
             textBox_4 = new TextBox();
+            textBox_5 = new TextBox();
             textBox_6 = new TextBox();
+            textBox_7 = new TextBox();
             textBox_8 = new TextBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             buttonCancel = new Button();
             buttonSave = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
-            richTextBox1 = new RichTextBox();
             richTextBox2 = new RichTextBox();
+            richTextBox1 = new RichTextBox();
             labelComments = new Label();
             labelSpecialWorkInstruction = new Label();
             tableLayoutPanel3 = new TableLayoutPanel();
@@ -365,65 +365,65 @@
             textBox_1.TabIndex = 0;
             textBox_1.Tag = "client";
             // 
+            // textBox_2
+            // 
+            textBox_2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox_2.Location = new Point(92, 36);
+            textBox_2.Margin = new Padding(3, 3, 20, 3);
+            textBox_2.Name = "textBox_2";
+            textBox_2.Size = new Size(361, 27);
+            textBox_2.TabIndex = 1;
+            textBox_2.Tag = "drawingNo";
+            // 
             // textBox_3
             // 
             textBox_3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_3.Location = new Point(92, 36);
+            textBox_3.Location = new Point(92, 69);
             textBox_3.Margin = new Padding(3, 3, 20, 3);
             textBox_3.Name = "textBox_3";
             textBox_3.Size = new Size(361, 27);
             textBox_3.TabIndex = 2;
             textBox_3.Tag = "date";
             // 
-            // textBox_5
-            // 
-            textBox_5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_5.Location = new Point(92, 69);
-            textBox_5.Margin = new Padding(3, 3, 20, 3);
-            textBox_5.Name = "textBox_5";
-            textBox_5.Size = new Size(361, 27);
-            textBox_5.TabIndex = 4;
-            textBox_5.Tag = "material";
-            // 
-            // textBox_7
-            // 
-            textBox_7.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_7.Location = new Point(92, 102);
-            textBox_7.Margin = new Padding(3, 3, 20, 3);
-            textBox_7.Name = "textBox_7";
-            textBox_7.Size = new Size(361, 27);
-            textBox_7.TabIndex = 6;
-            textBox_7.Tag = "cutLength";
-            // 
-            // textBox_2
-            // 
-            textBox_2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_2.Location = new Point(575, 3);
-            textBox_2.Margin = new Padding(3, 3, 20, 3);
-            textBox_2.Name = "textBox_2";
-            textBox_2.Size = new Size(362, 27);
-            textBox_2.TabIndex = 1;
-            textBox_2.Tag = "drawingNo";
-            // 
             // textBox_4
             // 
             textBox_4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_4.Location = new Point(575, 36);
+            textBox_4.Location = new Point(92, 102);
             textBox_4.Margin = new Padding(3, 3, 20, 3);
             textBox_4.Name = "textBox_4";
-            textBox_4.Size = new Size(362, 27);
+            textBox_4.Size = new Size(361, 27);
             textBox_4.TabIndex = 3;
             textBox_4.Tag = "partNo";
+            // 
+            // textBox_5
+            // 
+            textBox_5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox_5.Location = new Point(575, 3);
+            textBox_5.Margin = new Padding(3, 3, 20, 3);
+            textBox_5.Name = "textBox_5";
+            textBox_5.Size = new Size(362, 27);
+            textBox_5.TabIndex = 4;
+            textBox_5.Tag = "material";
             // 
             // textBox_6
             // 
             textBox_6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_6.Location = new Point(575, 69);
+            textBox_6.Location = new Point(575, 36);
             textBox_6.Margin = new Padding(3, 3, 20, 3);
             textBox_6.Name = "textBox_6";
             textBox_6.Size = new Size(362, 27);
             textBox_6.TabIndex = 5;
             textBox_6.Tag = "tubeSize";
+            // 
+            // textBox_7
+            // 
+            textBox_7.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox_7.Location = new Point(575, 69);
+            textBox_7.Margin = new Padding(3, 3, 20, 3);
+            textBox_7.Name = "textBox_7";
+            textBox_7.Size = new Size(362, 27);
+            textBox_7.TabIndex = 6;
+            textBox_7.Tag = "cutLength";
             // 
             // textBox_8
             // 
@@ -486,8 +486,8 @@
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 848F));
-            tableLayoutPanel1.Controls.Add(richTextBox1, 1, 1);
-            tableLayoutPanel1.Controls.Add(richTextBox2, 1, 0);
+            tableLayoutPanel1.Controls.Add(richTextBox1, 1, 0);
+            tableLayoutPanel1.Controls.Add(richTextBox2, 1, 1);
             tableLayoutPanel1.Controls.Add(labelComments, 0, 1);
             tableLayoutPanel1.Controls.Add(labelSpecialWorkInstruction, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
@@ -502,27 +502,27 @@
             tableLayoutPanel1.Size = new Size(957, 42);
             tableLayoutPanel1.TabIndex = 7;
             // 
-            // richTextBox1
-            // 
-            richTextBox1.Dock = DockStyle.Fill;
-            richTextBox1.Location = new Point(180, 29);
-            richTextBox1.Margin = new Padding(3, 8, 3, 3);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(842, 10);
-            richTextBox1.TabIndex = 1;
-            richTextBox1.Tag = "comments";
-            richTextBox1.Text = "";
-            // 
             // richTextBox2
             // 
             richTextBox2.Dock = DockStyle.Fill;
-            richTextBox2.Location = new Point(180, 3);
-            richTextBox2.Margin = new Padding(3, 3, 3, 8);
+            richTextBox2.Location = new Point(180, 29);
+            richTextBox2.Margin = new Padding(3, 8, 3, 3);
             richTextBox2.Name = "richTextBox2";
             richTextBox2.Size = new Size(842, 10);
-            richTextBox2.TabIndex = 0;
-            richTextBox2.Tag = "specialWorkInstruction";
+            richTextBox2.TabIndex = 1;
+            richTextBox2.Tag = "comments";
             richTextBox2.Text = "";
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Dock = DockStyle.Fill;
+            richTextBox1.Location = new Point(180, 3);
+            richTextBox1.Margin = new Padding(3, 3, 3, 8);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(842, 10);
+            richTextBox1.TabIndex = 0;
+            richTextBox1.Tag = "specialWorkInstruction";
+            richTextBox1.Text = "";
             // 
             // labelComments
             // 
@@ -759,8 +759,8 @@
         private Label labelSpringbackAngle;
         private Label labelRequiredAngle;
         private TableLayoutPanel tableLayoutPanel1;
-        private RichTextBox richTextBox1;
         private RichTextBox richTextBox2;
+        private RichTextBox richTextBox1;
         private Label labelSpecialWorkInstruction;
         private Label labelComments;
         private TableLayoutPanel tableLayoutPanel2;
