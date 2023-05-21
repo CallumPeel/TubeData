@@ -68,8 +68,8 @@
             buttonCancel = new Button();
             buttonSave = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
-            richTextBox2 = new RichTextBox();
             richTextBox1 = new RichTextBox();
+            richTextBox2 = new RichTextBox();
             labelComments = new Label();
             labelSpecialWorkInstruction = new Label();
             tableLayoutPanel3 = new TableLayoutPanel();
@@ -368,17 +368,17 @@
             // textBox_2
             // 
             textBox_2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_2.Location = new Point(92, 36);
+            textBox_2.Location = new Point(575, 3);
             textBox_2.Margin = new Padding(3, 3, 20, 3);
             textBox_2.Name = "textBox_2";
-            textBox_2.Size = new Size(361, 27);
+            textBox_2.Size = new Size(362, 27);
             textBox_2.TabIndex = 1;
             textBox_2.Tag = "drawingNo";
             // 
             // textBox_3
             // 
             textBox_3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_3.Location = new Point(92, 69);
+            textBox_3.Location = new Point(92, 36);
             textBox_3.Margin = new Padding(3, 3, 20, 3);
             textBox_3.Name = "textBox_3";
             textBox_3.Size = new Size(361, 27);
@@ -388,27 +388,27 @@
             // textBox_4
             // 
             textBox_4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_4.Location = new Point(92, 102);
+            textBox_4.Location = new Point(575, 36);
             textBox_4.Margin = new Padding(3, 3, 20, 3);
             textBox_4.Name = "textBox_4";
-            textBox_4.Size = new Size(361, 27);
+            textBox_4.Size = new Size(362, 27);
             textBox_4.TabIndex = 3;
             textBox_4.Tag = "partNo";
             // 
             // textBox_5
             // 
             textBox_5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_5.Location = new Point(575, 3);
+            textBox_5.Location = new Point(92, 69);
             textBox_5.Margin = new Padding(3, 3, 20, 3);
             textBox_5.Name = "textBox_5";
-            textBox_5.Size = new Size(362, 27);
+            textBox_5.Size = new Size(361, 27);
             textBox_5.TabIndex = 4;
             textBox_5.Tag = "material";
             // 
             // textBox_6
             // 
             textBox_6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_6.Location = new Point(575, 36);
+            textBox_6.Location = new Point(575, 69);
             textBox_6.Margin = new Padding(3, 3, 20, 3);
             textBox_6.Name = "textBox_6";
             textBox_6.Size = new Size(362, 27);
@@ -418,10 +418,10 @@
             // textBox_7
             // 
             textBox_7.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_7.Location = new Point(575, 69);
+            textBox_7.Location = new Point(92, 102);
             textBox_7.Margin = new Padding(3, 3, 20, 3);
             textBox_7.Name = "textBox_7";
-            textBox_7.Size = new Size(362, 27);
+            textBox_7.Size = new Size(361, 27);
             textBox_7.TabIndex = 6;
             textBox_7.Tag = "cutLength";
             // 
@@ -437,7 +437,7 @@
             // 
             // tableLayoutPanel2
             // 
-            tableLayoutPanel2.ColumnCount = 12;
+            tableLayoutPanel2.ColumnCount = 2;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
@@ -463,17 +463,18 @@
             // buttonCancel
             // 
             buttonCancel.Anchor = AnchorStyles.Right;
-            buttonCancel.Location = new Point(660, 7);
+            buttonCancel.Location = new Point(860, 7);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(94, 26);
             buttonCancel.TabIndex = 0;
             buttonCancel.Text = "Cancel";
             buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.Click += buttonCancel_Click;
             // 
             // buttonSave
             // 
             buttonSave.Anchor = AnchorStyles.Right;
-            buttonSave.Location = new Point(560, 7);
+            buttonSave.Location = new Point(760, 7);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(94, 26);
             buttonSave.TabIndex = 1;
@@ -502,17 +503,6 @@
             tableLayoutPanel1.Size = new Size(957, 42);
             tableLayoutPanel1.TabIndex = 7;
             // 
-            // richTextBox2
-            // 
-            richTextBox2.Dock = DockStyle.Fill;
-            richTextBox2.Location = new Point(180, 29);
-            richTextBox2.Margin = new Padding(3, 8, 3, 3);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(842, 10);
-            richTextBox2.TabIndex = 1;
-            richTextBox2.Tag = "comments";
-            richTextBox2.Text = "";
-            // 
             // richTextBox1
             // 
             richTextBox1.Dock = DockStyle.Fill;
@@ -523,6 +513,17 @@
             richTextBox1.TabIndex = 0;
             richTextBox1.Tag = "specialWorkInstruction";
             richTextBox1.Text = "";
+            // 
+            // richTextBox2
+            // 
+            richTextBox2.Dock = DockStyle.Fill;
+            richTextBox2.Location = new Point(180, 29);
+            richTextBox2.Margin = new Padding(3, 8, 3, 3);
+            richTextBox2.Name = "richTextBox2";
+            richTextBox2.Size = new Size(842, 10);
+            richTextBox2.TabIndex = 1;
+            richTextBox2.Tag = "comments";
+            richTextBox2.Text = "";
             // 
             // labelComments
             // 

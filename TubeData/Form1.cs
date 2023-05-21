@@ -3,6 +3,8 @@ using System.IO;
 using static System.Net.Mime.MediaTypeNames;
 using System.Net;
 using System.Reflection.Emit;
+using System.Runtime.Serialization.Formatters.Binary;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace TubeData
 {
@@ -178,6 +180,17 @@ namespace TubeData
             tblPanelLRAValues.Visible = true;
         }
 
+        //private void buttonSave_Click_1(object sender, EventArgs e)
+        //{
+        //    List<string> textBoxValues = new List<string>();
+
+        //    GetTextBoxValuesFromTableLayoutPanel(tblPanelDataEntry, textBoxValues);
+        //    GetTextBoxValuesFromTableLayoutPanel(tblPanelLRAValues, textBoxValues);
+        //    GetRichTextBoxValuesFromTableLayoutPanel(tableLayoutPanel1, textBoxValues);
+
+        //    MessageBox.Show(string.Join(Environment.NewLine, textBoxValues));
+        //}
+
         private void buttonSave_Click_1(object sender, EventArgs e)
         {
             List<string> textBoxValues = new List<string>();
@@ -186,8 +199,28 @@ namespace TubeData
             GetTextBoxValuesFromTableLayoutPanel(tblPanelLRAValues, textBoxValues);
             GetRichTextBoxValuesFromTableLayoutPanel(tableLayoutPanel1, textBoxValues);
 
-            MessageBox.Show(string.Join(Environment.NewLine, textBoxValues));
+            // Create an instance of the Tube class
+            Tube tube = new Tube();
+
+            // Set the TextBoxValues property with the textBoxValues list
+            tube.TextBoxValues = textBoxValues;
+
+            // Set the RichTextBoxValue1 and RichTextBoxValue2 properties with the rich text box values
+            tube.RichTextBoxValue1 = richTextBox1.Text;
+            tube.RichTextBoxValue2 = richTextBox2.Text;
+
+            // Prompt the user to select a file for saving the Tube object
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Binary Files (*.bin)|*.bin";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                // Save the Tube object to the selected file
+                tube.Save(filePath);
+            }
         }
+
 
         private void GetTextBoxValuesFromTableLayoutPanel(TableLayoutPanel tableLayoutPanel, List<string> textBoxValues)
         {
@@ -211,7 +244,6 @@ namespace TubeData
             }
         }
 
-
         private void buttonAddRow_Click(object sender, EventArgs e)
         {
             newRow();
@@ -224,21 +256,6 @@ namespace TubeData
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            //List<string> textBoxValues = new List<string>();
-
-            //// Iterate over the controls in the TableLayoutPanel
-            //foreach (Control control in tblPanelDataEntry.Controls)
-            //{
-            //    if (control is TextBox textBox)
-            //    {
-            //        // Add the value of the text box to the list
-            //        textBoxValues.Add(textBox.Text);
-            //    }
-            //}
-
-            //MessageBox.Show(string.Join(Environment.NewLine, textBoxValues));
-
-            // Iterate over the controls in the TableLayoutPanel
             foreach (Control control in tblPanelDataEntry.Controls)
             {
                 if (control is TextBox textBox)
@@ -247,5 +264,122 @@ namespace TubeData
                 }
             }
         }
+
+        public static Tube Open(string filePath)
+        {
+            try
+            {
+                using (FileStream fs = new FileStream(filePath, FileMode.Open))
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    return (Tube)formatter.Deserialize(fs);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error occurred while opening Tube: " + ex.Message);
+                return null;
+            }
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show(string.Join(Environment.NewLine, tube.TextBoxValues));
+            // Opening a previously saved Tube instance from a binary file
+            Tube openedTube = Open(@"C:\Users\callump\Pictures\ASUS\test.bin");
+            if (openedTube != null)
+            {
+                // Accessing the properties of the opened Tube instance
+                List<string> openedTextBoxValues = openedTube.TextBoxValues;
+                string openedRichTextBoxValue1 = openedTube.RichTextBoxValue1;
+                string openedRichTextBoxValue2 = openedTube.RichTextBoxValue2;
+
+                // Set the values to the corresponding text boxes
+                SetTextBoxValuesToTableLayoutPanel(tblPanelDataEntry, tblPanelLRAValues, openedTextBoxValues);
+                richTextBox1.Text = openedRichTextBoxValue1;
+                richTextBox2.Text = openedRichTextBoxValue2;
+            }
+
+        }
+
+        private void SetTextBoxValuesToTableLayoutPanel(TableLayoutPanel tableLayoutPanel1, TableLayoutPanel tableLayoutPanel2, List<string> textBoxValues)
+        {
+            int textBoxIndex = 0;
+
+            foreach (Control control in tableLayoutPanel1.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Check if there are more values to assign
+                    if (textBoxIndex < textBoxValues.Count)
+                    {
+                        textBox.Text = textBoxValues[textBoxIndex];
+                        textBoxIndex++;
+                    }
+                    else
+                    {
+                        // If there are no more values, you can choose to handle it accordingly
+                        // For example, clear the text box or set a default value
+                        textBox.Text = string.Empty;
+                    }
+                }
+            }
+
+            if (tableLayoutPanel2.Controls.OfType<TextBox>().Count() < textBoxValues.Count - 2)
+            {
+                // Calculate the number of additional controls needed
+                int remainingControls = textBoxValues.Count - tableLayoutPanel2.Controls.OfType<TextBox>().Count() - 2;
+
+                // Call the addRow() method to add the required number of controls
+                for (int i = 0; i < remainingControls/5-1; i++)
+                {
+                    addRow();
+                }
+            }
+
+            foreach (Control control in tableLayoutPanel2.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Exclude the last two items from the textBoxValues list
+                    if (textBoxIndex < textBoxValues.Count - 2)
+                    {
+                        textBox.Text = textBoxValues[textBoxIndex];
+                        textBoxIndex++;
+                    }
+                    else
+                    {
+                        // If there are no more values, you can choose to handle it accordingly
+                        // For example, clear the text box or set a default value
+                        textBox.Text = string.Empty;
+                    }
+                }
+            }
+        }
+        private void SetRichTextBoxValuesToTableLayoutPanel(TableLayoutPanel tableLayoutPanel, List<string> richTextBoxValues)
+        {
+            int richTextBoxIndex = 0;
+
+            foreach (Control control in tableLayoutPanel.Controls)
+            {
+                if (control is RichTextBox richTextBox)
+                {
+                    // Check if there are more values to assign
+                    if (richTextBoxIndex < richTextBoxValues.Count)
+                    {
+                        richTextBox.Text = richTextBoxValues[richTextBoxIndex];
+                        richTextBoxIndex++;
+                    }
+                    else
+                    {
+                        // If there are no more values, you can choose to handle it accordingly
+                        // For example, clear the rich text box or set a default value
+                        richTextBox.Text = string.Empty;
+                    }
+                }
+            }
+        }
+
+
     }
 }
