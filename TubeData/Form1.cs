@@ -394,17 +394,6 @@ namespace TubeData
             clearLRATable();
         }
 
-        //private void treeView1_MouseDoubleClick(object sender, MouseEventArgs e)
-        //{
-        //    if (e.Node.Tag is string filePath)
-        //    {
-        //        if (Path.GetExtension(filePath).Equals(".TUBE", StringComparison.OrdinalIgnoreCase))
-        //        {
-        //            openTubeFile(filePath);
-        //        }
-        //    }
-        //}
-
         private void treeView1_NodeMouseDoubleClick_1(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Node.Tag is string filePath)
