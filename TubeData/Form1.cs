@@ -257,7 +257,7 @@ namespace TubeData
             removeRow();
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
+        private void clearDataEntryTable()
         {
             foreach (Control control in tblPanelDataEntry.Controls)
             {
@@ -266,6 +266,11 @@ namespace TubeData
                     control.Text = "";
                 }
             }
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            clearDataEntryTable();
         }
 
         public static Tube Open(string filePath)
@@ -287,29 +292,10 @@ namespace TubeData
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Tube Files (*.TUBE)|*.TUBE";
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = openFileDialog.FileName;
-
-                // Opening a previously saved Tube instance from a binary file
-                Tube openedTube = Open(filePath);
-                if (openedTube != null)
-                {
-                    // Accessing the properties of the opened Tube instance
-                    string openedProductionOrderValue = openedTube.ProductionOrderValue;
-                    List<string> openedTextBoxValues = openedTube.TextBoxValues;
-                    string openedRichTextBoxValue1 = openedTube.RichTextBoxValue1;
-                    string openedRichTextBoxValue2 = openedTube.RichTextBoxValue2;
-
-                    // Set the values to the corresponding text boxes
-                    textBoxProductionOrder.Text = openedProductionOrderValue;
-                    SetTextBoxValuesToTableLayoutPanel(tblPanelDataEntry, tblPanelLRAValues, openedTextBoxValues);
-                    richTextBox1.Text = openedRichTextBoxValue1;
-                    richTextBox2.Text = openedRichTextBoxValue2;
-                }
-            }
+            clearLRATable();
+            clearDataEntryTable();
+            richTextBox1.Clear();
+            richTextBox2.Clear();
         }
 
 
@@ -368,5 +354,51 @@ namespace TubeData
             }
         }
 
+
+        private void openTubeFile(string filePath)
+        {
+            // Opening a previously saved Tube instance from a binary file
+            Tube openedTube = Open(filePath);
+            if (openedTube != null)
+            {
+                // Accessing the properties of the opened Tube instance
+                string openedProductionOrderValue = openedTube.ProductionOrderValue;
+                List<string> openedTextBoxValues = openedTube.TextBoxValues;
+                string openedRichTextBoxValue1 = openedTube.RichTextBoxValue1;
+                string openedRichTextBoxValue2 = openedTube.RichTextBoxValue2;
+
+                // Set the values to the corresponding text boxes
+                textBoxProductionOrder.Text = openedProductionOrderValue;
+                SetTextBoxValuesToTableLayoutPanel(tblPanelDataEntry, tblPanelLRAValues, openedTextBoxValues);
+                richTextBox1.Text = openedRichTextBoxValue1;
+                richTextBox2.Text = openedRichTextBoxValue2;
+            }
+        }
+
+        private void openToolStripButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Tube Files (*.TUBE)|*.TUBE";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                openTubeFile(openFileDialog.FileName);
+            }
+        }
+
+        private void clearLRATable()
+        {
+            foreach (Control control in tblPanelLRAValues.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    control.Text = "";
+                }
+            }
+        }
+
+        private void buttonClearLRA_Click(object sender, EventArgs e)
+        {
+            clearLRATable();
+        }
     }
 }
