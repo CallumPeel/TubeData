@@ -202,6 +202,8 @@ namespace TubeData
             // Create an instance of the Tube class
             Tube tube = new Tube();
 
+            tube.ProductionOrderValue = textBoxProductionOrder.Text;
+
             // Set the TextBoxValues property with the textBoxValues list
             tube.TextBoxValues = textBoxValues;
 
@@ -212,6 +214,7 @@ namespace TubeData
             // Prompt the user to select a file for saving the Tube object
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Binary Files (*.bin)|*.bin";
+            saveFileDialog.FileName = tube.ProductionOrderValue;
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = saveFileDialog.FileName;
@@ -290,11 +293,13 @@ namespace TubeData
             if (openedTube != null)
             {
                 // Accessing the properties of the opened Tube instance
+                string openedProductionOrderValue = openedTube.ProductionOrderValue;
                 List<string> openedTextBoxValues = openedTube.TextBoxValues;
                 string openedRichTextBoxValue1 = openedTube.RichTextBoxValue1;
                 string openedRichTextBoxValue2 = openedTube.RichTextBoxValue2;
 
                 // Set the values to the corresponding text boxes
+                textBoxProductionOrder.Text = openedProductionOrderValue;
                 SetTextBoxValuesToTableLayoutPanel(tblPanelDataEntry, tblPanelLRAValues, openedTextBoxValues);
                 richTextBox1.Text = openedRichTextBoxValue1;
                 richTextBox2.Text = openedRichTextBoxValue2;
@@ -331,7 +336,7 @@ namespace TubeData
                 int remainingControls = textBoxValues.Count - tableLayoutPanel2.Controls.OfType<TextBox>().Count() - 2;
 
                 // Call the addRow() method to add the required number of controls
-                for (int i = 0; i < remainingControls/5-1; i++)
+                for (int i = 0; i < remainingControls / 5 - 1; i++)
                 {
                     addRow();
                 }
@@ -356,30 +361,6 @@ namespace TubeData
                 }
             }
         }
-        private void SetRichTextBoxValuesToTableLayoutPanel(TableLayoutPanel tableLayoutPanel, List<string> richTextBoxValues)
-        {
-            int richTextBoxIndex = 0;
-
-            foreach (Control control in tableLayoutPanel.Controls)
-            {
-                if (control is RichTextBox richTextBox)
-                {
-                    // Check if there are more values to assign
-                    if (richTextBoxIndex < richTextBoxValues.Count)
-                    {
-                        richTextBox.Text = richTextBoxValues[richTextBoxIndex];
-                        richTextBoxIndex++;
-                    }
-                    else
-                    {
-                        // If there are no more values, you can choose to handle it accordingly
-                        // For example, clear the rich text box or set a default value
-                        richTextBox.Text = string.Empty;
-                    }
-                }
-            }
-        }
-
 
     }
 }

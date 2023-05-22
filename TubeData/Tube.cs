@@ -7,6 +7,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 [Serializable]
 public class Tube
 {
+
+    public string ProductionOrderValue { get; set; }
     public List<string> TextBoxValues { get; set; }
     public string RichTextBoxValue1 { get; set; }
     public string RichTextBoxValue2 { get; set; }

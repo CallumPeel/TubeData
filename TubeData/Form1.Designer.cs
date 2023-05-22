@@ -82,6 +82,8 @@
             labelSpringbackAngle = new Label();
             labelRequiredAngle = new Label();
             labelFileDirectory = new Label();
+            textBoxProductionOrder = new TextBox();
+            labelProductionOrder = new Label();
             toolStrip1.SuspendLayout();
             tblPnlMain.SuspendLayout();
             tblPanelDataEntry.SuspendLayout();
@@ -685,11 +687,29 @@
             labelFileDirectory.TabIndex = 6;
             labelFileDirectory.Text = "File Directory";
             // 
+            // textBoxProductionOrder
+            // 
+            textBoxProductionOrder.Location = new Point(676, 49);
+            textBoxProductionOrder.Name = "textBoxProductionOrder";
+            textBoxProductionOrder.Size = new Size(315, 27);
+            textBoxProductionOrder.TabIndex = 7;
+            // 
+            // labelProductionOrder
+            // 
+            labelProductionOrder.AutoSize = true;
+            labelProductionOrder.Location = new Point(513, 52);
+            labelProductionOrder.Name = "labelProductionOrder";
+            labelProductionOrder.Size = new Size(126, 20);
+            labelProductionOrder.TabIndex = 8;
+            labelProductionOrder.Text = "Production Order:";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1293, 623);
+            Controls.Add(labelProductionOrder);
+            Controls.Add(textBoxProductionOrder);
             Controls.Add(labelFileDirectory);
             Controls.Add(tblPnlMain);
             Controls.Add(progressBar1);
@@ -771,5 +791,7 @@
         private TableLayoutPanel tableLayoutPanel3;
         private Button buttonAddRow;
         private Button buttonRemoveRow;
+        private TextBox textBoxProductionOrder;
+        private Label labelProductionOrder;
     }
 }
