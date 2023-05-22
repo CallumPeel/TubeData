@@ -1,8 +1,4 @@
-using System.Windows.Forms;
-using System.IO;
-using static System.Net.Mime.MediaTypeNames;
-using System.Net;
-using System.Reflection.Emit;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace TubeData
 {
@@ -39,20 +35,17 @@ namespace TubeData
             else
                 MessageBox.Show("Select Directory!!");
         }
-        public void LoadDirectory(string Dir)
+        public void LoadDirectory(string dir)
         {
-            DirectoryInfo di = new DirectoryInfo(Dir);
-            //Setting ProgressBar Maximum Value
-            progressBar1.Maximum = Directory.GetFiles(
-                Dir, "*.*",
-                SearchOption.AllDirectories).Length
-                + Directory.GetDirectories(Dir, "**", SearchOption.AllDirectories).Length;
+            DirectoryInfo di = new DirectoryInfo(dir);
+            progressBar1.Maximum = Directory.GetFiles(dir, "*.TUBE", SearchOption.AllDirectories).Length; // Filter files by .TUBE extension
             TreeNode tds = treeView1.Nodes.Add(di.Name);
             tds.Tag = di.FullName;
             tds.StateImageIndex = 0;
-            LoadFiles(Dir, tds);
-            LoadSubDirectories(Dir, tds);
+            LoadFiles(dir, tds);
+            LoadSubDirectories(dir, tds);
         }
+
         private void LoadSubDirectories(string dir, TreeNode td)
         {
             // Get all subdirectories
@@ -72,8 +65,8 @@ namespace TubeData
 
         private void LoadFiles(string dir, TreeNode td)
         {
-            string[] Files = Directory.GetFiles(dir, "*.*");
-            foreach (string file in Files)
+            string[] files = Directory.GetFiles(dir, "*.TUBE"); // Filter files by .TUBE extension
+            foreach (string file in files)
             {
                 FileInfo fi = new FileInfo(file);
                 TreeNode tds = td.Nodes.Add(fi.Name);
@@ -82,6 +75,8 @@ namespace TubeData
                 UpdateProgress();
             }
         }
+
+
 
         private void UpdateProgress()
         {
@@ -122,54 +117,44 @@ namespace TubeData
             tblPanelLRAValues.RowCount++; // Increment row count
 
             // Create label for the row number
-            System.Windows.Forms.Label rowLabel = new System.Windows.Forms.Label();
-            rowLabel.Text = tblPanelLRAValues.RowCount.ToString();
-            rowLabel.AutoSize = true;
-            rowLabel.Dock = DockStyle.Top;
-            rowLabel.TextAlign = ContentAlignment.MiddleCenter;
-            rowLabel.Padding = new Padding(0, 5, 0, 0);
+            System.Windows.Forms.Label rowLabel = new System.Windows.Forms.Label
+            {
+                Text = tblPanelLRAValues.RowCount.ToString(),
+                AutoSize = true,
+                Dock = DockStyle.Top,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Padding = new Padding(0, 5, 0, 0)
+            };
 
+            TextBox[] textBoxes = new TextBox[5];
 
             // Create text boxes for data entry
-            TextBox textBox1 = new TextBox();
-            textBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox1.Margin = new Padding(3, 3, 30, 3);
-            textBox1.Dock = DockStyle.Top;
-
-            TextBox textBox2 = new TextBox();
-            textBox2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox2.Margin = new Padding(3, 3, 30, 3);
-            textBox2.Dock = DockStyle.Top;
-
-            TextBox textBox3 = new TextBox();
-            textBox3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox3.Margin = new Padding(3, 3, 30, 3);
-            textBox3.Dock = DockStyle.Top;
-
-            TextBox textBox4 = new TextBox();
-            textBox4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox4.Margin = new Padding(3, 3, 30, 3);
-            textBox4.Dock = DockStyle.Top;
-
-            TextBox textBox5 = new TextBox();
-            textBox5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox5.Margin = new Padding(3, 3, 30, 3);
-            textBox5.Dock = DockStyle.Top;
+            for (int i = 0; i < textBoxes.Length; i++)
+            {
+                textBoxes[i] = new TextBox
+                {
+                    Anchor = AnchorStyles.Left | AnchorStyles.Right,
+                    Margin = new Padding(3, 3, 30, 3),
+                    Dock = DockStyle.Top
+                };
+            }
 
             // Set RowStyles
             tblPanelLRAValues.RowStyles.Clear(); // Clear any existing row styles
 
-            // Set the second row to use a fixed height
+            // Set the new row to use a fixed height
             tblPanelLRAValues.RowStyles.Add(new RowStyle(SizeType.Absolute, 50)); // Adjust the height as needed
 
             // Add controls to the new row
             tblPanelLRAValues.Controls.Add(rowLabel, 0, tblPanelLRAValues.RowCount); // Add label to column 0
-            tblPanelLRAValues.Controls.Add(textBox1, 1, tblPanelLRAValues.RowCount); // Add text box to column 1
-            tblPanelLRAValues.Controls.Add(textBox2, 2, tblPanelLRAValues.RowCount); // Add text box to column 2
-            tblPanelLRAValues.Controls.Add(textBox3, 3, tblPanelLRAValues.RowCount); // Add text box to column 3
-            tblPanelLRAValues.Controls.Add(textBox4, 4, tblPanelLRAValues.RowCount); // Add text box to column 4
-            tblPanelLRAValues.Controls.Add(textBox5, 5, tblPanelLRAValues.RowCount); // Add text box to column 5
+
+            // Add text boxes to columns 1-5
+            for (int i = 0; i < textBoxes.Length; i++)
+            {
+                tblPanelLRAValues.Controls.Add(textBoxes[i], i + 1, tblPanelLRAValues.RowCount);
+            }
         }
+
 
         private void removeRow()
         {
@@ -188,21 +173,71 @@ namespace TubeData
             tblPanelLRAValues.Visible = true;
         }
 
+        //private void buttonSave_Click_1(object sender, EventArgs e)
+        //{
+        //    List<string> textBoxValues = new List<string>();
+
+        //    GetTextBoxValuesFromTableLayoutPanel(tblPanelDataEntry, textBoxValues);
+        //    GetTextBoxValuesFromTableLayoutPanel(tblPanelLRAValues, textBoxValues);
+        //    GetRichTextBoxValuesFromTableLayoutPanel(tableLayoutPanel1, textBoxValues);
+
+        //    MessageBox.Show(string.Join(Environment.NewLine, textBoxValues));
+        //}
+
         private void buttonSave_Click_1(object sender, EventArgs e)
         {
             List<string> textBoxValues = new List<string>();
 
-            // Iterate over the controls in the TableLayoutPanel
-            foreach (Control control in tblPanelLRAValues.Controls)
+            GetTextBoxValuesFromTableLayoutPanel(tblPanelDataEntry, textBoxValues);
+            GetTextBoxValuesFromTableLayoutPanel(tblPanelLRAValues, textBoxValues);
+            GetRichTextBoxValuesFromTableLayoutPanel(tableLayoutPanel1, textBoxValues);
+
+            // Create an instance of the Tube class
+            Tube tube = new Tube();
+
+            tube.ProductionOrderValue = textBoxProductionOrder.Text;
+
+            // Set the TextBoxValues property with the textBoxValues list
+            tube.TextBoxValues = textBoxValues;
+
+            // Set the RichTextBoxValue1 and RichTextBoxValue2 properties with the rich text box values
+            tube.RichTextBoxValue1 = richTextBox1.Text;
+            tube.RichTextBoxValue2 = richTextBox2.Text;
+
+            // Prompt the user to select a file for saving the Tube object
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Binary Files (*.bin)|*.bin";
+            saveFileDialog.FileName = tube.ProductionOrderValue;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                // Save the Tube object to the selected file
+                tube.Save(filePath);
+            }
+        }
+
+
+        private void GetTextBoxValuesFromTableLayoutPanel(TableLayoutPanel tableLayoutPanel, List<string> textBoxValues)
+        {
+            foreach (Control control in tableLayoutPanel.Controls)
             {
                 if (control is TextBox textBox)
                 {
-                    // Add the value of the text box to the list
                     textBoxValues.Add(textBox.Text);
                 }
             }
+        }
 
-            MessageBox.Show(string.Join(Environment.NewLine, textBoxValues));
+        private void GetRichTextBoxValuesFromTableLayoutPanel(TableLayoutPanel tableLayoutPanel, List<string> textBoxValues)
+        {
+            foreach (Control control in tableLayoutPanel.Controls)
+            {
+                if (control is RichTextBox richTextBox)
+                {
+                    textBoxValues.Add(richTextBox.Text);
+                }
+            }
         }
 
         private void buttonAddRow_Click(object sender, EventArgs e)
@@ -215,28 +250,168 @@ namespace TubeData
             removeRow();
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
+        private void clearDataEntryTable()
         {
-            //List<string> textBoxValues = new List<string>();
-
-            //// Iterate over the controls in the TableLayoutPanel
-            //foreach (Control control in tblPanelDataEntry.Controls)
-            //{
-            //    if (control is TextBox textBox)
-            //    {
-            //        // Add the value of the text box to the list
-            //        textBoxValues.Add(textBox.Text);
-            //    }
-            //}
-
-            //MessageBox.Show(string.Join(Environment.NewLine, textBoxValues));
-
-            // Iterate over the controls in the TableLayoutPanel
             foreach (Control control in tblPanelDataEntry.Controls)
             {
                 if (control is TextBox textBox)
                 {
                     control.Text = "";
+                }
+            }
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            clearDataEntryTable();
+        }
+
+        public static Tube Open(string filePath)
+        {
+            try
+            {
+                using (FileStream fs = new FileStream(filePath, FileMode.Open))
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    return (Tube)formatter.Deserialize(fs);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error occurred while opening Tube: " + ex.Message);
+                return null;
+            }
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            clearLRATable();
+            clearDataEntryTable();
+            richTextBox1.Clear();
+            richTextBox2.Clear();
+        }
+
+
+        private void SetTextBoxValuesToTableLayoutPanel(TableLayoutPanel tableLayoutPanel1, TableLayoutPanel tableLayoutPanel2, List<string> textBoxValues)
+        {
+            int textBoxIndex = 0;
+
+            foreach (Control control in tableLayoutPanel1.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Check if there are more values to assign
+                    if (textBoxIndex < textBoxValues.Count)
+                    {
+                        textBox.Text = textBoxValues[textBoxIndex];
+                        textBoxIndex++;
+                    }
+                    else
+                    {
+                        // If there are no more values, you can choose to handle it accordingly
+                        // For example, clear the text box or set a default value
+                        textBox.Text = string.Empty;
+                    }
+                }
+            }
+
+            if (tableLayoutPanel2.Controls.OfType<TextBox>().Count() < textBoxValues.Count - 2)
+            {
+                // Calculate the number of additional controls needed
+                int remainingControls = textBoxValues.Count - tableLayoutPanel2.Controls.OfType<TextBox>().Count() - 2;
+
+                // Call the addRow() method to add the required number of controls
+                for (int i = 0; i < remainingControls / 5 - 1; i++)
+                {
+                    addRow();
+                }
+            }
+
+            foreach (Control control in tableLayoutPanel2.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Exclude the last two items from the textBoxValues list
+                    if (textBoxIndex < textBoxValues.Count - 2)
+                    {
+                        textBox.Text = textBoxValues[textBoxIndex];
+                        textBoxIndex++;
+                    }
+                    else
+                    {
+                        // If there are no more values, you can choose to handle it accordingly
+                        // For example, clear the text box or set a default value
+                        textBox.Text = string.Empty;
+                    }
+                }
+            }
+        }
+
+
+        private void openTubeFile(string filePath)
+        {
+            // Opening a previously saved Tube instance from a binary file
+            Tube openedTube = Open(filePath);
+            if (openedTube != null)
+            {
+                // Accessing the properties of the opened Tube instance
+                string openedProductionOrderValue = openedTube.ProductionOrderValue;
+                List<string> openedTextBoxValues = openedTube.TextBoxValues;
+                string openedRichTextBoxValue1 = openedTube.RichTextBoxValue1;
+                string openedRichTextBoxValue2 = openedTube.RichTextBoxValue2;
+
+                // Set the values to the corresponding text boxes
+                textBoxProductionOrder.Text = openedProductionOrderValue;
+                SetTextBoxValuesToTableLayoutPanel(tblPanelDataEntry, tblPanelLRAValues, openedTextBoxValues);
+                richTextBox1.Text = openedRichTextBoxValue1;
+                richTextBox2.Text = openedRichTextBoxValue2;
+            }
+        }
+
+        private void openToolStripButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Tube Files (*.TUBE)|*.TUBE";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                openTubeFile(openFileDialog.FileName);
+            }
+        }
+
+        private void clearLRATable()
+        {
+            foreach (Control control in tblPanelLRAValues.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    control.Text = "";
+                }
+            }
+        }
+
+        private void buttonClearLRA_Click(object sender, EventArgs e)
+        {
+            clearLRATable();
+        }
+
+        //private void treeView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        //{
+        //    if (e.Node.Tag is string filePath)
+        //    {
+        //        if (Path.GetExtension(filePath).Equals(".TUBE", StringComparison.OrdinalIgnoreCase))
+        //        {
+        //            openTubeFile(filePath);
+        //        }
+        //    }
+        //}
+
+        private void treeView1_NodeMouseDoubleClick_1(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Node.Tag is string filePath)
+            {
+                if (Path.GetExtension(filePath).Equals(".TUBE", StringComparison.OrdinalIgnoreCase))
+                {
+                    openTubeFile(filePath);
                 }
             }
         }
