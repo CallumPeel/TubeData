@@ -179,6 +179,7 @@
             treeView1.Size = new Size(234, 619);
             treeView1.StateImageList = imageList1;
             treeView1.TabIndex = 3;
+            treeView1.NodeMouseDoubleClick += treeView1_NodeMouseDoubleClick_1;
             // 
             // imageList1
             // 
@@ -457,17 +458,17 @@
             tableLayoutPanel2.Controls.Add(buttonCancel, 1, 0);
             tableLayoutPanel2.Controls.Add(buttonSave, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(3, 624);
+            tableLayoutPanel2.Location = new Point(3, 622);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(1078, 44);
+            tableLayoutPanel2.Size = new Size(1078, 46);
             tableLayoutPanel2.TabIndex = 8;
             // 
             // buttonCancel
             // 
             buttonCancel.Anchor = AnchorStyles.Right;
-            buttonCancel.Location = new Point(981, 9);
+            buttonCancel.Location = new Point(981, 10);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(94, 26);
             buttonCancel.TabIndex = 0;
@@ -478,7 +479,7 @@
             // buttonSave
             // 
             buttonSave.Anchor = AnchorStyles.Right;
-            buttonSave.Location = new Point(881, 9);
+            buttonSave.Location = new Point(881, 10);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(94, 26);
             buttonSave.TabIndex = 1;
@@ -496,7 +497,7 @@
             tableLayoutPanel1.Controls.Add(labelComments, 0, 1);
             tableLayoutPanel1.Controls.Add(labelSpecialWorkInstruction, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(3, 538);
+            tableLayoutPanel1.Location = new Point(3, 536);
             tableLayoutPanel1.Margin = new Padding(3, 15, 3, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
@@ -562,7 +563,7 @@
             tableLayoutPanel3.Controls.Add(buttonRemoveRow, 1, 0);
             tableLayoutPanel3.Controls.Add(buttonClearLRA, 2, 0);
             tableLayoutPanel3.Dock = DockStyle.Left;
-            tableLayoutPanel3.Location = new Point(3, 488);
+            tableLayoutPanel3.Location = new Point(3, 486);
             tableLayoutPanel3.Margin = new Padding(3, 13, 3, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
@@ -631,7 +632,7 @@
             tblPanelLRAValues.RowCount = 1;
             tblPanelLRAValues.RowStyles.Add(new RowStyle());
             tblPanelLRAValues.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tblPanelLRAValues.Size = new Size(1019, 263);
+            tblPanelLRAValues.Size = new Size(1019, 261);
             tblPanelLRAValues.TabIndex = 5;
             // 
             // labelLength

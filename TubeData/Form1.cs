@@ -1,10 +1,4 @@
-using System.Windows.Forms;
-using System.IO;
-using static System.Net.Mime.MediaTypeNames;
-using System.Net;
-using System.Reflection.Emit;
 using System.Runtime.Serialization.Formatters.Binary;
-using Microsoft.VisualBasic.ApplicationServices;
 
 namespace TubeData
 {
@@ -41,20 +35,17 @@ namespace TubeData
             else
                 MessageBox.Show("Select Directory!!");
         }
-        public void LoadDirectory(string Dir)
+        public void LoadDirectory(string dir)
         {
-            DirectoryInfo di = new DirectoryInfo(Dir);
-            //Setting ProgressBar Maximum Value
-            progressBar1.Maximum = Directory.GetFiles(
-                Dir, "*.*",
-                SearchOption.AllDirectories).Length
-                + Directory.GetDirectories(Dir, "**", SearchOption.AllDirectories).Length;
+            DirectoryInfo di = new DirectoryInfo(dir);
+            progressBar1.Maximum = Directory.GetFiles(dir, "*.TUBE", SearchOption.AllDirectories).Length; // Filter files by .TUBE extension
             TreeNode tds = treeView1.Nodes.Add(di.Name);
             tds.Tag = di.FullName;
             tds.StateImageIndex = 0;
-            LoadFiles(Dir, tds);
-            LoadSubDirectories(Dir, tds);
+            LoadFiles(dir, tds);
+            LoadSubDirectories(dir, tds);
         }
+
         private void LoadSubDirectories(string dir, TreeNode td)
         {
             // Get all subdirectories
@@ -74,8 +65,8 @@ namespace TubeData
 
         private void LoadFiles(string dir, TreeNode td)
         {
-            string[] Files = Directory.GetFiles(dir, "*.*");
-            foreach (string file in Files)
+            string[] files = Directory.GetFiles(dir, "*.TUBE"); // Filter files by .TUBE extension
+            foreach (string file in files)
             {
                 FileInfo fi = new FileInfo(file);
                 TreeNode tds = td.Nodes.Add(fi.Name);
@@ -84,6 +75,8 @@ namespace TubeData
                 UpdateProgress();
             }
         }
+
+
 
         private void UpdateProgress()
         {
@@ -399,6 +392,28 @@ namespace TubeData
         private void buttonClearLRA_Click(object sender, EventArgs e)
         {
             clearLRATable();
+        }
+
+        //private void treeView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        //{
+        //    if (e.Node.Tag is string filePath)
+        //    {
+        //        if (Path.GetExtension(filePath).Equals(".TUBE", StringComparison.OrdinalIgnoreCase))
+        //        {
+        //            openTubeFile(filePath);
+        //        }
+        //    }
+        //}
+
+        private void treeView1_NodeMouseDoubleClick_1(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Node.Tag is string filePath)
+            {
+                if (Path.GetExtension(filePath).Equals(".TUBE", StringComparison.OrdinalIgnoreCase))
+                {
+                    openTubeFile(filePath);
+                }
+            }
         }
     }
 }
