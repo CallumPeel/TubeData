@@ -287,25 +287,31 @@ namespace TubeData
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(string.Join(Environment.NewLine, tube.TextBoxValues));
-            // Opening a previously saved Tube instance from a binary file
-            Tube openedTube = Open(@"C:\Users\callump\Pictures\ASUS\test.bin");
-            if (openedTube != null)
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Tube Files (*.TUBE)|*.TUBE";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // Accessing the properties of the opened Tube instance
-                string openedProductionOrderValue = openedTube.ProductionOrderValue;
-                List<string> openedTextBoxValues = openedTube.TextBoxValues;
-                string openedRichTextBoxValue1 = openedTube.RichTextBoxValue1;
-                string openedRichTextBoxValue2 = openedTube.RichTextBoxValue2;
+                string filePath = openFileDialog.FileName;
 
-                // Set the values to the corresponding text boxes
-                textBoxProductionOrder.Text = openedProductionOrderValue;
-                SetTextBoxValuesToTableLayoutPanel(tblPanelDataEntry, tblPanelLRAValues, openedTextBoxValues);
-                richTextBox1.Text = openedRichTextBoxValue1;
-                richTextBox2.Text = openedRichTextBoxValue2;
+                // Opening a previously saved Tube instance from a binary file
+                Tube openedTube = Open(filePath);
+                if (openedTube != null)
+                {
+                    // Accessing the properties of the opened Tube instance
+                    string openedProductionOrderValue = openedTube.ProductionOrderValue;
+                    List<string> openedTextBoxValues = openedTube.TextBoxValues;
+                    string openedRichTextBoxValue1 = openedTube.RichTextBoxValue1;
+                    string openedRichTextBoxValue2 = openedTube.RichTextBoxValue2;
+
+                    // Set the values to the corresponding text boxes
+                    textBoxProductionOrder.Text = openedProductionOrderValue;
+                    SetTextBoxValuesToTableLayoutPanel(tblPanelDataEntry, tblPanelLRAValues, openedTextBoxValues);
+                    richTextBox1.Text = openedRichTextBoxValue1;
+                    richTextBox2.Text = openedRichTextBoxValue2;
+                }
             }
-
         }
+
 
         private void SetTextBoxValuesToTableLayoutPanel(TableLayoutPanel tableLayoutPanel1, TableLayoutPanel tableLayoutPanel2, List<string> textBoxValues)
         {
