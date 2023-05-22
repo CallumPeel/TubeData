@@ -4,13 +4,15 @@ namespace TubeData
 {
     public partial class Form1 : Form
     {
+        InputHandler IH;
 
         public Form1()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             tblPanelLRAValues.RowCount--;
-            for (int i = 0; i < 5; i++) addRow();
+            IH = new InputHandler();
+            for (int i = 0; i < 5; i++) IH.addRow(tblPanelLRAValues);
             LoadDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures));
         }
 
@@ -35,6 +37,7 @@ namespace TubeData
             else
                 MessageBox.Show("Select Directory!!");
         }
+
         public void LoadDirectory(string dir)
         {
             DirectoryInfo di = new DirectoryInfo(dir);
@@ -76,8 +79,6 @@ namespace TubeData
             }
         }
 
-
-
         private void UpdateProgress()
         {
             if (progressBar1.Value < progressBar1.Maximum)
@@ -112,85 +113,13 @@ namespace TubeData
             }
         }
 
-        public void addRow()
-        {
-            tblPanelLRAValues.RowCount++; // Increment row count
-
-            // Create label for the row number
-            System.Windows.Forms.Label rowLabel = new System.Windows.Forms.Label
-            {
-                Text = tblPanelLRAValues.RowCount.ToString(),
-                AutoSize = true,
-                Dock = DockStyle.Top,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Padding = new Padding(0, 5, 0, 0)
-            };
-
-            TextBox[] textBoxes = new TextBox[5];
-
-            // Create text boxes for data entry
-            for (int i = 0; i < textBoxes.Length; i++)
-            {
-                textBoxes[i] = new TextBox
-                {
-                    Anchor = AnchorStyles.Left | AnchorStyles.Right,
-                    Margin = new Padding(3, 3, 30, 3),
-                    Dock = DockStyle.Top
-                };
-            }
-
-            // Set RowStyles
-            tblPanelLRAValues.RowStyles.Clear(); // Clear any existing row styles
-
-            // Set the new row to use a fixed height
-            tblPanelLRAValues.RowStyles.Add(new RowStyle(SizeType.Absolute, 50)); // Adjust the height as needed
-
-            // Add controls to the new row
-            tblPanelLRAValues.Controls.Add(rowLabel, 0, tblPanelLRAValues.RowCount); // Add label to column 0
-
-            // Add text boxes to columns 1-5
-            for (int i = 0; i < textBoxes.Length; i++)
-            {
-                tblPanelLRAValues.Controls.Add(textBoxes[i], i + 1, tblPanelLRAValues.RowCount);
-            }
-        }
-
-
-        private void removeRow()
-        {
-            for (int i = 0; i < 6; i++)
-            {
-                tblPanelLRAValues.Controls.RemoveAt(tblPanelLRAValues.Controls.Count - 1);
-            }
-            tblPanelLRAValues.RowCount--;
-
-        }
-
-        private void newRow()
-        {
-            tblPanelLRAValues.Visible = false;
-            addRow();
-            tblPanelLRAValues.Visible = true;
-        }
-
-        //private void buttonSave_Click_1(object sender, EventArgs e)
-        //{
-        //    List<string> textBoxValues = new List<string>();
-
-        //    GetTextBoxValuesFromTableLayoutPanel(tblPanelDataEntry, textBoxValues);
-        //    GetTextBoxValuesFromTableLayoutPanel(tblPanelLRAValues, textBoxValues);
-        //    GetRichTextBoxValuesFromTableLayoutPanel(tableLayoutPanel1, textBoxValues);
-
-        //    MessageBox.Show(string.Join(Environment.NewLine, textBoxValues));
-        //}
-
         private void buttonSave_Click_1(object sender, EventArgs e)
         {
             List<string> textBoxValues = new List<string>();
 
-            GetTextBoxValuesFromTableLayoutPanel(tblPanelDataEntry, textBoxValues);
-            GetTextBoxValuesFromTableLayoutPanel(tblPanelLRAValues, textBoxValues);
-            GetRichTextBoxValuesFromTableLayoutPanel(tableLayoutPanel1, textBoxValues);
+            IH.GetTextBoxValuesFromTableLayoutPanel(tblPanelDataEntry, textBoxValues);
+            IH.GetTextBoxValuesFromTableLayoutPanel(tblPanelLRAValues, textBoxValues);
+            IH.GetRichTextBoxValuesFromTableLayoutPanel(tableLayoutPanel1, textBoxValues);
 
             // Create an instance of the Tube class
             Tube tube = new Tube();
@@ -206,8 +135,8 @@ namespace TubeData
 
             // Prompt the user to select a file for saving the Tube object
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Binary Files (*.bin)|*.bin";
-            saveFileDialog.FileName = tube.ProductionOrderValue;
+            saveFileDialog.Filter = "Tube Files (*.TUBE)|*.TUBE";
+            saveFileDialog.FileName = tube.ProductionOrderValue + ".TUBE";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = saveFileDialog.FileName;
@@ -217,53 +146,19 @@ namespace TubeData
             }
         }
 
-
-        private void GetTextBoxValuesFromTableLayoutPanel(TableLayoutPanel tableLayoutPanel, List<string> textBoxValues)
-        {
-            foreach (Control control in tableLayoutPanel.Controls)
-            {
-                if (control is TextBox textBox)
-                {
-                    textBoxValues.Add(textBox.Text);
-                }
-            }
-        }
-
-        private void GetRichTextBoxValuesFromTableLayoutPanel(TableLayoutPanel tableLayoutPanel, List<string> textBoxValues)
-        {
-            foreach (Control control in tableLayoutPanel.Controls)
-            {
-                if (control is RichTextBox richTextBox)
-                {
-                    textBoxValues.Add(richTextBox.Text);
-                }
-            }
-        }
-
         private void buttonAddRow_Click(object sender, EventArgs e)
         {
-            newRow();
+            IH.addRow(tblPanelLRAValues);
         }
 
         private void buttonRemoveRow_Click(object sender, EventArgs e)
         {
-            removeRow();
-        }
-
-        private void clearDataEntryTable()
-        {
-            foreach (Control control in tblPanelDataEntry.Controls)
-            {
-                if (control is TextBox textBox)
-                {
-                    control.Text = "";
-                }
-            }
+            IH.removeRow(tblPanelLRAValues);
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            clearDataEntryTable();
+            IH.clearDataEntryTable(tblPanelDataEntry);
         }
 
         public static Tube Open(string filePath)
@@ -285,68 +180,11 @@ namespace TubeData
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            clearLRATable();
-            clearDataEntryTable();
+            IH.clearLRATable(tblPanelLRAValues);
+            IH.clearDataEntryTable(tblPanelDataEntry);
             richTextBox1.Clear();
             richTextBox2.Clear();
         }
-
-
-        private void SetTextBoxValuesToTableLayoutPanel(TableLayoutPanel tableLayoutPanel1, TableLayoutPanel tableLayoutPanel2, List<string> textBoxValues)
-        {
-            int textBoxIndex = 0;
-
-            foreach (Control control in tableLayoutPanel1.Controls)
-            {
-                if (control is TextBox textBox)
-                {
-                    // Check if there are more values to assign
-                    if (textBoxIndex < textBoxValues.Count)
-                    {
-                        textBox.Text = textBoxValues[textBoxIndex];
-                        textBoxIndex++;
-                    }
-                    else
-                    {
-                        // If there are no more values, you can choose to handle it accordingly
-                        // For example, clear the text box or set a default value
-                        textBox.Text = string.Empty;
-                    }
-                }
-            }
-
-            if (tableLayoutPanel2.Controls.OfType<TextBox>().Count() < textBoxValues.Count - 2)
-            {
-                // Calculate the number of additional controls needed
-                int remainingControls = textBoxValues.Count - tableLayoutPanel2.Controls.OfType<TextBox>().Count() - 2;
-
-                // Call the addRow() method to add the required number of controls
-                for (int i = 0; i < remainingControls / 5 - 1; i++)
-                {
-                    addRow();
-                }
-            }
-
-            foreach (Control control in tableLayoutPanel2.Controls)
-            {
-                if (control is TextBox textBox)
-                {
-                    // Exclude the last two items from the textBoxValues list
-                    if (textBoxIndex < textBoxValues.Count - 2)
-                    {
-                        textBox.Text = textBoxValues[textBoxIndex];
-                        textBoxIndex++;
-                    }
-                    else
-                    {
-                        // If there are no more values, you can choose to handle it accordingly
-                        // For example, clear the text box or set a default value
-                        textBox.Text = string.Empty;
-                    }
-                }
-            }
-        }
-
 
         private void openTubeFile(string filePath)
         {
@@ -362,7 +200,7 @@ namespace TubeData
 
                 // Set the values to the corresponding text boxes
                 textBoxProductionOrder.Text = openedProductionOrderValue;
-                SetTextBoxValuesToTableLayoutPanel(tblPanelDataEntry, tblPanelLRAValues, openedTextBoxValues);
+                IH.SetTextBoxValuesToTableLayoutPanel(tblPanelDataEntry, tblPanelLRAValues, openedTextBoxValues);
                 richTextBox1.Text = openedRichTextBoxValue1;
                 richTextBox2.Text = openedRichTextBoxValue2;
             }
@@ -378,20 +216,9 @@ namespace TubeData
             }
         }
 
-        private void clearLRATable()
-        {
-            foreach (Control control in tblPanelLRAValues.Controls)
-            {
-                if (control is TextBox textBox)
-                {
-                    control.Text = "";
-                }
-            }
-        }
-
         private void buttonClearLRA_Click(object sender, EventArgs e)
         {
-            clearLRATable();
+            IH.clearLRATable(tblPanelLRAValues);
         }
 
         private void treeView1_NodeMouseDoubleClick_1(object sender, TreeNodeMouseClickEventArgs e)
