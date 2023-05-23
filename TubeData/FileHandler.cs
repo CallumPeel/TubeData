@@ -61,7 +61,7 @@ namespace TubeData
             }
         }
 
-        public void UpdateProgress()
+        private void UpdateProgress()
         {
             System.Windows.Forms.ProgressBar progressBar1 = this.progressBar1;
             if (progressBar1.Value < progressBar1.Maximum)
@@ -98,7 +98,7 @@ namespace TubeData
             }
         }
 
-        public static Tube Open(string filePath)
+        public static Tube GetTubeFromFile(string filePath)
         {
             try
             {
@@ -115,23 +115,17 @@ namespace TubeData
             }
         }
 
-        public void OpenTubeFile(string filePath)
+        public void PrintTubeInformation(string filePath)
         {
             // Opening a previously saved Tube instance from a binary file
-            Tube openedTube = Open(filePath);
+            Tube openedTube = GetTubeFromFile(filePath);
             if (openedTube != null)
             {
-                // Accessing the properties of the opened Tube instance
-                string openedProductionOrderValue = openedTube.ProductionOrderValue;
-                List<string> openedTextBoxValues = openedTube.TextBoxValues;
-                string openedRichTextBoxValue1 = openedTube.RichTextBoxValue1;
-                string openedRichTextBoxValue2 = openedTube.RichTextBoxValue2;
-
                 // Set the values to the corresponding text boxes
-                textBoxProductionOrder.Text = openedProductionOrderValue;
-                SetTextBoxValuesToTableLayoutPanel(tblPanelDataEntry, tblPanelLRAValues, openedTextBoxValues);
-                richTextBox1.Text = openedRichTextBoxValue1;
-                richTextBox2.Text = openedRichTextBoxValue2;
+                textBoxProductionOrder.Text = openedTube.ProductionOrderValue;
+                SetTextBoxValuesToTableLayoutPanel(tblPanelDataEntry, tblPanelLRAValues, openedTube.TextBoxValues);
+                richTextBox1.Text = openedTube.RichTextBoxValue1;
+                richTextBox2.Text = openedTube.RichTextBoxValue2;
             }
         }
     }
