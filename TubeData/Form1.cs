@@ -1,5 +1,3 @@
-using System.Runtime.Serialization.Formatters.Binary;
-
 namespace TubeData
 {
     public partial class Form1 : Form
@@ -23,7 +21,7 @@ namespace TubeData
             );
             this.WindowState = FormWindowState.Maximized;
             tblPanelLRAValues.RowCount--;
-            for (int i = 0; i < 5; i++) FH.addRow(tblPanelLRAValues);
+            for (int i = 0; i < 5; i++) InputHandler.AddRow(tblPanelLRAValues);
             FH.LoadDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures));
         }
 
@@ -36,7 +34,7 @@ namespace TubeData
             FH.LoadDirectory(sender, e);
         }
 
-        private void treeView1_MouseMove(object sender, MouseEventArgs e)
+        private void TreeView1_MouseMove(object sender, MouseEventArgs e)
         {
             // Get the node at the current mouse pointer location.
             TreeNode theNode = this.treeView1.GetNodeAt(e.X, e.Y);
@@ -54,63 +52,69 @@ namespace TubeData
             }
         }
 
-        private void buttonSave_Click_1(object sender, EventArgs e)
+        private void ButtonSave_Click_1(object sender, EventArgs e)
         {
-            this.FH.saveTube();
+            this.FH.SaveTube();
         }
 
-        private void buttonAddRow_Click(object sender, EventArgs e)
+        private void ButtonAddRow_Click(object sender, EventArgs e)
         {
-            FH.addRow(tblPanelLRAValues);
+            InputHandler.AddRow(tblPanelLRAValues);
         }
 
-        private void buttonRemoveRow_Click(object sender, EventArgs e)
+        private void ButtonRemoveRow_Click(object sender, EventArgs e)
         {
-            FH.removeRow(tblPanelLRAValues);
+            InputHandler.RemoveRow(tblPanelLRAValues);
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
+        private void ButtonClear_Click(object sender, EventArgs e)
         {
-            FH.clearDataEntryTable(tblPanelDataEntry);
+            InputHandler.ClearDataEntryTable(tblPanelDataEntry);
         }
 
+        private void ButtonCancel_Click(object sender, EventArgs e)
+        {
+            ClearAllFields();
+        }
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void ClearAllFields()
         {
             FH.textBoxProductionOrder.Clear();
-            FH.clearLRATable(tblPanelLRAValues);
-            FH.clearDataEntryTable(tblPanelDataEntry);
+            InputHandler.ClearLRATable(tblPanelLRAValues);
+            InputHandler.ClearDataEntryTable(tblPanelDataEntry);
             richTextBox1.Clear();
             richTextBox2.Clear();
         }
 
-
-
-        private void openToolStripButton_Click(object sender, EventArgs e)
+        private void OpenToolStripButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Tube Files (*.TUBE)|*.TUBE";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                FH.openTubeFile(openFileDialog.FileName);
+                FH.OpenTubeFile(openFileDialog.FileName);
             }
         }
 
-        private void buttonClearLRA_Click(object sender, EventArgs e)
+        private void ButtonClearLRA_Click(object sender, EventArgs e)
         {
-            FH.clearLRATable(tblPanelLRAValues);
+            InputHandler.ClearLRATable(tblPanelLRAValues);
         }
 
-        private void treeView1_NodeMouseDoubleClick_1(object sender, TreeNodeMouseClickEventArgs e)
+        private void TreeView1_NodeMouseDoubleClick_1(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Node.Tag is string filePath)
             {
                 if (Path.GetExtension(filePath).Equals(".TUBE", StringComparison.OrdinalIgnoreCase))
                 {
-                    FH.openTubeFile(filePath);
+                    FH.OpenTubeFile(filePath);
                 }
             }
         }
 
+        private void NewToolStripButton_Click(object sender, EventArgs e)
+        {
+            ClearAllFields();
+        }
     }
 }

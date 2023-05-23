@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace TubeData
+﻿namespace TubeData
 {
     internal class InputHandler
     {
@@ -38,7 +31,7 @@ namespace TubeData
         }
 
 
-        public void addRow(TableLayoutPanel panel)
+        public static void AddRow(TableLayoutPanel panel)
         {
             panel.Visible = false;
 
@@ -84,7 +77,7 @@ namespace TubeData
             panel.Visible = true;
         }
 
-        public void removeRow(TableLayoutPanel panel)
+        public static void RemoveRow(TableLayoutPanel panel)
         {
             for (int i = 0; i < 6; i++)
             {
@@ -94,7 +87,7 @@ namespace TubeData
 
         }
 
-        public void clearDataEntryTable(TableLayoutPanel panel)
+        public static void ClearDataEntryTable(TableLayoutPanel panel)
         {
             foreach (Control control in panel.Controls)
             {
@@ -105,7 +98,7 @@ namespace TubeData
             }
         }
 
-        public void SetTextBoxValuesToTableLayoutPanel(TableLayoutPanel tableLayoutPanel1, TableLayoutPanel tableLayoutPanel2, List<string> textBoxValues)
+        public static void SetTextBoxValuesToTableLayoutPanel(TableLayoutPanel tableLayoutPanel1, TableLayoutPanel tableLayoutPanel2, List<string> textBoxValues)
         {
             int textBoxIndex = 0;
 
@@ -136,7 +129,7 @@ namespace TubeData
                 // Call the addRow() method to add the required number of controls
                 for (int i = 0; i < remainingControls / 5 - 1; i++)
                 {
-                    addRow(tableLayoutPanel2);
+                    AddRow(tableLayoutPanel2);
                 }
             }
 
@@ -160,7 +153,7 @@ namespace TubeData
             }
         }
 
-        public void clearLRATable(TableLayoutPanel tblPanelLRAValues)
+        public static void ClearLRATable(TableLayoutPanel tblPanelLRAValues)
         {
             foreach (Control control in tblPanelLRAValues.Controls)
             {
@@ -171,7 +164,7 @@ namespace TubeData
             }
         }
 
-        public void GetRichTextBoxValuesFromTableLayoutPanel(TableLayoutPanel tableLayoutPanel, List<string> textBoxValues)
+        public static void GetRichTextBoxValuesFromTableLayoutPanel(TableLayoutPanel tableLayoutPanel, List<string> textBoxValues)
         {
             foreach (Control control in tableLayoutPanel.Controls)
             {
@@ -185,12 +178,12 @@ namespace TubeData
         public List<string> GetTextBoxValuesFromTableLayoutPanel()
         {
             List<string> textBoxValues = new List<string>();
-            addPanelToList(textBoxValues, this.tblPanelDataEntry);
-            addPanelToList(textBoxValues, this.tblPanelLRAValues);
+            AddPanelToList(textBoxValues, this.tblPanelDataEntry);
+            AddPanelToList(textBoxValues, this.tblPanelLRAValues);
             return textBoxValues;
         }
 
-        private List<string> addPanelToList(List<string> textBoxValues, TableLayoutPanel panel)
+        private static List<string> AddPanelToList(List<string> textBoxValues, TableLayoutPanel panel)
         {
             foreach (Control control in panel.Controls)
             {

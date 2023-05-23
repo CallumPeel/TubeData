@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+﻿using System.Runtime.Serialization.Formatters.Binary;
 
 namespace TubeData
 {
@@ -86,7 +78,7 @@ namespace TubeData
             }
         }
 
-        public void saveTube()
+        public void SaveTube()
         {
             List<string> textBoxValues = new List<string>();
 
@@ -106,7 +98,6 @@ namespace TubeData
             }
         }
 
-
         public static Tube Open(string filePath)
         {
             try
@@ -124,8 +115,7 @@ namespace TubeData
             }
         }
 
-
-        public void openTubeFile(string filePath)
+        public void OpenTubeFile(string filePath)
         {
             // Opening a previously saved Tube instance from a binary file
             Tube openedTube = Open(filePath);
@@ -144,6 +134,5 @@ namespace TubeData
                 richTextBox2.Text = openedRichTextBoxValue2;
             }
         }
-
     }
 }
