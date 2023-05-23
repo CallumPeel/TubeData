@@ -34,24 +34,6 @@ namespace TubeData
             FH.LoadDirectory(sender, e);
         }
 
-        private void TreeView1_MouseMove(object sender, MouseEventArgs e)
-        {
-            // Get the node at the current mouse pointer location.
-            TreeNode theNode = this.treeView1.GetNodeAt(e.X, e.Y);
-
-            // Set a ToolTip only if the mouse pointer is actually paused on a node.
-            if (theNode != null && theNode.Tag != null)
-            {
-                // Change the ToolTip only if the pointer moved to a new node.
-                if (theNode.Tag.ToString() != this.toolTip1.GetToolTip(this.treeView1))
-                    this.toolTip1.SetToolTip(this.treeView1, theNode.Tag.ToString());
-            }
-            else     // Pointer is not over a node so clear the ToolTip.
-            {
-                this.toolTip1.SetToolTip(this.treeView1, "");
-            }
-        }
-
         private void ButtonSave_Click_1(object sender, EventArgs e)
         {
             this.FH.SaveTube();

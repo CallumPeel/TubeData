@@ -164,17 +164,6 @@
             }
         }
 
-        public static void GetRichTextBoxValuesFromTableLayoutPanel(TableLayoutPanel tableLayoutPanel, List<string> textBoxValues)
-        {
-            foreach (Control control in tableLayoutPanel.Controls)
-            {
-                if (control is RichTextBox richTextBox)
-                {
-                    textBoxValues.Add(richTextBox.Text);
-                }
-            }
-        }
-
         public List<string> GetTextBoxValuesFromTableLayoutPanel()
         {
             List<string> textBoxValues = new List<string>();
@@ -205,9 +194,5 @@
             return tube;
         }
 
-        public ProgressBar GetProgressBar()
-        {
-            return this.progressBar1;
-        }
     }
 }
