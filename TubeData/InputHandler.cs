@@ -3,11 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TubeData
 {
     internal class InputHandler
     {
+        public TextBox textBoxProductionOrder;
+        public TableLayoutPanel tblPanelDataEntry, tblPanelLRAValues;
+        public RichTextBox richTextBox1, richTextBox2;
+        public ProgressBar progressBar1;
+        public TreeView treeView1;
+        public TextBox txtDirectoryPath;
+
+        public InputHandler(
+                TextBox textBoxProductionOrder,
+                TableLayoutPanel tblPanelDataEntry,
+                TableLayoutPanel tblPanelLRAValues,
+                RichTextBox richTextBox1,
+                RichTextBox richTextBox2,
+                ProgressBar progressBar1,
+                TreeView treeView1,
+                TextBox txtDirectoryPath
+
+
+
+            )
+        {
+            this.textBoxProductionOrder = textBoxProductionOrder;
+            this.tblPanelDataEntry = tblPanelDataEntry;
+            this.tblPanelLRAValues = tblPanelLRAValues;
+            this.richTextBox1 = richTextBox1;
+            this.richTextBox2 = richTextBox2;
+            this.progressBar1 = progressBar1;
+            this.treeView1 = treeView1;
+            this.txtDirectoryPath = txtDirectoryPath;
+        }
+
 
         public void addRow(TableLayoutPanel panel)
         {
@@ -130,7 +162,7 @@ namespace TubeData
                 }
             }
         }
-        
+
         public void clearLRATable(TableLayoutPanel tblPanelLRAValues)
         {
             foreach (Control control in tblPanelLRAValues.Controls)
@@ -153,16 +185,39 @@ namespace TubeData
             }
         }
 
-        public void GetTextBoxValuesFromTableLayoutPanel(TableLayoutPanel tableLayoutPanel, List<string> textBoxValues)
+        public List<string> GetTextBoxValuesFromTableLayoutPanel()
         {
-            foreach (Control control in tableLayoutPanel.Controls)
+            List<string> textBoxValues = new List<string>();
+            addPanelToList(textBoxValues, this.tblPanelDataEntry);
+            addPanelToList(textBoxValues, this.tblPanelLRAValues);
+            return textBoxValues;
+        }
+
+        private List<string> addPanelToList(List<string> textBoxValues, TableLayoutPanel panel)
+        {
+            foreach (Control control in panel.Controls)
             {
                 if (control is TextBox textBox)
                 {
                     textBoxValues.Add(textBox.Text);
                 }
             }
+            return textBoxValues;
+        }
+
+        public Tube GetTube()
+        {
+            Tube tube = new Tube();
+            tube.ProductionOrderValue = this.textBoxProductionOrder.Text;
+            tube.TextBoxValues = GetTextBoxValuesFromTableLayoutPanel();
+            tube.RichTextBoxValue1 = richTextBox1.Text;
+            tube.RichTextBoxValue2 = richTextBox2.Text;
+            return tube;
+        }
+
+        public ProgressBar GetProgressBar()
+        {
+            return this.progressBar1;
         }
     }
-
 }

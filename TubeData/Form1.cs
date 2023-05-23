@@ -5,15 +5,29 @@ namespace TubeData
     public partial class Form1 : Form
     {
         InputHandler IH;
+        FileHandler FH;
+
 
         public Form1()
         {
+
             InitializeComponent();
+
+            this.IH = new InputHandler(
+                textBoxProductionOrder: textBoxProductionOrder,
+                tblPanelDataEntry: tblPanelDataEntry,
+                tblPanelLRAValues: tblPanelLRAValues,
+                richTextBox1: richTextBox1,
+                richTextBox2: richTextBox2,
+                progressBar1: progressBar1,
+                treeView1: treeView1,
+                txtDirectoryPath: txtDirectoryPath
+            );
+            this.FH = new FileHandler(this.IH);
             this.WindowState = FormWindowState.Maximized;
             tblPanelLRAValues.RowCount--;
-            IH = new InputHandler();
             for (int i = 0; i < 5; i++) IH.addRow(tblPanelLRAValues);
-            LoadDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures));
+            FH.LoadDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures));
         }
 
         private void FolderDirectoryBtn_Click(object sender, EventArgs e)
@@ -22,77 +36,7 @@ namespace TubeData
             DialogResult drResult = folderBrowserDialog1.ShowDialog();
             if (drResult == System.Windows.Forms.DialogResult.OK)
                 txtDirectoryPath.Text = folderBrowserDialog1.SelectedPath;
-            LoadDirectory(sender, e);
-        }
-
-        private void LoadDirectory(object sender, EventArgs e)
-        {
-            // Setting Inital Value of Progress Bar
-            progressBar1.Value = 0;
-            // Clear All Nodes if Already Exists
-            treeView1.Nodes.Clear();
-            toolTip1.ShowAlways = true;
-            if (txtDirectoryPath.Text != "" && Directory.Exists(txtDirectoryPath.Text))
-                LoadDirectory(txtDirectoryPath.Text);
-            else
-                MessageBox.Show("Select Directory!!");
-        }
-
-        public void LoadDirectory(string dir)
-        {
-            DirectoryInfo di = new DirectoryInfo(dir);
-            progressBar1.Maximum = Directory.GetFiles(dir, "*.TUBE", SearchOption.AllDirectories).Length; // Filter files by .TUBE extension
-            TreeNode tds = treeView1.Nodes.Add(di.Name);
-            tds.Tag = di.FullName;
-            tds.StateImageIndex = 0;
-            LoadFiles(dir, tds);
-            LoadSubDirectories(dir, tds);
-        }
-
-        private void LoadSubDirectories(string dir, TreeNode td)
-        {
-            // Get all subdirectories
-            string[] subdirectoryEntries = Directory.GetDirectories(dir);
-            // Loop through them to see if they have any other subdirectories
-            foreach (string subdirectory in subdirectoryEntries)
-            {
-                DirectoryInfo di = new DirectoryInfo(subdirectory);
-                TreeNode tds = td.Nodes.Add(di.Name);
-                tds.StateImageIndex = 0;
-                tds.Tag = di.FullName;
-                LoadFiles(subdirectory, tds);
-                LoadSubDirectories(subdirectory, tds);
-                UpdateProgress();
-            }
-        }
-
-        private void LoadFiles(string dir, TreeNode td)
-        {
-            string[] files = Directory.GetFiles(dir, "*.TUBE"); // Filter files by .TUBE extension
-            foreach (string file in files)
-            {
-                FileInfo fi = new FileInfo(file);
-                TreeNode tds = td.Nodes.Add(fi.Name);
-                tds.Tag = fi.FullName;
-                tds.StateImageIndex = 1;
-                UpdateProgress();
-            }
-        }
-
-        private void UpdateProgress()
-        {
-            if (progressBar1.Value < progressBar1.Maximum)
-            {
-                progressBar1.Value++;
-                int percent = (int)(((double)progressBar1.Value / (double)progressBar1.Maximum) * 100);
-                progressBar1.CreateGraphics().DrawString(
-                    percent.ToString() + "%",
-                    new Font("Arial", (float)8.25, FontStyle.Regular),
-                    Brushes.Black,
-                    new PointF(progressBar1.Width / 2 - 10, progressBar1.Height / 2 - 7)
-                );
-                System.Windows.Forms.Application.DoEvents();
-            }
+            FH.LoadDirectory(sender, e);
         }
 
         private void treeView1_MouseMove(object sender, MouseEventArgs e)
@@ -115,35 +59,7 @@ namespace TubeData
 
         private void buttonSave_Click_1(object sender, EventArgs e)
         {
-            List<string> textBoxValues = new List<string>();
-
-            IH.GetTextBoxValuesFromTableLayoutPanel(tblPanelDataEntry, textBoxValues);
-            IH.GetTextBoxValuesFromTableLayoutPanel(tblPanelLRAValues, textBoxValues);
-            IH.GetRichTextBoxValuesFromTableLayoutPanel(tableLayoutPanel1, textBoxValues);
-
-            // Create an instance of the Tube class
-            Tube tube = new Tube();
-
-            tube.ProductionOrderValue = textBoxProductionOrder.Text;
-
-            // Set the TextBoxValues property with the textBoxValues list
-            tube.TextBoxValues = textBoxValues;
-
-            // Set the RichTextBoxValue1 and RichTextBoxValue2 properties with the rich text box values
-            tube.RichTextBoxValue1 = richTextBox1.Text;
-            tube.RichTextBoxValue2 = richTextBox2.Text;
-
-            // Prompt the user to select a file for saving the Tube object
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Tube Files (*.TUBE)|*.TUBE";
-            saveFileDialog.FileName = tube.ProductionOrderValue + ".TUBE";
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = saveFileDialog.FileName;
-
-                // Save the Tube object to the selected file
-                tube.Save(filePath);
-            }
+            this.FH.saveTube();
         }
 
         private void buttonAddRow_Click(object sender, EventArgs e)
@@ -231,5 +147,6 @@ namespace TubeData
                 }
             }
         }
+
     }
 }

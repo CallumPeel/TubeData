@@ -15,7 +15,10 @@ public class Tube
 
     public Tube()
     {
-        TextBoxValues = new List<string>();
+        this.ProductionOrderValue = string.Empty;
+        this.TextBoxValues = new List<string>();
+        this.RichTextBoxValue1 = string.Empty;
+        this.RichTextBoxValue2 = string.Empty;
     }
 
     public void Save(string filePath)
