@@ -4,16 +4,14 @@ namespace TubeData
 {
     public partial class Form1 : Form
     {
-        InputHandler IH;
         FileHandler FH;
-
 
         public Form1()
         {
 
             InitializeComponent();
 
-            this.IH = new InputHandler(
+            this.FH = new FileHandler(
                 textBoxProductionOrder: textBoxProductionOrder,
                 tblPanelDataEntry: tblPanelDataEntry,
                 tblPanelLRAValues: tblPanelLRAValues,
@@ -23,10 +21,9 @@ namespace TubeData
                 treeView1: treeView1,
                 txtDirectoryPath: txtDirectoryPath
             );
-            this.FH = new FileHandler(this.IH);
             this.WindowState = FormWindowState.Maximized;
             tblPanelLRAValues.RowCount--;
-            for (int i = 0; i < 5; i++) IH.addRow(tblPanelLRAValues);
+            for (int i = 0; i < 5; i++) FH.addRow(tblPanelLRAValues);
             FH.LoadDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures));
         }
 
@@ -64,63 +61,30 @@ namespace TubeData
 
         private void buttonAddRow_Click(object sender, EventArgs e)
         {
-            IH.addRow(tblPanelLRAValues);
+            FH.addRow(tblPanelLRAValues);
         }
 
         private void buttonRemoveRow_Click(object sender, EventArgs e)
         {
-            IH.removeRow(tblPanelLRAValues);
+            FH.removeRow(tblPanelLRAValues);
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            IH.clearDataEntryTable(tblPanelDataEntry);
+            FH.clearDataEntryTable(tblPanelDataEntry);
         }
 
-        public static Tube Open(string filePath)
-        {
-            try
-            {
-                using (FileStream fs = new FileStream(filePath, FileMode.Open))
-                {
-                    BinaryFormatter formatter = new BinaryFormatter();
-                    return (Tube)formatter.Deserialize(fs);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error occurred while opening Tube: " + ex.Message);
-                return null;
-            }
-        }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            IH.clearLRATable(tblPanelLRAValues);
-            IH.clearDataEntryTable(tblPanelDataEntry);
+            FH.textBoxProductionOrder.Clear();
+            FH.clearLRATable(tblPanelLRAValues);
+            FH.clearDataEntryTable(tblPanelDataEntry);
             richTextBox1.Clear();
             richTextBox2.Clear();
         }
 
-        private void openTubeFile(string filePath)
-        {
-            // Opening a previously saved Tube instance from a binary file
-            Tube openedTube = Open(filePath);
-            if (openedTube != null)
-            {
-                // Accessing the properties of the opened Tube instance
-                string openedProductionOrderValue = openedTube.ProductionOrderValue;
-                List<string> openedTextBoxValues = openedTube.TextBoxValues;
-                string openedRichTextBoxValue1 = openedTube.RichTextBoxValue1;
-                string openedRichTextBoxValue2 = openedTube.RichTextBoxValue2;
 
-                // Set the values to the corresponding text boxes
-                textBoxProductionOrder.Text = openedProductionOrderValue;
-                IH.SetTextBoxValuesToTableLayoutPanel(tblPanelDataEntry, tblPanelLRAValues, openedTextBoxValues);
-                richTextBox1.Text = openedRichTextBoxValue1;
-                richTextBox2.Text = openedRichTextBoxValue2;
-            }
-        }
 
         private void openToolStripButton_Click(object sender, EventArgs e)
         {
@@ -128,13 +92,13 @@ namespace TubeData
             openFileDialog.Filter = "Tube Files (*.TUBE)|*.TUBE";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                openTubeFile(openFileDialog.FileName);
+                FH.openTubeFile(openFileDialog.FileName);
             }
         }
 
         private void buttonClearLRA_Click(object sender, EventArgs e)
         {
-            IH.clearLRATable(tblPanelLRAValues);
+            FH.clearLRATable(tblPanelLRAValues);
         }
 
         private void treeView1_NodeMouseDoubleClick_1(object sender, TreeNodeMouseClickEventArgs e)
@@ -143,7 +107,7 @@ namespace TubeData
             {
                 if (Path.GetExtension(filePath).Equals(".TUBE", StringComparison.OrdinalIgnoreCase))
                 {
-                    openTubeFile(filePath);
+                    FH.openTubeFile(filePath);
                 }
             }
         }

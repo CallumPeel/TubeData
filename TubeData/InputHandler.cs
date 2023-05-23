@@ -17,17 +17,14 @@ namespace TubeData
         public TextBox txtDirectoryPath;
 
         public InputHandler(
-                TextBox textBoxProductionOrder,
-                TableLayoutPanel tblPanelDataEntry,
-                TableLayoutPanel tblPanelLRAValues,
-                RichTextBox richTextBox1,
-                RichTextBox richTextBox2,
-                ProgressBar progressBar1,
-                TreeView treeView1,
-                TextBox txtDirectoryPath
-
-
-
+            TextBox textBoxProductionOrder,
+            TableLayoutPanel tblPanelDataEntry,
+            TableLayoutPanel tblPanelLRAValues,
+            RichTextBox richTextBox1,
+            RichTextBox richTextBox2,
+            ProgressBar progressBar1,
+            TreeView treeView1,
+            TextBox txtDirectoryPath
             )
         {
             this.textBoxProductionOrder = textBoxProductionOrder;

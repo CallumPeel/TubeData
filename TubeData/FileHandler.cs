@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,23 +10,20 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TubeData
 {
-    internal class FileHandler
+    internal class FileHandler : InputHandler
     {
-        InputHandler IH;
-
-        public FileHandler(InputHandler IH)
+        public FileHandler(System.Windows.Forms.TextBox textBoxProductionOrder, TableLayoutPanel tblPanelDataEntry, TableLayoutPanel tblPanelLRAValues, RichTextBox richTextBox1, RichTextBox richTextBox2, System.Windows.Forms.ProgressBar progressBar1, System.Windows.Forms.TreeView treeView1, System.Windows.Forms.TextBox txtDirectoryPath) : base(textBoxProductionOrder, tblPanelDataEntry, tblPanelLRAValues, richTextBox1, richTextBox2, progressBar1, treeView1, txtDirectoryPath)
         {
-            this.IH = IH;
         }
 
         public void LoadDirectory(object sender, EventArgs e)
         {
             // Setting Inital Value of Progress Bar
-            this.IH.progressBar1.Value = 0;
+            this.progressBar1.Value = 0;
             // Clear All Nodes if Already Exists
-            this.IH.treeView1.Nodes.Clear();
-            if (this.IH.txtDirectoryPath.Text != "" && Directory.Exists(this.IH.txtDirectoryPath.Text))
-                LoadDirectory(this.IH.txtDirectoryPath.Text);
+            this.treeView1.Nodes.Clear();
+            if (this.txtDirectoryPath.Text != "" && Directory.Exists(this.txtDirectoryPath.Text))
+                LoadDirectory(this.txtDirectoryPath.Text);
             else
                 MessageBox.Show("Select Directory!!");
         }
@@ -33,8 +31,8 @@ namespace TubeData
         public void LoadDirectory(string dir)
         {
             DirectoryInfo di = new DirectoryInfo(dir);
-            this.IH.progressBar1.Maximum = Directory.GetFiles(dir, "*.TUBE", SearchOption.AllDirectories).Length; // Filter files by .TUBE extension
-            TreeNode tds = this.IH.treeView1.Nodes.Add(di.Name);
+            this.progressBar1.Maximum = Directory.GetFiles(dir, "*.TUBE", SearchOption.AllDirectories).Length; // Filter files by .TUBE extension
+            TreeNode tds = this.treeView1.Nodes.Add(di.Name);
             tds.Tag = di.FullName;
             tds.StateImageIndex = 0;
             LoadFiles(dir, tds);
@@ -73,7 +71,7 @@ namespace TubeData
 
         public void UpdateProgress()
         {
-            System.Windows.Forms.ProgressBar progressBar1 = this.IH.progressBar1;
+            System.Windows.Forms.ProgressBar progressBar1 = this.progressBar1;
             if (progressBar1.Value < progressBar1.Maximum)
             {
                 progressBar1.Value++;
@@ -93,7 +91,7 @@ namespace TubeData
             List<string> textBoxValues = new List<string>();
 
             // Create an instance of the Tube class
-            Tube tube = IH.GetTube();
+            Tube tube = GetTube();
 
             // Prompt the user to select a file for saving the Tube object
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -105,6 +103,45 @@ namespace TubeData
 
                 // Save the Tube object to the selected file
                 tube.Save(filePath);
+            }
+        }
+
+
+        public static Tube Open(string filePath)
+        {
+            try
+            {
+                using (FileStream fs = new FileStream(filePath, FileMode.Open))
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    return (Tube)formatter.Deserialize(fs);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error occurred while opening Tube: " + ex.Message);
+                return null;
+            }
+        }
+
+
+        public void openTubeFile(string filePath)
+        {
+            // Opening a previously saved Tube instance from a binary file
+            Tube openedTube = Open(filePath);
+            if (openedTube != null)
+            {
+                // Accessing the properties of the opened Tube instance
+                string openedProductionOrderValue = openedTube.ProductionOrderValue;
+                List<string> openedTextBoxValues = openedTube.TextBoxValues;
+                string openedRichTextBoxValue1 = openedTube.RichTextBoxValue1;
+                string openedRichTextBoxValue2 = openedTube.RichTextBoxValue2;
+
+                // Set the values to the corresponding text boxes
+                textBoxProductionOrder.Text = openedProductionOrderValue;
+                SetTextBoxValuesToTableLayoutPanel(tblPanelDataEntry, tblPanelLRAValues, openedTextBoxValues);
+                richTextBox1.Text = openedRichTextBoxValue1;
+                richTextBox2.Text = openedRichTextBoxValue2;
             }
         }
 
