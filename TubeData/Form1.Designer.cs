@@ -113,6 +113,7 @@
             newToolStripButton.Name = "newToolStripButton";
             newToolStripButton.Size = new Size(63, 24);
             newToolStripButton.Text = "&New";
+            newToolStripButton.Click += NewToolStripButton_Click;
             // 
             // openToolStripButton
             // 
@@ -121,7 +122,7 @@
             openToolStripButton.Name = "openToolStripButton";
             openToolStripButton.Size = new Size(69, 24);
             openToolStripButton.Text = "&Open";
-            openToolStripButton.Click += openToolStripButton_Click;
+            openToolStripButton.Click += OpenToolStripButton_Click;
             // 
             // saveToolStripButton
             // 
@@ -179,7 +180,7 @@
             treeView1.Size = new Size(234, 619);
             treeView1.StateImageList = imageList1;
             treeView1.TabIndex = 3;
-            treeView1.NodeMouseDoubleClick += treeView1_NodeMouseDoubleClick_1;
+            treeView1.NodeMouseDoubleClick += TreeView1_NodeMouseDoubleClick_1;
             // 
             // imageList1
             // 
@@ -358,7 +359,7 @@
             buttonClear.TabIndex = 8;
             buttonClear.Text = "Clear";
             buttonClear.UseVisualStyleBackColor = true;
-            buttonClear.Click += buttonClear_Click;
+            buttonClear.Click += ButtonClear_Click;
             // 
             // textBox_1
             // 
@@ -474,7 +475,7 @@
             buttonCancel.TabIndex = 0;
             buttonCancel.Text = "Cancel";
             buttonCancel.UseVisualStyleBackColor = true;
-            buttonCancel.Click += buttonCancel_Click;
+            buttonCancel.Click += ButtonCancel_Click;
             // 
             // buttonSave
             // 
@@ -485,7 +486,7 @@
             buttonSave.TabIndex = 1;
             buttonSave.Text = "Save";
             buttonSave.UseVisualStyleBackColor = true;
-            buttonSave.Click += buttonSave_Click_1;
+            buttonSave.Click += ButtonSave_Click_1;
             // 
             // tableLayoutPanel1
             // 
@@ -581,7 +582,7 @@
             buttonAddRow.TabIndex = 0;
             buttonAddRow.Text = "Add Row";
             buttonAddRow.UseVisualStyleBackColor = true;
-            buttonAddRow.Click += buttonAddRow_Click;
+            buttonAddRow.Click += ButtonAddRow_Click;
             // 
             // buttonRemoveRow
             // 
@@ -593,7 +594,7 @@
             buttonRemoveRow.TabIndex = 1;
             buttonRemoveRow.Text = "Remove Row";
             buttonRemoveRow.UseVisualStyleBackColor = true;
-            buttonRemoveRow.Click += buttonRemoveRow_Click;
+            buttonRemoveRow.Click += ButtonRemoveRow_Click;
             // 
             // buttonClearLRA
             // 
@@ -605,7 +606,7 @@
             buttonClearLRA.TabIndex = 1;
             buttonClearLRA.Text = "Clear";
             buttonClearLRA.UseVisualStyleBackColor = true;
-            buttonClearLRA.Click += buttonClearLRA_Click;
+            buttonClearLRA.Click += ButtonClearLRA_Click;
             // 
             // tblPanelLRAValues
             // 
@@ -706,6 +707,7 @@
             // 
             // textBoxProductionOrder
             // 
+            textBoxProductionOrder.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBoxProductionOrder.Location = new Point(676, 49);
             textBoxProductionOrder.Name = "textBoxProductionOrder";
             textBoxProductionOrder.Size = new Size(315, 27);
@@ -713,6 +715,7 @@
             // 
             // labelProductionOrder
             // 
+            labelProductionOrder.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelProductionOrder.AutoSize = true;
             labelProductionOrder.Location = new Point(513, 52);
             labelProductionOrder.Name = "labelProductionOrder";

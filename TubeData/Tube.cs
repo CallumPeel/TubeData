@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
+﻿using System.Runtime.Serialization.Formatters.Binary;
 
 [Serializable]
 public class Tube
@@ -15,7 +11,10 @@ public class Tube
 
     public Tube()
     {
-        TextBoxValues = new List<string>();
+        this.ProductionOrderValue = string.Empty;
+        this.TextBoxValues = new List<string>();
+        this.RichTextBoxValue1 = string.Empty;
+        this.RichTextBoxValue2 = string.Empty;
     }
 
     public void Save(string filePath)
