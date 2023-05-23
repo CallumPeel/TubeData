@@ -98,5 +98,10 @@ namespace TubeData
         {
             ClearAllFields();
         }
+
+        private void printToolStripButton_Click(object sender, EventArgs e)
+        {
+            FH.PrintPanel(tblPnlMain);
+        }
     }
 }

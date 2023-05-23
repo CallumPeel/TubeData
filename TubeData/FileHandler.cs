@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization.Formatters.Binary;
+﻿using System.Drawing.Printing;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace TubeData
 {
@@ -127,6 +128,51 @@ namespace TubeData
                 richTextBox1.Text = openedTube.RichTextBoxValue1;
                 richTextBox2.Text = openedTube.RichTextBoxValue2;
             }
+        }
+        private Panel ResizePanelToA4(Panel panel)
+        {
+            Panel newPanel = panel;
+            // A4 paper size in millimeters
+            float paperWidth = 210f;
+            float paperHeight = 297f;
+
+            // Convert millimeters to pixels at 96 DPI (dots per inch)
+            int pixelWidth = (int)(paperWidth / 25.4 * 96);
+            int pixelHeight = (int)(paperHeight / 25.4 * 96);
+
+            // Set the panel size to match the A4 dimensions
+            newPanel.Size = new Size(pixelWidth, pixelHeight);
+            return newPanel;
+
+        }
+
+        public void PrintPanel(Panel panel)
+        {
+            PrintDocument printDocument = new PrintDocument();
+            Panel resizedPanel = ResizePanelToA4(panel);
+            printDocument.PrintPage += (sender, e) => PrintPanel(sender, e, resizedPanel);
+
+
+            //Optionally, you can use the PrintPreviewDialog to preview the print layout
+             PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+            printPreviewDialog.Document = printDocument;
+            printPreviewDialog.ShowDialog();
+
+            // Alternatively, you can use the PrintDialog to specify print settings and print directly
+            PrintDialog printDialog = new PrintDialog();
+            printDialog.Document = printDocument;
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                printDocument.Print();
+            }
+        }
+
+        private void PrintPanel(object sender, PrintPageEventArgs e, Panel panel)
+        {
+            Bitmap bitmap = new Bitmap(panel.Width, panel.Height);
+            panel.DrawToBitmap(bitmap, new Rectangle(0, 0, panel.Width, panel.Height));
+            e.Graphics.DrawImage(bitmap, new Point(0, 0));
+            bitmap.Dispose();
         }
     }
 }
