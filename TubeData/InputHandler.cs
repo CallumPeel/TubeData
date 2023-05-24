@@ -3,7 +3,12 @@
     internal class InputHandler
     {
         public TextBox textBoxProductionOrder;
-        public TableLayoutPanel tblPanelDataEntry, tblPanelLRAValues;
+        public TableLayoutPanel 
+            tblPanelDataEntry, 
+            tblPanelLRAValues, 
+            tblPanelLRAControls, 
+            tblPnlSaveCancel, 
+            tblPnlComments;
         public RichTextBox richTextBox1, richTextBox2;
         public ProgressBar progressBar1;
         public TreeView treeView1;
@@ -13,6 +18,9 @@
             TextBox textBoxProductionOrder,
             TableLayoutPanel tblPanelDataEntry,
             TableLayoutPanel tblPanelLRAValues,
+            TableLayoutPanel tblPanelLRAControls,
+            TableLayoutPanel tblPnlSaveCancel,
+            TableLayoutPanel tblPnlComments,
             RichTextBox richTextBox1,
             RichTextBox richTextBox2,
             ProgressBar progressBar1,
@@ -23,6 +31,9 @@
             this.textBoxProductionOrder = textBoxProductionOrder;
             this.tblPanelDataEntry = tblPanelDataEntry;
             this.tblPanelLRAValues = tblPanelLRAValues;
+            this.tblPanelLRAControls = tblPanelLRAControls;
+            this.tblPnlSaveCancel = tblPnlSaveCancel;
+            this.tblPnlComments = tblPnlComments;
             this.richTextBox1 = richTextBox1;
             this.richTextBox2 = richTextBox2;
             this.progressBar1 = progressBar1;
@@ -33,11 +44,13 @@
 
         public static void AddRow(TableLayoutPanel panel)
         {
+            if (panel.RowCount >= 15) {
+                return;
+            }
+
             panel.Visible = false;
+            panel.RowCount++;
 
-            panel.RowCount++; // Increment row count
-
-            // Create label for the row number
             System.Windows.Forms.Label rowLabel = new System.Windows.Forms.Label
             {
                 Text = panel.RowCount.ToString(),
@@ -49,7 +62,6 @@
 
             TextBox[] textBoxes = new TextBox[5];
 
-            // Create text boxes for data entry
             for (int i = 0; i < textBoxes.Length; i++)
             {
                 textBoxes[i] = new TextBox
@@ -60,16 +72,10 @@
                 };
             }
 
-            // Set RowStyles
-            panel.RowStyles.Clear(); // Clear any existing row styles
+            panel.RowStyles.Clear();
+            panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50));
+            panel.Controls.Add(rowLabel, 0, panel.RowCount);
 
-            // Set the new row to use a fixed height
-            panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50)); // Adjust the height as needed
-
-            // Add controls to the new row
-            panel.Controls.Add(rowLabel, 0, panel.RowCount); // Add label to column 0
-
-            // Add text boxes to columns 1-5
             for (int i = 0; i < textBoxes.Length; i++)
             {
                 panel.Controls.Add(textBoxes[i], i + 1, panel.RowCount);

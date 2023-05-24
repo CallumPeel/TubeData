@@ -1,10 +1,36 @@
-﻿using System.Runtime.Serialization.Formatters.Binary;
+﻿using System.Drawing.Printing;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Forms;
 
 namespace TubeData
 {
     internal class FileHandler : InputHandler
     {
-        public FileHandler(System.Windows.Forms.TextBox textBoxProductionOrder, TableLayoutPanel tblPanelDataEntry, TableLayoutPanel tblPanelLRAValues, RichTextBox richTextBox1, RichTextBox richTextBox2, System.Windows.Forms.ProgressBar progressBar1, System.Windows.Forms.TreeView treeView1, System.Windows.Forms.TextBox txtDirectoryPath) : base(textBoxProductionOrder, tblPanelDataEntry, tblPanelLRAValues, richTextBox1, richTextBox2, progressBar1, treeView1, txtDirectoryPath)
+        public FileHandler(
+            System.Windows.Forms.TextBox textBoxProductionOrder, 
+            TableLayoutPanel tblPanelDataEntry, 
+            TableLayoutPanel tblPanelLRAValues,
+            TableLayoutPanel tblPanelLRAControls,
+            TableLayoutPanel tblPnlComments,
+            TableLayoutPanel tblPnlSaveCancel,
+            RichTextBox richTextBox1, 
+            RichTextBox richTextBox2, 
+            System.Windows.Forms.ProgressBar progressBar1, 
+            System.Windows.Forms.TreeView treeView1,
+            System.Windows.Forms.TextBox txtDirectoryPath) : 
+            base(
+                textBoxProductionOrder, 
+                tblPanelDataEntry, 
+                tblPanelLRAValues,
+                tblPanelLRAControls,
+                tblPnlSaveCancel,
+                tblPnlComments,
+                richTextBox1, 
+                richTextBox2,
+                progressBar1, 
+                treeView1, 
+                txtDirectoryPath
+                )
         {
         }
 
@@ -127,6 +153,91 @@ namespace TubeData
                 richTextBox1.Text = openedTube.RichTextBoxValue1;
                 richTextBox2.Text = openedTube.RichTextBoxValue2;
             }
+        }
+
+        public Panel ResizePanelToA4(Panel panel)
+        {
+            // A4 paper size in millimeters
+            float paperWidth = 210f;
+            float paperHeight = 297f;
+
+            // Get the graphics object of the panel
+            Graphics graphics = panel.CreateGraphics();
+            float dpiX = graphics.DpiX;
+            float dpiY = graphics.DpiY;
+
+            // Convert millimeters to pixels at the specified DPI
+            int pixelWidth = (int)(paperWidth / 25.4 * dpiX);
+            int pixelHeight = (int)(paperHeight / 25.4 * dpiY);
+
+            // Adjust the pixel height to fill the entire page vertically
+            int formHeight = panel.Parent.ClientSize.Height; // Assuming the panel is directly placed within the parent control
+            if (pixelHeight < formHeight)
+                pixelHeight = formHeight;
+
+            // Set the panel size to match the A4 dimensions
+            panel.Size = new Size(pixelWidth, pixelHeight);
+            //panel.Size = new Size(2480, 8508);
+
+            // Dispose the graphics object
+            graphics.Dispose();
+
+            return panel;
+        }
+
+        private void PrintFormat()
+        {
+            float scalar = 2f;
+            int height = this.richTextBox1.Height;
+            this.tblPanelLRAControls.Hide();
+            this.tblPanelDataEntry.Controls["tblPnlButtons"].Controls["buttonClear"].Hide();
+            this.tblPnlSaveCancel.Hide();
+            this.tblPnlComments.Margin = new Padding(40, 15, 30, 3);
+            this.richTextBox1.Height = (int)(height * scalar);
+            this.richTextBox2.Height = (int)(height * scalar);
+        }
+
+        private void NormalFormat()
+        {
+            float scalar = 2.4f;
+            int height = this.richTextBox1.Height;
+            this.tblPanelLRAControls.Show();
+            this.tblPanelDataEntry.Controls["tblPnlButtons"].Controls["buttonClear"].Show();
+            this.tblPnlSaveCancel.Show();
+            this.tblPnlComments.Margin = new Padding(30, 15, 30, 3);
+            this.richTextBox1.Height = (int)(height / scalar);
+            this.richTextBox2.Height = (int)(height / scalar);
+        }
+
+        public void PrintPanel(Panel panel)
+        {
+            PrintFormat();
+            PrintDocument printDocument = new PrintDocument();
+            Panel resizedPanel = ResizePanelToA4(panel);
+            printDocument.PrintPage += (sender, e) => PrintPanel(sender, e, resizedPanel);
+
+
+            //Optionally, you can use the PrintPreviewDialog to preview the print layout
+             PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+            printPreviewDialog.Document = printDocument;
+            printPreviewDialog.ShowDialog();
+
+            // Alternatively, you can use the PrintDialog to specify print settings and print directly
+            PrintDialog printDialog = new PrintDialog();
+            printDialog.Document = printDocument;
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                printDocument.Print();
+            }
+            NormalFormat();
+        }
+
+        private void PrintPanel(object sender, PrintPageEventArgs e, Panel panel)
+        {
+            Bitmap bitmap = new Bitmap(panel.Width, panel.Height);
+            panel.DrawToBitmap(bitmap, new Rectangle(0, 0, panel.Width, panel.Height));
+            e.Graphics.DrawImage(bitmap, new Point(0, 0));
+            bitmap.Dispose();
         }
     }
 }
