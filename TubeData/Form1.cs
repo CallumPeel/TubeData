@@ -28,6 +28,7 @@ namespace TubeData
             tblPanelLRAValues.RowCount--;
             for (int i = 0; i < 5; i++) InputHandler.AddRow(tblPanelLRAValues);
             FH.LoadDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures));
+            tblPanelLRAValues.MaximumSize = new Size(0, 300);
         }
 
         private void FolderDirectoryBtn_Click(object sender, EventArgs e)
@@ -115,15 +116,21 @@ namespace TubeData
 
         private void PrintToolStripButton_Click(object sender, EventArgs e)
         {
-            //WindowState = FormWindowState.Maximized;
+            WindowState = FormWindowState.Maximized;
             mainPanel.Hide();
+            mainPanel.AutoSize = false;
+            mainPanel.Size = new Size(1000, 1100);
+            mainPanel.Dock = DockStyle.None;
+            mainPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            tblPanelLRAValues.MaximumSize = new Size(0, 0);
             PrintPanel(mainPanel);
+            tblPanelLRAValues.MaximumSize = new Size(0, 300);
+            mainPanel.Location = new Point(275, 27);
+            mainPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left;
+            mainPanel.Dock = DockStyle.None;
+            mainPanel.Size = new Size(1645, 899);
+            mainPanel.AutoSize = true;
             mainPanel.Show();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
