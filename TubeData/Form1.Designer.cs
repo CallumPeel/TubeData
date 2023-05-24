@@ -182,7 +182,7 @@
             treeView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             treeView1.Location = new Point(12, 131);
             treeView1.Name = "treeView1";
-            treeView1.Size = new Size(234, 574);
+            treeView1.Size = new Size(234, 720);
             treeView1.StateImageList = imageList1;
             treeView1.TabIndex = 3;
             treeView1.NodeMouseDoubleClick += TreeView1_NodeMouseDoubleClick_1;
@@ -198,7 +198,7 @@
             // progressBar1
             // 
             progressBar1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            progressBar1.Location = new Point(12, 711);
+            progressBar1.Location = new Point(12, 857);
             progressBar1.Name = "progressBar1";
             progressBar1.Size = new Size(234, 12);
             progressBar1.TabIndex = 4;
@@ -224,7 +224,7 @@
             tblPnlMain.RowStyles.Add(new RowStyle());
             tblPnlMain.RowStyles.Add(new RowStyle());
             tblPnlMain.RowStyles.Add(new RowStyle());
-            tblPnlMain.Size = new Size(1076, 713);
+            tblPnlMain.Size = new Size(960, 960);
             tblPnlMain.TabIndex = 5;
             // 
             // tblPanelDataEntry
@@ -261,7 +261,7 @@
             tblPanelDataEntry.RowStyles.Add(new RowStyle());
             tblPanelDataEntry.RowStyles.Add(new RowStyle());
             tblPanelDataEntry.RowStyles.Add(new RowStyle());
-            tblPanelDataEntry.Size = new Size(1016, 173);
+            tblPanelDataEntry.Size = new Size(900, 173);
             tblPanelDataEntry.TabIndex = 4;
             // 
             // labelClient
@@ -308,7 +308,7 @@
             // 
             labelDrawingNo.Anchor = AnchorStyles.Left;
             labelDrawingNo.AutoSize = true;
-            labelDrawingNo.Location = new Point(506, 6);
+            labelDrawingNo.Location = new Point(448, 6);
             labelDrawingNo.Name = "labelDrawingNo";
             labelDrawingNo.Size = new Size(92, 20);
             labelDrawingNo.TabIndex = 0;
@@ -318,7 +318,7 @@
             // 
             labelPartNo.Anchor = AnchorStyles.Left;
             labelPartNo.AutoSize = true;
-            labelPartNo.Location = new Point(506, 39);
+            labelPartNo.Location = new Point(448, 39);
             labelPartNo.Name = "labelPartNo";
             labelPartNo.Size = new Size(61, 20);
             labelPartNo.TabIndex = 0;
@@ -328,7 +328,7 @@
             // 
             labelTubeSize.Anchor = AnchorStyles.Left;
             labelTubeSize.AutoSize = true;
-            labelTubeSize.Location = new Point(506, 72);
+            labelTubeSize.Location = new Point(448, 72);
             labelTubeSize.Name = "labelTubeSize";
             labelTubeSize.Size = new Size(76, 20);
             labelTubeSize.TabIndex = 0;
@@ -338,7 +338,7 @@
             // 
             labelToolingSize.Anchor = AnchorStyles.Left;
             labelToolingSize.AutoSize = true;
-            labelToolingSize.Location = new Point(506, 105);
+            labelToolingSize.Location = new Point(448, 105);
             labelToolingSize.Name = "labelToolingSize";
             labelToolingSize.Size = new Size(93, 20);
             labelToolingSize.TabIndex = 0;
@@ -351,17 +351,17 @@
             tblPnlButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tblPnlButtons.ColumnStyles.Add(new ColumnStyle());
             tblPnlButtons.Controls.Add(buttonClear, 1, 0);
-            tblPnlButtons.Location = new Point(634, 135);
+            tblPnlButtons.Location = new Point(677, 135);
             tblPnlButtons.Name = "tblPnlButtons";
             tblPnlButtons.RowCount = 1;
             tblPnlButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblPnlButtons.Size = new Size(379, 35);
+            tblPnlButtons.Size = new Size(220, 35);
             tblPnlButtons.TabIndex = 8;
             // 
             // buttonClear
             // 
             buttonClear.Anchor = AnchorStyles.Right;
-            buttonClear.Location = new Point(239, 3);
+            buttonClear.Location = new Point(80, 3);
             buttonClear.Margin = new Padding(3, 3, 20, 3);
             buttonClear.Name = "buttonClear";
             buttonClear.Size = new Size(120, 29);
@@ -376,17 +376,17 @@
             textBox_1.Location = new Point(92, 3);
             textBox_1.Margin = new Padding(3, 3, 20, 3);
             textBox_1.Name = "textBox_1";
-            textBox_1.Size = new Size(391, 27);
+            textBox_1.Size = new Size(333, 27);
             textBox_1.TabIndex = 0;
             textBox_1.Tag = "client";
             // 
             // textBox_2
             // 
             textBox_2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_2.Location = new Point(605, 3);
+            textBox_2.Location = new Point(547, 3);
             textBox_2.Margin = new Padding(3, 3, 20, 3);
             textBox_2.Name = "textBox_2";
-            textBox_2.Size = new Size(391, 27);
+            textBox_2.Size = new Size(333, 27);
             textBox_2.TabIndex = 1;
             textBox_2.Tag = "drawingNo";
             // 
@@ -396,17 +396,17 @@
             textBox_3.Location = new Point(92, 36);
             textBox_3.Margin = new Padding(3, 3, 20, 3);
             textBox_3.Name = "textBox_3";
-            textBox_3.Size = new Size(391, 27);
+            textBox_3.Size = new Size(333, 27);
             textBox_3.TabIndex = 2;
             textBox_3.Tag = "date";
             // 
             // textBox_4
             // 
             textBox_4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_4.Location = new Point(605, 36);
+            textBox_4.Location = new Point(547, 36);
             textBox_4.Margin = new Padding(3, 3, 20, 3);
             textBox_4.Name = "textBox_4";
-            textBox_4.Size = new Size(391, 27);
+            textBox_4.Size = new Size(333, 27);
             textBox_4.TabIndex = 3;
             textBox_4.Tag = "partNo";
             // 
@@ -416,17 +416,17 @@
             textBox_5.Location = new Point(92, 69);
             textBox_5.Margin = new Padding(3, 3, 20, 3);
             textBox_5.Name = "textBox_5";
-            textBox_5.Size = new Size(391, 27);
+            textBox_5.Size = new Size(333, 27);
             textBox_5.TabIndex = 4;
             textBox_5.Tag = "material";
             // 
             // textBox_6
             // 
             textBox_6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_6.Location = new Point(605, 69);
+            textBox_6.Location = new Point(547, 69);
             textBox_6.Margin = new Padding(3, 3, 20, 3);
             textBox_6.Name = "textBox_6";
-            textBox_6.Size = new Size(391, 27);
+            textBox_6.Size = new Size(333, 27);
             textBox_6.TabIndex = 5;
             textBox_6.Tag = "tubeSize";
             // 
@@ -436,17 +436,17 @@
             textBox_7.Location = new Point(92, 102);
             textBox_7.Margin = new Padding(3, 3, 20, 3);
             textBox_7.Name = "textBox_7";
-            textBox_7.Size = new Size(391, 27);
+            textBox_7.Size = new Size(333, 27);
             textBox_7.TabIndex = 6;
             textBox_7.Tag = "cutLength";
             // 
             // textBox_8
             // 
             textBox_8.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_8.Location = new Point(605, 102);
+            textBox_8.Location = new Point(547, 102);
             textBox_8.Margin = new Padding(3, 3, 20, 3);
             textBox_8.Name = "textBox_8";
-            textBox_8.Size = new Size(391, 27);
+            textBox_8.Size = new Size(333, 27);
             textBox_8.TabIndex = 7;
             textBox_8.Tag = "toolingSize";
             // 
@@ -468,18 +468,18 @@
             tblPnlSaveCancel.Controls.Add(buttonCancel, 1, 0);
             tblPnlSaveCancel.Controls.Add(buttonSave, 0, 0);
             tblPnlSaveCancel.Dock = DockStyle.Fill;
-            tblPnlSaveCancel.Location = new Point(3, 652);
+            tblPnlSaveCancel.Location = new Point(3, 899);
             tblPnlSaveCancel.Margin = new Padding(3, 3, 30, 3);
             tblPnlSaveCancel.Name = "tblPnlSaveCancel";
             tblPnlSaveCancel.RowCount = 1;
             tblPnlSaveCancel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblPnlSaveCancel.Size = new Size(1043, 58);
+            tblPnlSaveCancel.Size = new Size(927, 58);
             tblPnlSaveCancel.TabIndex = 8;
             // 
             // buttonCancel
             // 
             buttonCancel.Anchor = AnchorStyles.Right;
-            buttonCancel.Location = new Point(946, 16);
+            buttonCancel.Location = new Point(830, 16);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(94, 26);
             buttonCancel.TabIndex = 0;
@@ -490,7 +490,7 @@
             // buttonSave
             // 
             buttonSave.Anchor = AnchorStyles.Right;
-            buttonSave.Location = new Point(846, 16);
+            buttonSave.Location = new Point(730, 16);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(94, 26);
             buttonSave.TabIndex = 1;
@@ -501,6 +501,7 @@
             // tblPnlComments
             // 
             tblPnlComments.AutoSize = true;
+            tblPnlComments.BackColor = SystemColors.Control;
             tblPnlComments.ColumnCount = 2;
             tblPnlComments.ColumnStyles.Add(new ColumnStyle());
             tblPnlComments.ColumnStyles.Add(new ColumnStyle());
@@ -509,14 +510,14 @@
             tblPnlComments.Controls.Add(labelComments, 0, 1);
             tblPnlComments.Controls.Add(labelSpecialWorkInstruction, 0, 0);
             tblPnlComments.Dock = DockStyle.Fill;
-            tblPnlComments.Location = new Point(30, 524);
+            tblPnlComments.Location = new Point(30, 751);
             tblPnlComments.Margin = new Padding(30, 15, 30, 3);
             tblPnlComments.Name = "tblPnlComments";
             tblPnlComments.Padding = new Padding(0, 0, 100, 0);
             tblPnlComments.RowCount = 2;
             tblPnlComments.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tblPnlComments.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblPnlComments.Size = new Size(1016, 122);
+            tblPnlComments.Size = new Size(900, 142);
             tblPnlComments.TabIndex = 7;
             // 
             // richTextBox1
@@ -526,24 +527,23 @@
             richTextBox1.Margin = new Padding(3, 3, 3, 8);
             richTextBox1.MaximumSize = new Size(660, 0);
             richTextBox1.MaxLength = 255;
-            richTextBox1.MinimumSize = new Size(0, 50);
+            richTextBox1.MinimumSize = new Size(0, 60);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(660, 50);
+            richTextBox1.Size = new Size(660, 60);
             richTextBox1.TabIndex = 0;
             richTextBox1.Tag = "specialWorkInstruction";
             richTextBox1.Text = "";
-            richTextBox1.TextChanged += richTextBox1_TextChanged;
             // 
             // richTextBox2
             // 
             richTextBox2.Dock = DockStyle.Left;
-            richTextBox2.Location = new Point(180, 69);
+            richTextBox2.Location = new Point(180, 79);
             richTextBox2.Margin = new Padding(3, 8, 3, 3);
             richTextBox2.MaximumSize = new Size(660, 0);
             richTextBox2.MaxLength = 255;
-            richTextBox2.MinimumSize = new Size(0, 50);
+            richTextBox2.MinimumSize = new Size(0, 60);
             richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(660, 50);
+            richTextBox2.Size = new Size(660, 60);
             richTextBox2.TabIndex = 1;
             richTextBox2.Tag = "comments";
             richTextBox2.Text = "";
@@ -552,9 +552,9 @@
             // 
             labelComments.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             labelComments.AutoSize = true;
-            labelComments.Location = new Point(47, 61);
+            labelComments.Location = new Point(47, 71);
             labelComments.Name = "labelComments";
-            labelComments.Size = new Size(83, 61);
+            labelComments.Size = new Size(83, 71);
             labelComments.TabIndex = 1;
             labelComments.Text = "Comments:";
             labelComments.TextAlign = ContentAlignment.MiddleCenter;
@@ -563,9 +563,10 @@
             // 
             labelSpecialWorkInstruction.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             labelSpecialWorkInstruction.AutoSize = true;
+            labelSpecialWorkInstruction.BackColor = SystemColors.Control;
             labelSpecialWorkInstruction.Location = new Point(3, 0);
             labelSpecialWorkInstruction.Name = "labelSpecialWorkInstruction";
-            labelSpecialWorkInstruction.Size = new Size(171, 61);
+            labelSpecialWorkInstruction.Size = new Size(171, 71);
             labelSpecialWorkInstruction.TabIndex = 1;
             labelSpecialWorkInstruction.Text = "Special Work Instruction:";
             labelSpecialWorkInstruction.TextAlign = ContentAlignment.MiddleCenter;
@@ -573,6 +574,7 @@
             // tblPanelLRAControls
             // 
             tblPanelLRAControls.AutoSize = true;
+            tblPanelLRAControls.BackColor = SystemColors.Control;
             tblPanelLRAControls.ColumnCount = 3;
             tblPanelLRAControls.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tblPanelLRAControls.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
@@ -581,19 +583,19 @@
             tblPanelLRAControls.Controls.Add(buttonRemoveRow, 1, 0);
             tblPanelLRAControls.Controls.Add(buttonClearLRA, 2, 0);
             tblPanelLRAControls.Dock = DockStyle.Left;
-            tblPanelLRAControls.Location = new Point(3, 446);
+            tblPanelLRAControls.Location = new Point(3, 693);
             tblPanelLRAControls.Margin = new Padding(3, 13, 3, 3);
-            tblPanelLRAControls.MinimumSize = new Size(0, 60);
+            tblPanelLRAControls.MinimumSize = new Size(0, 40);
             tblPanelLRAControls.Name = "tblPanelLRAControls";
             tblPanelLRAControls.RowCount = 1;
             tblPanelLRAControls.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblPanelLRAControls.Size = new Size(630, 60);
+            tblPanelLRAControls.Size = new Size(630, 40);
             tblPanelLRAControls.TabIndex = 6;
             // 
             // buttonAddRow
             // 
             buttonAddRow.Anchor = AnchorStyles.Left;
-            buttonAddRow.Location = new Point(30, 15);
+            buttonAddRow.Location = new Point(30, 5);
             buttonAddRow.Margin = new Padding(30, 3, 30, 3);
             buttonAddRow.MinimumSize = new Size(0, 30);
             buttonAddRow.Name = "buttonAddRow";
@@ -606,7 +608,7 @@
             // buttonRemoveRow
             // 
             buttonRemoveRow.Anchor = AnchorStyles.Left;
-            buttonRemoveRow.Location = new Point(240, 15);
+            buttonRemoveRow.Location = new Point(240, 5);
             buttonRemoveRow.Margin = new Padding(30, 3, 30, 3);
             buttonRemoveRow.MinimumSize = new Size(0, 30);
             buttonRemoveRow.Name = "buttonRemoveRow";
@@ -619,7 +621,7 @@
             // buttonClearLRA
             // 
             buttonClearLRA.Anchor = AnchorStyles.Left;
-            buttonClearLRA.Location = new Point(450, 15);
+            buttonClearLRA.Location = new Point(450, 5);
             buttonClearLRA.Margin = new Padding(30, 3, 30, 3);
             buttonClearLRA.MinimumSize = new Size(0, 30);
             buttonClearLRA.Name = "buttonClearLRA";
@@ -631,10 +633,9 @@
             // 
             // tblPanelLRAValues
             // 
-            tblPanelLRAValues.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tblPanelLRAValues.AutoScroll = true;
             tblPanelLRAValues.AutoSize = true;
-            tblPanelLRAValues.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            tblPanelLRAValues.BackColor = SystemColors.Control;
             tblPanelLRAValues.ColumnCount = 6;
             tblPanelLRAValues.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
             tblPanelLRAValues.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19F));
@@ -647,24 +648,24 @@
             tblPanelLRAValues.Controls.Add(labelReadOut, 5, 0);
             tblPanelLRAValues.Controls.Add(labelSpringbackAngle, 2, 0);
             tblPanelLRAValues.Controls.Add(labelRequiredAngle, 1, 0);
+            tblPanelLRAValues.Dock = DockStyle.Fill;
             tblPanelLRAValues.Location = new Point(30, 375);
             tblPanelLRAValues.Margin = new Padding(30, 30, 35, 3);
             tblPanelLRAValues.Name = "tblPanelLRAValues";
             tblPanelLRAValues.Padding = new Padding(0, 0, 10, 20);
             tblPanelLRAValues.RowCount = 1;
             tblPanelLRAValues.RowStyles.Add(new RowStyle());
-            tblPanelLRAValues.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tblPanelLRAValues.Size = new Size(1011, 55);
+            tblPanelLRAValues.Size = new Size(895, 302);
             tblPanelLRAValues.TabIndex = 5;
             // 
             // labelLength
             // 
             labelLength.AutoSize = true;
             labelLength.Dock = DockStyle.Top;
-            labelLength.Location = new Point(433, 0);
+            labelLength.Location = new Point(383, 0);
             labelLength.Margin = new Padding(3, 0, 30, 0);
             labelLength.Name = "labelLength";
-            labelLength.Size = new Size(157, 20);
+            labelLength.Size = new Size(135, 20);
             labelLength.TabIndex = 0;
             labelLength.Text = "Length (mm)";
             labelLength.TextAlign = ContentAlignment.MiddleCenter;
@@ -673,10 +674,10 @@
             // 
             labelRotationDegree.AutoSize = true;
             labelRotationDegree.Dock = DockStyle.Top;
-            labelRotationDegree.Location = new Point(623, 0);
+            labelRotationDegree.Location = new Point(551, 0);
             labelRotationDegree.Margin = new Padding(3, 0, 30, 0);
             labelRotationDegree.Name = "labelRotationDegree";
-            labelRotationDegree.Size = new Size(157, 20);
+            labelRotationDegree.Size = new Size(135, 20);
             labelRotationDegree.TabIndex = 0;
             labelRotationDegree.Text = "Rotation Degree";
             labelRotationDegree.TextAlign = ContentAlignment.MiddleCenter;
@@ -685,10 +686,10 @@
             // 
             labelReadOut.AutoSize = true;
             labelReadOut.Dock = DockStyle.Top;
-            labelReadOut.Location = new Point(813, 0);
+            labelReadOut.Location = new Point(719, 0);
             labelReadOut.Margin = new Padding(3, 0, 30, 0);
             labelReadOut.Name = "labelReadOut";
-            labelReadOut.Size = new Size(158, 20);
+            labelReadOut.Size = new Size(136, 20);
             labelReadOut.TabIndex = 0;
             labelReadOut.Text = "Read Out";
             labelReadOut.TextAlign = ContentAlignment.MiddleCenter;
@@ -697,10 +698,10 @@
             // 
             labelSpringbackAngle.AutoSize = true;
             labelSpringbackAngle.Dock = DockStyle.Top;
-            labelSpringbackAngle.Location = new Point(243, 0);
+            labelSpringbackAngle.Location = new Point(215, 0);
             labelSpringbackAngle.Margin = new Padding(3, 0, 30, 0);
             labelSpringbackAngle.Name = "labelSpringbackAngle";
-            labelSpringbackAngle.Size = new Size(157, 20);
+            labelSpringbackAngle.Size = new Size(135, 20);
             labelSpringbackAngle.TabIndex = 0;
             labelSpringbackAngle.Text = "Springback Angle";
             labelSpringbackAngle.TextAlign = ContentAlignment.MiddleCenter;
@@ -709,10 +710,10 @@
             // 
             labelRequiredAngle.AutoSize = true;
             labelRequiredAngle.Dock = DockStyle.Top;
-            labelRequiredAngle.Location = new Point(53, 0);
+            labelRequiredAngle.Location = new Point(47, 0);
             labelRequiredAngle.Margin = new Padding(3, 0, 30, 0);
             labelRequiredAngle.Name = "labelRequiredAngle";
-            labelRequiredAngle.Size = new Size(157, 20);
+            labelRequiredAngle.Size = new Size(135, 20);
             labelRequiredAngle.TabIndex = 0;
             labelRequiredAngle.Text = "Required Angle";
             labelRequiredAngle.TextAlign = ContentAlignment.MiddleCenter;
@@ -731,7 +732,7 @@
             tableLayoutPanel4.RowCount = 2;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Size = new Size(916, 94);
+            tableLayoutPanel4.Size = new Size(800, 94);
             tableLayoutPanel4.TabIndex = 9;
             // 
             // labelProductionOrder
@@ -741,7 +742,7 @@
             labelProductionOrder.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             labelProductionOrder.Location = new Point(3, 0);
             labelProductionOrder.Name = "labelProductionOrder";
-            labelProductionOrder.Size = new Size(910, 35);
+            labelProductionOrder.Size = new Size(794, 35);
             labelProductionOrder.TabIndex = 8;
             labelProductionOrder.Text = "Production Order:";
             labelProductionOrder.TextAlign = ContentAlignment.MiddleCenter;
@@ -753,7 +754,7 @@
             textBoxProductionOrder.Location = new Point(3, 50);
             textBoxProductionOrder.MaxLength = 80;
             textBoxProductionOrder.Name = "textBoxProductionOrder";
-            textBoxProductionOrder.Size = new Size(910, 41);
+            textBoxProductionOrder.Size = new Size(794, 41);
             textBoxProductionOrder.TabIndex = 7;
             textBoxProductionOrder.TextAlign = HorizontalAlignment.Center;
             // 
@@ -768,20 +769,20 @@
             // 
             // mainPanel
             // 
-            mainPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            mainPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             mainPanel.Controls.Add(tblPnlMain);
-            mainPanel.Location = new Point(298, 27);
+            mainPanel.Location = new Point(50, 10);
             mainPanel.Margin = new Padding(100);
             mainPanel.Name = "mainPanel";
             mainPanel.Padding = new Padding(20);
-            mainPanel.Size = new Size(1116, 753);
+            mainPanel.Size = new Size(1000, 1000);
             mainPanel.TabIndex = 7;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1414, 780);
+            ClientSize = new Size(1414, 926);
             Controls.Add(mainPanel);
             Controls.Add(labelFileDirectory);
             Controls.Add(progressBar1);

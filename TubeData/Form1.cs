@@ -115,12 +115,13 @@ namespace TubeData
 
         private void PrintToolStripButton_Click(object sender, EventArgs e)
         {
+            //WindowState = FormWindowState.Maximized;
             mainPanel.Hide();
             PrintPanel(mainPanel);
             mainPanel.Show();
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }

@@ -187,15 +187,16 @@ namespace TubeData
 
         private void PrintFormat()
         {
-            float scalar = 2.4f;
+            float scalar = 2f;
             int height = this.richTextBox1.Height;
             this.tblPanelLRAControls.Hide();
             this.tblPanelDataEntry.Controls["tblPnlButtons"].Controls["buttonClear"].Hide();
             this.tblPnlSaveCancel.Hide();
-            this.tblPnlComments.Margin = new Padding(40, 15, 30, 50);
+            this.tblPnlComments.Margin = new Padding(40, 15, 30, 3);
             this.richTextBox1.Height = (int)(height * scalar);
             this.richTextBox2.Height = (int)(height * scalar);
         }
+
         private void NormalFormat()
         {
             float scalar = 2.4f;
@@ -203,9 +204,9 @@ namespace TubeData
             this.tblPanelLRAControls.Show();
             this.tblPanelDataEntry.Controls["tblPnlButtons"].Controls["buttonClear"].Show();
             this.tblPnlSaveCancel.Show();
+            this.tblPnlComments.Margin = new Padding(30, 15, 30, 3);
             this.richTextBox1.Height = (int)(height / scalar);
             this.richTextBox2.Height = (int)(height / scalar);
-            this.tblPnlComments.Margin = new Padding(30, 15, 30, 3);
         }
 
         public void PrintPanel(Panel panel)
