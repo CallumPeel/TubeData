@@ -13,7 +13,6 @@
         public ProgressBar progressBar1;
         public TreeView treeView1;
         public TextBox txtDirectoryPath;
-        private bool isButtonsShowing;
 
         public InputHandler(
             TextBox textBoxProductionOrder,
@@ -40,9 +39,6 @@
             this.progressBar1 = progressBar1;
             this.treeView1 = treeView1;
             this.txtDirectoryPath = txtDirectoryPath;
-
-            this.isButtonsShowing = true;
-
         }
 
 

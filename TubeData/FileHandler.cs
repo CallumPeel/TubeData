@@ -6,8 +6,6 @@ namespace TubeData
 {
     internal class FileHandler : InputHandler
     {
-        bool isButtonsShowing;
-
         public FileHandler(
             System.Windows.Forms.TextBox textBoxProductionOrder, 
             TableLayoutPanel tblPanelDataEntry, 
@@ -34,7 +32,6 @@ namespace TubeData
                 txtDirectoryPath
                 )
         {
-            isButtonsShowing = true;
         }
 
         public void LoadDirectory(object sender, EventArgs e)
@@ -188,28 +185,32 @@ namespace TubeData
             return panel;
         }
 
-        public void formatForPrinting()
+        private void PrintFormat()
         {
-            if (isButtonsShowing == true)
-            {
-                this.tblPanelLRAControls.Hide();
-                this.tblPanelDataEntry.Controls["tblPnlButtons"].Controls["buttonClear"].Hide();
-                this.tblPnlSaveCancel.Hide();
-                this.tblPnlComments.Margin = new Padding(30, 15, 30, 100);
-                isButtonsShowing = false;
-            } else
-            {
-                this.tblPanelLRAControls.Show();
-                this.tblPanelDataEntry.Controls["tblPnlButtons"].Controls["buttonClear"].Show();
-                this.tblPnlSaveCancel.Show();
-
-                this.tblPnlComments.Margin = new Padding(30, 15, 30, 3);
-                isButtonsShowing = true;
-            }
+            float scalar = 2.4f;
+            int height = this.richTextBox1.Height;
+            this.tblPanelLRAControls.Hide();
+            this.tblPanelDataEntry.Controls["tblPnlButtons"].Controls["buttonClear"].Hide();
+            this.tblPnlSaveCancel.Hide();
+            this.tblPnlComments.Margin = new Padding(40, 15, 30, 50);
+            this.richTextBox1.Height = (int)(height * scalar);
+            this.richTextBox2.Height = (int)(height * scalar);
+        }
+        private void NormalFormat()
+        {
+            float scalar = 2.4f;
+            int height = this.richTextBox1.Height;
+            this.tblPanelLRAControls.Show();
+            this.tblPanelDataEntry.Controls["tblPnlButtons"].Controls["buttonClear"].Show();
+            this.tblPnlSaveCancel.Show();
+            this.richTextBox1.Height = (int)(height / scalar);
+            this.richTextBox2.Height = (int)(height / scalar);
+            this.tblPnlComments.Margin = new Padding(30, 15, 30, 3);
         }
 
         public void PrintPanel(Panel panel)
         {
+            PrintFormat();
             PrintDocument printDocument = new PrintDocument();
             Panel resizedPanel = ResizePanelToA4(panel);
             printDocument.PrintPage += (sender, e) => PrintPanel(sender, e, resizedPanel);
@@ -227,6 +228,7 @@ namespace TubeData
             {
                 printDocument.Print();
             }
+            NormalFormat();
         }
 
         private void PrintPanel(object sender, PrintPageEventArgs e, Panel panel)

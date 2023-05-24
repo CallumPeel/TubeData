@@ -115,14 +115,14 @@ namespace TubeData
 
         private void PrintToolStripButton_Click(object sender, EventArgs e)
         {
-            FH.formatForPrinting();
+            mainPanel.Hide();
             PrintPanel(mainPanel);
-
+            mainPanel.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            FH.formatForPrinting();
+
         }
     }
 }

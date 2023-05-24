@@ -87,7 +87,6 @@
             textBoxProductionOrder = new TextBox();
             labelFileDirectory = new Label();
             mainPanel = new Panel();
-            button1 = new Button();
             toolStrip1.SuspendLayout();
             tblPnlMain.SuspendLayout();
             tblPanelDataEntry.SuspendLayout();
@@ -526,13 +525,14 @@
             richTextBox1.Location = new Point(180, 3);
             richTextBox1.Margin = new Padding(3, 3, 3, 8);
             richTextBox1.MaximumSize = new Size(660, 0);
-            richTextBox1.MaxLength = 0;
+            richTextBox1.MaxLength = 255;
             richTextBox1.MinimumSize = new Size(0, 50);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(660, 50);
             richTextBox1.TabIndex = 0;
             richTextBox1.Tag = "specialWorkInstruction";
             richTextBox1.Text = "";
+            richTextBox1.TextChanged += richTextBox1_TextChanged;
             // 
             // richTextBox2
             // 
@@ -540,6 +540,7 @@
             richTextBox2.Location = new Point(180, 69);
             richTextBox2.Margin = new Padding(3, 8, 3, 3);
             richTextBox2.MaximumSize = new Size(660, 0);
+            richTextBox2.MaxLength = 255;
             richTextBox2.MinimumSize = new Size(0, 50);
             richTextBox2.Name = "richTextBox2";
             richTextBox2.Size = new Size(660, 50);
@@ -718,29 +719,29 @@
             // 
             // tableLayoutPanel4
             // 
+            tableLayoutPanel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel4.AutoSize = true;
             tableLayoutPanel4.ColumnCount = 1;
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.Controls.Add(labelProductionOrder, 0, 0);
             tableLayoutPanel4.Controls.Add(textBoxProductionOrder, 0, 1);
-            tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(200, 30);
-            tableLayoutPanel4.Margin = new Padding(200, 30, 200, 30);
+            tableLayoutPanel4.Location = new Point(80, 30);
+            tableLayoutPanel4.Margin = new Padding(80, 30, 80, 30);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 2;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Size = new Size(676, 94);
+            tableLayoutPanel4.Size = new Size(916, 94);
             tableLayoutPanel4.TabIndex = 9;
             // 
             // labelProductionOrder
             // 
+            labelProductionOrder.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelProductionOrder.AutoSize = true;
-            labelProductionOrder.Dock = DockStyle.Fill;
             labelProductionOrder.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             labelProductionOrder.Location = new Point(3, 0);
             labelProductionOrder.Name = "labelProductionOrder";
-            labelProductionOrder.Size = new Size(670, 47);
+            labelProductionOrder.Size = new Size(910, 35);
             labelProductionOrder.TabIndex = 8;
             labelProductionOrder.Text = "Production Order:";
             labelProductionOrder.TextAlign = ContentAlignment.MiddleCenter;
@@ -750,8 +751,9 @@
             textBoxProductionOrder.Dock = DockStyle.Fill;
             textBoxProductionOrder.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxProductionOrder.Location = new Point(3, 50);
+            textBoxProductionOrder.MaxLength = 80;
             textBoxProductionOrder.Name = "textBoxProductionOrder";
-            textBoxProductionOrder.Size = new Size(670, 41);
+            textBoxProductionOrder.Size = new Size(910, 41);
             textBoxProductionOrder.TabIndex = 7;
             textBoxProductionOrder.TextAlign = HorizontalAlignment.Center;
             // 
@@ -775,22 +777,11 @@
             mainPanel.Size = new Size(1116, 753);
             mainPanel.TabIndex = 7;
             // 
-            // button1
-            // 
-            button1.Location = new Point(175, 33);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 8;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1414, 780);
-            Controls.Add(button1);
             Controls.Add(mainPanel);
             Controls.Add(labelFileDirectory);
             Controls.Add(progressBar1);
@@ -881,6 +872,5 @@
         private Label labelProductionOrder;
         private TextBox textBoxProductionOrder;
         private Panel mainPanel;
-        private Button button1;
     }
 }
