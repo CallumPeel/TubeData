@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+
 namespace TubeData
 {
     public partial class Form1 : Form
@@ -13,6 +15,9 @@ namespace TubeData
                 textBoxProductionOrder: textBoxProductionOrder,
                 tblPanelDataEntry: tblPanelDataEntry,
                 tblPanelLRAValues: tblPanelLRAValues,
+                tblPanelLRAControls: tblPanelLRAControls,
+                tblPnlSaveCancel: tblPnlSaveCancel,
+                tblPnlComments: tblPnlComments,
                 richTextBox1: richTextBox1,
                 richTextBox2: richTextBox2,
                 progressBar1: progressBar1,
@@ -99,9 +104,25 @@ namespace TubeData
             ClearAllFields();
         }
 
-        private void printToolStripButton_Click(object sender, EventArgs e)
+        private void PrintPanel(Panel panel)
         {
-            FH.PrintPanel(tblPnlMain);
+            int width = panel.Width;
+            int height = panel.Height;
+            FH.PrintPanel(panel);
+            panel.Width = width;
+            panel.Height = height;
+        }
+
+        private void PrintToolStripButton_Click(object sender, EventArgs e)
+        {
+            FH.formatForPrinting();
+            PrintPanel(mainPanel);
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FH.formatForPrinting();
         }
     }
 }

@@ -3,16 +3,25 @@
     internal class InputHandler
     {
         public TextBox textBoxProductionOrder;
-        public TableLayoutPanel tblPanelDataEntry, tblPanelLRAValues;
+        public TableLayoutPanel 
+            tblPanelDataEntry, 
+            tblPanelLRAValues, 
+            tblPanelLRAControls, 
+            tblPnlSaveCancel, 
+            tblPnlComments;
         public RichTextBox richTextBox1, richTextBox2;
         public ProgressBar progressBar1;
         public TreeView treeView1;
         public TextBox txtDirectoryPath;
+        private bool isButtonsShowing;
 
         public InputHandler(
             TextBox textBoxProductionOrder,
             TableLayoutPanel tblPanelDataEntry,
             TableLayoutPanel tblPanelLRAValues,
+            TableLayoutPanel tblPanelLRAControls,
+            TableLayoutPanel tblPnlSaveCancel,
+            TableLayoutPanel tblPnlComments,
             RichTextBox richTextBox1,
             RichTextBox richTextBox2,
             ProgressBar progressBar1,
@@ -23,11 +32,17 @@
             this.textBoxProductionOrder = textBoxProductionOrder;
             this.tblPanelDataEntry = tblPanelDataEntry;
             this.tblPanelLRAValues = tblPanelLRAValues;
+            this.tblPanelLRAControls = tblPanelLRAControls;
+            this.tblPnlSaveCancel = tblPnlSaveCancel;
+            this.tblPnlComments = tblPnlComments;
             this.richTextBox1 = richTextBox1;
             this.richTextBox2 = richTextBox2;
             this.progressBar1 = progressBar1;
             this.treeView1 = treeView1;
             this.txtDirectoryPath = txtDirectoryPath;
+
+            this.isButtonsShowing = true;
+
         }
 
 
