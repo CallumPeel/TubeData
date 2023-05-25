@@ -1,34 +1,40 @@
-﻿using System.Drawing.Printing;
+﻿using System.Collections.Generic;
+using System.Diagnostics.Metrics;
+using System.Diagnostics;
+using System;
+using System.Drawing.Printing;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TubeData
 {
     internal class FileHandler : InputHandler
     {
         public FileHandler(
-            System.Windows.Forms.TextBox textBoxProductionOrder, 
-            TableLayoutPanel tblPanelDataEntry, 
+            System.Windows.Forms.TextBox textBoxProductionOrder,
+            TableLayoutPanel tblPanelDataEntry,
             TableLayoutPanel tblPanelLRAValues,
             TableLayoutPanel tblPanelLRAControls,
             TableLayoutPanel tblPnlComments,
             TableLayoutPanel tblPnlSaveCancel,
-            RichTextBox richTextBox1, 
-            RichTextBox richTextBox2, 
-            System.Windows.Forms.ProgressBar progressBar1, 
+            RichTextBox richTextBox1,
+            RichTextBox richTextBox2,
+            System.Windows.Forms.ProgressBar progressBar1,
             System.Windows.Forms.TreeView treeView1,
-            System.Windows.Forms.TextBox txtDirectoryPath) : 
+            System.Windows.Forms.TextBox txtDirectoryPath) :
             base(
-                textBoxProductionOrder, 
-                tblPanelDataEntry, 
+                textBoxProductionOrder,
+                tblPanelDataEntry,
                 tblPanelLRAValues,
                 tblPanelLRAControls,
                 tblPnlSaveCancel,
                 tblPnlComments,
-                richTextBox1, 
+                richTextBox1,
                 richTextBox2,
-                progressBar1, 
-                treeView1, 
+                progressBar1,
+                treeView1,
                 txtDirectoryPath
                 )
         {
@@ -141,8 +147,31 @@ namespace TubeData
             }
         }
 
-        public void PrintTubeInformation(string filePath)
+        public void RemoveElementsAfterSixth(TableLayoutPanel tableLayoutPanel)
         {
+
+            //tableLayoutPanel.RowStyles.RemoveAt(0);
+            int count = tableLayoutPanel.RowCount;
+
+            for (int i = 1; i < tableLayoutPanel.RowCount + 1; i++)
+            {
+                for (int j = 0; j <= tableLayoutPanel.ColumnCount-1; j++)
+                {
+                    Control control = tableLayoutPanel.GetControlFromPosition(j, i);
+
+                    if (control != null)
+                    {
+                        tableLayoutPanel.Controls.Remove(control);
+                        control.Dispose();
+                    }
+                }
+            }
+            tableLayoutPanel.RowCount -= count;
+        }
+
+        public void OpenTubeFile(string filePath)
+        {
+            RemoveElementsAfterSixth(tblPanelLRAValues);
             // Opening a previously saved Tube instance from a binary file
             Tube openedTube = GetTubeFromFile(filePath);
             if (openedTube != null)
@@ -154,7 +183,6 @@ namespace TubeData
                 richTextBox2.Text = openedTube.RichTextBoxValue2;
             }
         }
-
         public Panel ResizePanelToA4(Panel panel)
         {
             // A4 paper size in millimeters
@@ -218,7 +246,7 @@ namespace TubeData
 
 
             //Optionally, you can use the PrintPreviewDialog to preview the print layout
-             PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+            PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
             printPreviewDialog.Document = printDocument;
             printPreviewDialog.ShowDialog();
 

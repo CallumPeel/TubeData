@@ -80,7 +80,7 @@ namespace TubeData
             openFileDialog.Filter = "Tube Files (*.TUBE)|*.TUBE";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                FH.PrintTubeInformation(openFileDialog.FileName);
+                FH.OpenTubeFile(openFileDialog.FileName);
             }
         }
 
@@ -95,7 +95,7 @@ namespace TubeData
             {
                 if (Path.GetExtension(filePath).Equals(".TUBE", StringComparison.OrdinalIgnoreCase))
                 {
-                    FH.PrintTubeInformation(filePath);
+                    FH.OpenTubeFile(filePath);
                 }
             }
         }
