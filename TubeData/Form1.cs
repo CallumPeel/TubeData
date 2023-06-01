@@ -10,7 +10,7 @@ namespace TubeData
         {
 
             InitializeComponent();
-
+            this.Icon = Properties.Resources.Slinky;
             this.FH = new FileHandler(
                 textBoxProductionOrder: textBoxProductionOrder,
                 tblPanelDataEntry: tblPanelDataEntry,
@@ -131,6 +131,17 @@ namespace TubeData
             mainPanel.Size = new Size(1645, 899);
             mainPanel.AutoSize = true;
             mainPanel.Show();
+        }
+
+        private void saveToolStripButton_Click(object sender, EventArgs e)
+        {
+            this.FH.SaveTube();
+        }
+
+        private void helpToolStripButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Error 404: There is no help for you.", "Uncomfortable truth", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
     }
 }
