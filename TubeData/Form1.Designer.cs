@@ -135,6 +135,7 @@
             saveToolStripButton.Name = "saveToolStripButton";
             saveToolStripButton.Size = new Size(64, 24);
             saveToolStripButton.Text = "&Save";
+            saveToolStripButton.Click += saveToolStripButton_Click;
             // 
             // printToolStripButton
             // 
@@ -159,6 +160,7 @@
             helpToolStripButton.Name = "helpToolStripButton";
             helpToolStripButton.Size = new Size(29, 24);
             helpToolStripButton.Text = "He&lp";
+            helpToolStripButton.Click += helpToolStripButton_Click;
             // 
             // txtDirectoryPath
             // 
@@ -792,8 +794,9 @@
             Controls.Add(txtDirectoryPath);
             Controls.Add(toolStrip1);
             DoubleBuffered = true;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
-            Text = "Form1";
+            Text = "Tube Data";
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             tblPnlMain.ResumeLayout(false);

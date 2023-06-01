@@ -183,6 +183,7 @@ namespace TubeData
                 richTextBox2.Text = openedTube.RichTextBoxValue2;
             }
         }
+
         public Panel ResizePanelToA4(Panel panel)
         {
             // A4 paper size in millimeters
@@ -247,6 +248,7 @@ namespace TubeData
 
             //Optionally, you can use the PrintPreviewDialog to preview the print layout
             PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+            printPreviewDialog.WindowState = FormWindowState.Maximized;
             printPreviewDialog.Document = printDocument;
             printPreviewDialog.ShowDialog();
 
